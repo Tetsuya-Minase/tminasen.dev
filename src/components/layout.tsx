@@ -1,15 +1,8 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header"
+import { HeaderComponent } from "./HeaderComponent"
 import "./layout.css"
 
 const Layout: React.FC<any> = ({ children }) => {
@@ -25,7 +18,7 @@ const Layout: React.FC<any> = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <HeaderComponent siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
           margin: `0 auto`,
