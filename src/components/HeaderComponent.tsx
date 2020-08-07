@@ -12,6 +12,7 @@ const Header = styled.header`
 `;
 const Heading = styled.h1`
   margin: 0;
+  font-size: 3rem;
 `;
 const Wrapper = styled.div`
   margin: 0 auto;
