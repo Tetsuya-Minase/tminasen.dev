@@ -2,7 +2,6 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import { HeaderComponent } from '../components/HeaderComponent';
-import './pageTemplate.css';
 import { FooterComponent } from '../components/FooterComponents';
 import styled from 'styled-components';
 
