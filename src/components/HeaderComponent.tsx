@@ -7,7 +7,7 @@ type Props = {
 }
 
 const Header = styled.header`
-  background: rebeccapurple;
+  background: #448aff;
   margin-bottom: 1.45rem;
 `;
 const Heading = styled.h1`
@@ -15,9 +15,13 @@ const Heading = styled.h1`
 `;
 const Wrapper = styled.div`
   margin: 0 auto;
-  max-width: 960px;
-  padding: 1.45rem 1.0875rem;
+  max-width: 96rem;
+  padding: 1.5rem 1.1rem;
 `;
+const linkStyle: React.CSSProperties = {
+  color: '#ffffff',
+  textDecoration: 'none'
+};
 
 export const HeaderComponent: React.FC<Props> = ({ siteTitle }) => (
   <Header>
@@ -25,10 +29,7 @@ export const HeaderComponent: React.FC<Props> = ({ siteTitle }) => (
       <Heading>
         <Link
           to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
+          style={linkStyle}
         >
           {siteTitle}
         </Link>
