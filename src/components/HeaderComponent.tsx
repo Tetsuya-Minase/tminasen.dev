@@ -1,10 +1,10 @@
-import { Link } from "gatsby"
-import React from "react"
+import { Link } from 'gatsby';
+import React from 'react';
 import styled from 'styled-components';
 
 type Props = {
   siteTitle: string;
-}
+};
 
 const Header = styled.header`
   background: #448aff;
@@ -21,17 +21,14 @@ const Wrapper = styled.div`
 `;
 const linkStyle: React.CSSProperties = {
   color: '#ffffff',
-  textDecoration: 'none'
+  textDecoration: 'none',
 };
 
 export const HeaderComponent: React.FC<Props> = ({ siteTitle }) => (
   <Header>
     <Wrapper>
       <Heading>
-        <Link
-          to="/"
-          style={linkStyle}
-        >
+        <Link to="/" style={linkStyle}>
           {siteTitle}
         </Link>
       </Heading>
