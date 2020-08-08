@@ -2,9 +2,20 @@ import React, { useMemo } from 'react';
 import { graphql, Link } from 'gatsby';
 
 import { PageTemplate } from '../templates/PageTemplate';
-import { Image } from '../components/ImageComponent';
 import SEO from '../components/seo';
 import { IndexPageQuery } from '../../types/graphql-types';
+import styled from 'styled-components';
+
+const Heading = styled.h1`
+  font-size: 2.4rem;
+  font-weight: bold;
+`;
+const Ul = styled.ul`
+  font-size: 1.6rem;
+`;
+const ArticleWrapper = styled.article`
+  width: 100%;
+`;
 
 type Props = {
   data: IndexPageQuery;
@@ -30,7 +41,7 @@ const useCreateArticle = (
     if (linkItems.length === 0) {
       return null;
     }
-    return <ul>{linkItems}</ul>;
+    return <Ul>{linkItems}</Ul>;
   }, [articleData.length]);
 };
 
@@ -38,16 +49,11 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   const articles = useCreateArticle(data.allMarkdownRemark.edges);
   return (
     <PageTemplate>
-      <React.Fragment>
+      <ArticleWrapper>
         <SEO title="Home" />
-        <h1>Hi people</h1>
-        <p>Welcome to your new Gatsby site.</p>
-        <p>Now go build something great.</p>
-        <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-          <Image />
-        </div>
+        <Heading>記事一覧</Heading>
         {articles}
-      </React.Fragment>
+      </ArticleWrapper>
     </PageTemplate>
   );
 };
