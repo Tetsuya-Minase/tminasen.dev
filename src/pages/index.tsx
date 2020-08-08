@@ -6,7 +6,7 @@ import SEO from '../components/seo';
 import { IndexPageQuery } from '../../types/graphql-types';
 import styled from 'styled-components';
 
-const Heading = styled.h1`
+const Title = styled.h1`
   font-size: 2.4rem;
   font-weight: bold;
 `;
@@ -51,7 +51,7 @@ const IndexPage: React.FC<Props> = ({ data }) => {
     <PageTemplate>
       <ArticleWrapper>
         <SEO title="Home" />
-        <Heading>記事一覧</Heading>
+        <Title>記事一覧</Title>
         {articles}
       </ArticleWrapper>
     </PageTemplate>
