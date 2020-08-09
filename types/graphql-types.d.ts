@@ -2849,7 +2849,7 @@ export type Unnamed_2_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSit
 export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IndexPageQuery = { allMarkdownRemark: { edges: Array<{ node: { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'title'>> } }> } };
+export type IndexPageQuery = { allMarkdownRemark: { nodes: Array<{ frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'tag' | 'title'>> }> } };
 
 export type Unnamed_3_QueryVariables = Exact<{
   path: Scalars['String'];

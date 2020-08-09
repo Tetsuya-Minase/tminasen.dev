@@ -22,12 +22,12 @@ type Props = {
 };
 
 const useCreateArticle = (
-  articleData: IndexPageQuery['allMarkdownRemark']['edges'],
+  articleData: IndexPageQuery['allMarkdownRemark']['nodes'],
 ) => {
   return useMemo(() => {
     const linkItems = articleData
       .map(item => {
-        const frontmatter = item.node.frontmatter;
+        const frontmatter = item.frontmatter;
         if (frontmatter?.path == undefined || frontmatter?.title == undefined) {
           return undefined;
         }
@@ -46,7 +46,7 @@ const useCreateArticle = (
 };
 
 const IndexPage: React.FC<Props> = ({ data }) => {
-  const articles = useCreateArticle(data.allMarkdownRemark.edges);
+  const articles = useCreateArticle(data.allMarkdownRemark.nodes);
   return (
     <PageTemplate>
       <ArticleWrapper>
@@ -62,13 +62,12 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPage {
-    allMarkdownRemark {
-      edges {
-        node {
-          frontmatter {
-            path
-            title
-          }
+    allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
+      nodes {
+        frontmatter {
+          path
+          tag
+          title
         }
       }
     }
