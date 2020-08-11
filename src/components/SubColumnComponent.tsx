@@ -29,7 +29,7 @@ const useConvertTagList = (
         return {
           name: field.fieldValue,
           articleCount: field.nodes.length,
-          url: `/tag/${field.fieldValue}`,
+          url: `/tags/${field.fieldValue}`,
         };
       })
       .filter((item): item is TagLink => item != undefined);
