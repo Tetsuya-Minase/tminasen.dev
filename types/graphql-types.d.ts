@@ -2841,6 +2841,14 @@ export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_1_Query = { placeholderImage?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<GatsbyImageSharpFluidFragment> }> }> };
 
+export type TagListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type TagListQuery = { allMarkdownRemark: { group: Array<(
+      Pick<MarkdownRemarkGroupConnection, 'fieldValue'>
+      & { nodes: Array<{ frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'title'>> }> }
+    )> } };
+
 export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
