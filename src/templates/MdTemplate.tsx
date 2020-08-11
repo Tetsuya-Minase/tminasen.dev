@@ -1,10 +1,10 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { PageTemplate } from "./PageTemplate"
+import React from 'react';
+import { graphql } from 'gatsby';
+import { PageTemplate } from './PageTemplate';
 
-export default function Template({ data }: any) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark
+export const MdTemplate = ({ data }: any) => {
+  const { markdownRemark } = data; // data.markdownRemark holds your post data
+  const { frontmatter, html } = markdownRemark;
   return (
     <PageTemplate>
       <div className="blog-post-container">
@@ -18,18 +18,20 @@ export default function Template({ data }: any) {
         </div>
       </div>
     </PageTemplate>
-  )
-}
+  );
+};
+
+export default MdTemplate;
 
 export const pageQuery = graphql`
-    query($path: String!) {
-        markdownRemark(frontmatter: { path: { eq: $path } }) {
-            html
-            frontmatter {
-                date(formatString: "MMMM DD, YYYY")
-                path
-                title
-            }
-        }
+  query($path: String!) {
+    markdownRemark(frontmatter: { path: { eq: $path } }) {
+      html
+      frontmatter {
+        date(formatString: "MMMM DD, YYYY")
+        path
+        title
+      }
     }
-`
+  }
+`;
