@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import { TagListQuery } from '../../types/graphql-types';
@@ -17,23 +17,19 @@ const Title = styled.h1`
   font-weight: bold;
 `;
 
-const useConvertTagList = (
-  group: TagListQuery['allMarkdownRemark']['group'],
-) => {
-  return useMemo(() => {
-    return group
-      .map(field => {
-        if (field.fieldValue == undefined || field.nodes.length == 0) {
-          return;
-        }
-        return {
-          name: field.fieldValue,
-          articleCount: field.nodes.length,
-          url: `/tags/${field.fieldValue}`,
-        };
-      })
-      .filter((item): item is TagLink => item != undefined);
-  }, [group.length]);
+const convertTagList = (group: TagListQuery['allMarkdownRemark']['group']) => {
+  return group
+    .map(field => {
+      if (field.fieldValue == undefined || field.nodes.length == 0) {
+        return;
+      }
+      return {
+        name: field.fieldValue,
+        articleCount: field.nodes.length,
+        url: `/tags/${field.fieldValue}`,
+      };
+    })
+    .filter((item): item is TagLink => item != undefined);
 };
 
 export const SubColumnComponent: React.FC = () => {
@@ -52,21 +48,15 @@ export const SubColumnComponent: React.FC = () => {
       }
     }
   `);
-  const tagLinkList: TagLink[] = useConvertTagList(
-    data.allMarkdownRemark.group,
-  );
+  const tagLinkList: TagLink[] = convertTagList(data.allMarkdownRemark.group);
   if (tagLinkList.length === 0) {
     return null;
   }
-  const tagList = useMemo(
-    () =>
-      tagLinkList.map(tagLink => (
-        <li key={tagLink.name}>
-          <a href={tagLink.url}>{`${tagLink.name}(${tagLink.articleCount})`}</a>
-        </li>
-      )),
-    [tagLinkList.length],
-  );
+  const tagList = tagLinkList.map(tagLink => (
+    <li key={tagLink.name}>
+      <a href={tagLink.url}>{`${tagLink.name}(${tagLink.articleCount})`}</a>
+    </li>
+  ));
   return (
     <Aside>
       <Title>タグ一覧</Title>

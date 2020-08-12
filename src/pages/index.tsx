@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import { PageTemplate } from '../templates/PageTemplate';
@@ -21,32 +21,30 @@ type Props = {
   data: IndexPageQuery;
 };
 
-const useCreateArticle = (
+const createArticle = (
   articleData: IndexPageQuery['allMarkdownRemark']['nodes'],
 ) => {
-  return useMemo(() => {
-    const linkItems = articleData
-      .map(item => {
-        const frontmatter = item.frontmatter;
-        if (frontmatter?.path == undefined || frontmatter?.title == undefined) {
-          return undefined;
-        }
-        return (
-          <li key={`${frontmatter.title}:${frontmatter.path}`}>
-            <Link to={frontmatter.path}>{frontmatter.title}</Link>
-          </li>
-        );
-      })
-      .filter((item): item is JSX.Element => item !== undefined);
-    if (linkItems.length === 0) {
-      return null;
-    }
-    return <Ul>{linkItems}</Ul>;
-  }, [articleData.length]);
+  const linkItems = articleData
+    .map(item => {
+      const frontmatter = item.frontmatter;
+      if (frontmatter?.path == undefined || frontmatter?.title == undefined) {
+        return undefined;
+      }
+      return (
+        <li key={`${frontmatter.title}:${frontmatter.path}`}>
+          <Link to={frontmatter.path}>{frontmatter.title}</Link>
+        </li>
+      );
+    })
+    .filter((item): item is JSX.Element => item !== undefined);
+  if (linkItems.length === 0) {
+    return null;
+  }
+  return <Ul>{linkItems}</Ul>;
 };
 
 const IndexPage: React.FC<Props> = ({ data }) => {
-  const articles = useCreateArticle(data.allMarkdownRemark.nodes);
+  const articles = createArticle(data.allMarkdownRemark.nodes);
   return (
     <PageTemplate>
       <ArticleWrapper>
