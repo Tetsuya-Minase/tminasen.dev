@@ -2871,12 +2871,12 @@ export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type IndexPageQuery = { allMarkdownRemark: { nodes: Array<{ frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'tag' | 'title'>> }> } };
 
-export type Unnamed_3_QueryVariables = Exact<{
+export type MdPageDataQueryVariables = Exact<{
   path: Scalars['String'];
 }>;
 
 
-export type Unnamed_3_Query = { markdownRemark?: Maybe<(
+export type MdPageDataQuery = { markdownRemark?: Maybe<(
     Pick<MarkdownRemark, 'html'>
     & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'path' | 'title'>> }
   )> };
