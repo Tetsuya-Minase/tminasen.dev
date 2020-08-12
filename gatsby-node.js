@@ -49,6 +49,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     createPage({
       path: `/tags/${tag.fieldValue}`,
       component: tagListTemplate,
+      context: {
+        tagName: tag.fieldValue,
+      },
     });
   });
 };
