@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import { TagArticlesQuery } from '../../types/graphql-types';
+import { PageTemplate } from './PageTemplate';
 
 type Props = {
   pageContext: {
@@ -43,10 +44,12 @@ export const TagListTemplate: React.FC<Props> = ({
   },
 }) => {
   return (
-    <div>
-      <Title>{tagName}の記事一覧</Title>
-      {getArticles(nodes)}
-    </div>
+    <PageTemplate>
+      <div>
+        <Title>{tagName}の記事一覧</Title>
+        {getArticles(nodes)}
+      </div>
+    </PageTemplate>
   );
 };
 
