@@ -22,7 +22,7 @@ const getArticles = (
       }
       const { path, title } = frontmatter;
       return (
-        <li>
+        <li key={`${path}`}>
           <h1>
             <a href={path}>{title}</a>
           </h1>
