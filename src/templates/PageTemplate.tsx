@@ -14,6 +14,7 @@ const BodyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #eceff1;
 `;
 const ContentsWrapper = styled.div`
   flex: 1 0 auto;
