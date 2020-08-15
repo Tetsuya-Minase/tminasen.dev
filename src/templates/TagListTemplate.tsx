@@ -24,17 +24,28 @@ const ArticleListItem = styled.li`
   flex-basis: 100%;
   margin-bottom: 2rem;
 `;
-const ArticleWrapper = styled.section``;
+const ArticleWrapper = styled.section`
+  color: ${fontColor.black};
+`;
 const ArticleTitle = styled.h1`
-  font-size: 2rem;
+  font-size: 2.4rem;
+`;
+const ArticleTitleWrapper = styled.div`
+  background-color: #b0bec5;
+`;
+const ArticleDate = styled.time`
+  font-size: 1.6rem;
 `;
 const ArticleDescription = styled.p`
   font-size: 1.6rem;
 `;
+const DescriptionWrapper = styled.div`
+  background-color: #ffffff;
+  height: 10rem;
+`;
 const Link = styled.a`
   display: inline-block;
   text-decoration: none;
-  height: 10rem;
   width: 100%;
   &:visited {
     color: ${fontColor.black};
@@ -46,16 +57,25 @@ const getArticles = (
 ): JSX.Element | null => {
   const articleList = nodes
     .map(({ frontmatter, excerpt }): JSX.Element | null => {
-      if (frontmatter?.path == null || frontmatter?.title == null) {
+      if (
+        frontmatter?.path == null ||
+        frontmatter?.title == null ||
+        frontmatter?.date == null
+      ) {
         return null;
       }
-      const { path, title } = frontmatter;
+      const { path, title, date } = frontmatter;
       return (
         <ArticleListItem key={`${path}`}>
           <ArticleWrapper>
             <Link href={path}>
-              <ArticleTitle>{title}</ArticleTitle>
-              <ArticleDescription>{excerpt}</ArticleDescription>
+              <ArticleTitleWrapper>
+                <ArticleTitle>{title}</ArticleTitle>
+                <ArticleDate>{date}</ArticleDate>
+              </ArticleTitleWrapper>
+              <DescriptionWrapper>
+                <ArticleDescription>{excerpt}</ArticleDescription>
+              </DescriptionWrapper>
             </Link>
           </ArticleWrapper>
         </ArticleListItem>
