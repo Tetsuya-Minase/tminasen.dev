@@ -14,6 +14,7 @@ type Props = {
 const PageTitle = styled.h1`
   color: ${fontColor.black};
   font-size: 2.8rem;
+  margin-bottom: 1.5rem;
 `;
 const ArticleList = styled.ul`
   display: flex;
@@ -21,6 +22,7 @@ const ArticleList = styled.ul`
 `;
 const ArticleListItem = styled.li`
   flex-basis: 100%;
+  margin-bottom: 2rem;
 `;
 const ArticleWrapper = styled.section``;
 const ArticleTitle = styled.h1`
@@ -30,7 +32,10 @@ const ArticleDescription = styled.p`
   font-size: 1.6rem;
 `;
 const Link = styled.a`
+  display: inline-block;
   text-decoration: none;
+  height: 10rem;
+  width: 100%;
   &:visited {
     color: ${fontColor.black};
   }
