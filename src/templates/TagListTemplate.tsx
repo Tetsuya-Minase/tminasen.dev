@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import { TagArticlesQuery } from '../../types/graphql-types';
 import { PageTemplate } from './PageTemplate';
+import { fontColor } from '../styles/variable';
 
 type Props = {
   pageContext: {
@@ -10,7 +11,30 @@ type Props = {
   };
   data: TagArticlesQuery;
 };
-const Title = styled.h1``;
+const PageTitle = styled.h1`
+  color: ${fontColor.black};
+  font-size: 2.8rem;
+`;
+const ArticleList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`;
+const ArticleListItem = styled.li`
+  flex-basis: 100%;
+`;
+const ArticleWrapper = styled.section``;
+const ArticleTitle = styled.h1`
+  font-size: 2rem;
+`;
+const ArticleDescription = styled.p`
+  font-size: 1.6rem;
+`;
+const Link = styled.a`
+  text-decoration: none;
+  &:visited {
+    color: ${fontColor.black};
+  }
+`;
 
 const getArticles = (
   nodes: TagArticlesQuery['allMarkdownRemark']['nodes'],
@@ -22,19 +46,21 @@ const getArticles = (
       }
       const { path, title } = frontmatter;
       return (
-        <li key={`${path}`}>
-          <h1>
-            <a href={path}>{title}</a>
-          </h1>
-          <span>{excerpt}</span>
-        </li>
+        <ArticleListItem key={`${path}`}>
+          <ArticleWrapper>
+            <Link href={path}>
+              <ArticleTitle>{title}</ArticleTitle>
+              <ArticleDescription>{excerpt}</ArticleDescription>
+            </Link>
+          </ArticleWrapper>
+        </ArticleListItem>
       );
     })
     .filter((element): element is JSX.Element => element !== null);
   if (articleList.length === 0) {
     return null;
   }
-  return <ul>{articleList}</ul>;
+  return <ArticleList>{articleList}</ArticleList>;
 };
 
 export const TagListTemplate: React.FC<Props> = ({
@@ -45,10 +71,10 @@ export const TagListTemplate: React.FC<Props> = ({
 }) => {
   return (
     <PageTemplate>
-      <div>
-        <Title>{tagName}の記事一覧</Title>
+      <article>
+        <PageTitle>{tagName}の記事一覧</PageTitle>
         {getArticles(nodes)}
-      </div>
+      </article>
     </PageTemplate>
   );
 };
@@ -65,6 +91,7 @@ export const articleData = graphql`
         frontmatter {
           path
           title
+          date
         }
         excerpt(format: PLAIN, truncate: true, pruneLength: 100)
       }
