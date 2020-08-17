@@ -10,7 +10,10 @@ type TagLink = {
 };
 
 const Aside = styled.aside`
-  margin: 1rem 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  align-items: center;
 `;
 const Title = styled.h1`
   font-size: 2.4rem;
