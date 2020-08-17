@@ -32,6 +32,8 @@ const ArticleTitle = styled.h1`
 `;
 const ArticleTitleWrapper = styled.div`
   background-color: #b0bec5;
+  display: flex;
+  flex-direction: column;
 `;
 const ArticleDate = styled.time`
   font-size: 1.6rem;
@@ -40,16 +42,13 @@ const ArticleDescription = styled.p`
   font-size: 1.6rem;
 `;
 const DescriptionWrapper = styled.div`
-  background-color: #ffffff;
+  background-color: #eceff1;
   height: 10rem;
 `;
 const Link = styled.a`
   display: inline-block;
   text-decoration: none;
-  width: 100%;
-  &:visited {
-    color: ${fontColor.black};
-  }
+  color: ${fontColor.black};
 `;
 
 const getArticles = (
@@ -60,23 +59,28 @@ const getArticles = (
       if (
         frontmatter?.path == null ||
         frontmatter?.title == null ||
-        frontmatter?.date == null
+        frontmatter?.date == null ||
+        frontmatter?.tag == null
       ) {
         return null;
       }
-      const { path, title, date } = frontmatter;
+      const { path, title, date, tag } = frontmatter;
       return (
         <ArticleListItem key={`${path}`}>
           <ArticleWrapper>
-            <Link href={path}>
-              <ArticleTitleWrapper>
+            <ArticleTitleWrapper>
+              <Link href={path}>
                 <ArticleTitle>{title}</ArticleTitle>
-                <ArticleDate>{date}</ArticleDate>
-              </ArticleTitleWrapper>
-              <DescriptionWrapper>
-                <ArticleDescription>{excerpt}</ArticleDescription>
-              </DescriptionWrapper>
-            </Link>
+              </Link>
+              <ArticleDate>{date}</ArticleDate>
+              {tag.map(t => (
+                <Link href={`/tags/${t}`}>{t}</Link>
+              ))}
+            </ArticleTitleWrapper>
+            <DescriptionWrapper>
+              <ArticleDescription>{excerpt}</ArticleDescription>
+              <span>続きを読む……</span>
+            </DescriptionWrapper>
           </ArticleWrapper>
         </ArticleListItem>
       );
@@ -117,6 +121,7 @@ export const articleData = graphql`
           path
           title
           date
+          tag
         }
         excerpt(format: PLAIN, truncate: true, pruneLength: 100)
       }
