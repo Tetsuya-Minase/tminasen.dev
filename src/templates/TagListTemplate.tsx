@@ -38,12 +38,23 @@ const ArticleTitleWrapper = styled.div`
 const ArticleDate = styled.time`
   font-size: 1.6rem;
 `;
-const ArticleDescription = styled.p`
+const TitleTagList = styled.ul`
+  display: flex;
   font-size: 1.6rem;
+`;
+const TitleTagListItem = styled.li`
+  margin-right: 0.5rem;
+`;
+const ArticleDescription = styled.p`
+  font-size: 2rem;
 `;
 const DescriptionWrapper = styled.div`
   background-color: #eceff1;
   height: 10rem;
+`;
+const ArticleReadMore = styled.div`
+  bottom: 0;
+  right: 0;
 `;
 const Link = styled.a`
   display: inline-block;
@@ -65,6 +76,15 @@ const getArticles = (
         return null;
       }
       const { path, title, date, tag } = frontmatter;
+      const tagList =
+        tag
+          ?.filter((t): t is string => !!t)
+          .map(t => (
+            <TitleTagListItem>
+              <Link href={`/tags/${t}`}>{t}</Link>
+            </TitleTagListItem>
+          )) ?? [];
+
       return (
         <ArticleListItem key={`${path}`}>
           <ArticleWrapper>
@@ -73,13 +93,15 @@ const getArticles = (
                 <ArticleTitle>{title}</ArticleTitle>
               </Link>
               <ArticleDate>{date}</ArticleDate>
-              {tag.map(t => (
-                <Link href={`/tags/${t}`}>{t}</Link>
-              ))}
+              {tagList.length !== 0 ? (
+                <TitleTagList>{tagList}</TitleTagList>
+              ) : null}
             </ArticleTitleWrapper>
             <DescriptionWrapper>
               <ArticleDescription>{excerpt}</ArticleDescription>
-              <span>続きを読む……</span>
+              <ArticleReadMore>
+                <Link href={path}>続きを読む……</Link>
+              </ArticleReadMore>
             </DescriptionWrapper>
           </ArticleWrapper>
         </ArticleListItem>
