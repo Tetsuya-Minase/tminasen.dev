@@ -34,6 +34,8 @@ const ArticleTitleWrapper = styled.div`
   background-color: #b0bec5;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  height: 8rem;
 `;
 const ArticleDate = styled.time`
   font-size: 1.6rem;
