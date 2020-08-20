@@ -23,6 +23,7 @@
     font-size: 2rem;
 }
 
+/* リンクにカーソル合わせたとき色を変える */
 #mdArticle a:hover {
     color: #ed0077;
 }
@@ -31,6 +32,8 @@
 #mdArticle ul > li:before {
     content: '\025b7';
 }
+
+/* olの場合数字を出すようにする */
 #mdArticle ol {
     counter-reset: item;
 }
