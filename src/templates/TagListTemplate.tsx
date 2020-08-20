@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { TagArticlesQuery } from '../../types/graphql-types';
 import { PageTemplate } from './PageTemplate';
 import { fontColor } from '../styles/variable';
@@ -59,11 +59,11 @@ const ArticleReadMore = styled.div`
   bottom: 0;
   right: 0;
 `;
-const Link = styled.a`
-  display: inline-block;
-  text-decoration: none;
-  color: ${fontColor.black};
-`;
+const LinkStyle: React.CSSProperties = {
+  display: 'inline-block',
+  color: fontColor.black,
+  textDecoration: 'none',
+};
 
 const getArticles = (
   nodes: TagArticlesQuery['allMarkdownRemark']['nodes'],
@@ -84,7 +84,9 @@ const getArticles = (
           ?.filter((t): t is string => !!t)
           .map(t => (
             <TitleTagListItem>
-              <Link href={`/tags/${t}`}>{t}</Link>
+              <Link to={`/tags/${t}`} style={LinkStyle}>
+                {t}
+              </Link>
             </TitleTagListItem>
           )) ?? [];
 
@@ -92,7 +94,7 @@ const getArticles = (
         <ArticleListItem key={`${path}`}>
           <ArticleWrapper>
             <ArticleTitleWrapper>
-              <Link href={path}>
+              <Link to={path} style={LinkStyle}>
                 <ArticleTitle>{title}</ArticleTitle>
               </Link>
               <ArticleDate>{date}</ArticleDate>
@@ -103,7 +105,9 @@ const getArticles = (
             <DescriptionWrapper>
               <ArticleDescription>{excerpt}</ArticleDescription>
               <ArticleReadMore>
-                <Link href={path}>続きを読む……</Link>
+                <Link to={path} style={LinkStyle}>
+                  続きを読む……
+                </Link>
               </ArticleReadMore>
             </DescriptionWrapper>
           </ArticleWrapper>

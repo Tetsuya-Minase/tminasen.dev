@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import { TagListQuery } from '../../types/graphql-types';
 import { fontColor } from '../styles/variable';
 
@@ -28,10 +28,10 @@ const TagListItem = styled.li`
     margin: 0 0 0.8rem 0;
   }
 `;
-const Link = styled.a`
-  color: ${fontColor.black};
-  text-decoration: none;
-`;
+const LinkStyle: React.CSSProperties = {
+  color: fontColor.black,
+  textDecoration: 'none',
+};
 
 const convertTagList = (group: TagListQuery['allMarkdownRemark']['group']) => {
   return group
@@ -71,7 +71,8 @@ export const SubColumnComponent: React.FC = () => {
   const tagList = tagLinkList.map(tagLink => (
     <TagListItem key={tagLink.name}>
       <Link
-        href={tagLink.url}
+        to={tagLink.url}
+        style={LinkStyle}
       >{`${tagLink.name}(${tagLink.articleCount})`}</Link>
     </TagListItem>
   ));
