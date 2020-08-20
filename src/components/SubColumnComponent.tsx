@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import { TagListQuery } from '../../types/graphql-types';
+import { fontColor } from '../styles/variable';
 
 type TagLink = {
   name: string;
@@ -18,6 +19,18 @@ const Aside = styled.aside`
 const Title = styled.h1`
   font-size: 2.4rem;
   font-weight: bold;
+`;
+const TagList = styled.ul`
+  font-size: 1.6rem;
+`;
+const TagListItem = styled.li`
+  &:not(:last-child) {
+    margin: 0 0 0.8rem 0;
+  }
+`;
+const Link = styled.a`
+  color: ${fontColor.black};
+  text-decoration: none;
 `;
 
 const convertTagList = (group: TagListQuery['allMarkdownRemark']['group']) => {
@@ -56,14 +69,16 @@ export const SubColumnComponent: React.FC = () => {
     return null;
   }
   const tagList = tagLinkList.map(tagLink => (
-    <li key={tagLink.name}>
-      <a href={tagLink.url}>{`${tagLink.name}(${tagLink.articleCount})`}</a>
-    </li>
+    <TagListItem key={tagLink.name}>
+      <Link
+        href={tagLink.url}
+      >{`${tagLink.name}(${tagLink.articleCount})`}</Link>
+    </TagListItem>
   ));
   return (
     <Aside>
       <Title>タグ一覧</Title>
-      <ul>{tagList}</ul>
+      {tagList.length ? <TagList>{tagList}</TagList> : null}
     </Aside>
   );
 };
