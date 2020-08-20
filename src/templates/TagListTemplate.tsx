@@ -32,10 +32,11 @@ const ArticleTitle = styled.h1`
 `;
 const ArticleTitleWrapper = styled.div`
   background-color: #b0bec5;
+  height: 8rem;
+  padding: 0.8rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 8rem;
 `;
 const ArticleDate = styled.time`
   font-size: 1.6rem;
