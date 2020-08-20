@@ -15,7 +15,6 @@ const Heading = styled.h1`
   font-size: 3rem;
 `;
 const Wrapper = styled.div`
-  margin: 0 auto;
   max-width: 96rem;
   padding: 1.5rem 1.1rem;
 `;
