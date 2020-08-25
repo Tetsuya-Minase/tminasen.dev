@@ -9,9 +9,9 @@ type Props = {
 };
 
 const SEO: React.FC<Props> = ({ description, meta, title }) => {
-  const { site } = useStaticQuery(
+  const { site, imageSharp } = useStaticQuery(
     graphql`
-      query {
+      query SEOData {
         site {
           siteMetadata {
             title
@@ -19,10 +19,14 @@ const SEO: React.FC<Props> = ({ description, meta, title }) => {
             author
           }
         }
+        imageSharp(fluid: { originalName: { eq: "ogp.png" } }) {
+          fluid {
+            originalImg
+          }
+        }
       }
     `,
   );
-
   const metaDescription = description || site.siteMetadata.description;
   const metaTitle = title || site.siteMetadata.title;
   return (
@@ -48,7 +52,7 @@ const SEO: React.FC<Props> = ({ description, meta, title }) => {
         },
         {
           property: `og:image`,
-          content: '',
+          content: `${window.location.origin}/${imageSharp.fluid.originalImg}`,
         },
         {
           name: `twitter:card`,
@@ -68,7 +72,7 @@ const SEO: React.FC<Props> = ({ description, meta, title }) => {
         },
         {
           name: `twitter:image`,
-          content: '',
+          content: `${window.location.origin}/${imageSharp.fluid.originalImg}`,
         },
       ].concat(meta || [])}
     />
