@@ -26,6 +26,7 @@ export const MdTemplate: React.FC<Props> = ({ data: { markdownRemark } }) => {
   const { frontmatter, html } = markdownRemark ?? {};
   if (frontmatter == null || html == null) {
     return null;
+    z;
   }
   return (
     <PageTemplate>

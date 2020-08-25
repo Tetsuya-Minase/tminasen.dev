@@ -2146,6 +2146,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___title'
   | 'siteMetadata___description'
   | 'siteMetadata___author'
+  | 'siteMetadata___domain'
   | 'port'
   | 'host'
   | 'polyfill'
@@ -2931,12 +2932,14 @@ export type SiteSiteMetadata = {
   title?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
+  domain?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
+  domain?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSortInput = {
@@ -2973,7 +2976,7 @@ export type TagListQuery = { allMarkdownRemark: { group: Array<(
 export type SeoDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SeoDataQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }>, imageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'originalImg'>> }> };
+export type SeoDataQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'domain'>> }>, imageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'originalImg'>> }> };
 
 export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
 

@@ -3,6 +3,7 @@ module.exports = {
     title: `水無瀬のプログラミング日記`,
     description: `プログラミング周りのメモ`,
     author: `@minase_tetsuya`,
+    domain: `https://compassionate-babbage-77c519.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -17,6 +17,7 @@ const SEO: React.FC<Props> = ({ description, meta, title }) => {
             title
             description
             author
+            domain
           }
         }
         imageSharp(fluid: { originalName: { eq: "ogp.png" } }) {
@@ -52,7 +53,7 @@ const SEO: React.FC<Props> = ({ description, meta, title }) => {
         },
         {
           property: `og:image`,
-          content: `${window.location.origin}/${imageSharp.fluid.originalImg}`,
+          content: `${site.siteMetadata.domain}${imageSharp.fluid.originalImg}`,
         },
         {
           name: `twitter:card`,
@@ -72,7 +73,7 @@ const SEO: React.FC<Props> = ({ description, meta, title }) => {
         },
         {
           name: `twitter:image`,
-          content: `${window.location.origin}/${imageSharp.fluid.originalImg}`,
+          content: `${site.siteMetadata.domain}${imageSharp.fluid.originalImg}`,
         },
       ].concat(meta || [])}
     />
