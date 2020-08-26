@@ -22,6 +22,9 @@ const ContentsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 0 3rem;
+  ${media.lessThan('small')`
+    margin: 0 1rem;
+  `}
 `;
 const Main = styled.main`
   width: 70%;
