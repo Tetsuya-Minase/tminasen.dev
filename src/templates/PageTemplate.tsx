@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { HeaderComponent } from '../components/HeaderComponent';
 import { FooterComponent } from '../components/FooterComponent';
 import styled from 'styled-components';
+import media from 'styled-media-query';
 import { SubColumnComponent } from '../components/SubColumnComponent';
 
 type Props = {
@@ -24,6 +25,9 @@ const ContentsWrapper = styled.div`
 `;
 const Main = styled.main`
   width: 70%;
+  ${media.lessThan('small')`
+    width: 100%;
+  `}
 `;
 
 export const PageTemplate: React.FC<Props> = ({ children }) => {
