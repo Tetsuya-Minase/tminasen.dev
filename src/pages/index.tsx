@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 
 import { PageTemplate } from '../templates/PageTemplate';
-import SEO from '../components/seo';
 import { IndexPageQuery } from '../../types/graphql-types';
 import styled from 'styled-components';
 import media from 'styled-media-query';
@@ -52,7 +51,6 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <PageTemplate>
       <ArticleWrapper>
-        <SEO title="Home" />
         <Title>記事一覧</Title>
         {articles}
       </ArticleWrapper>

@@ -6,6 +6,7 @@ import { FooterComponent } from '../components/FooterComponent';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { SubColumnComponent } from '../components/SubColumnComponent';
+import SEO from '../components/seo';
 
 type Props = {
   children: JSX.Element;
@@ -46,6 +47,7 @@ export const PageTemplate: React.FC<Props> = ({ children }) => {
 
   return (
     <BodyWrapper>
+      <SEO title="水無瀬のプログラミング日記" />
       <HeaderComponent siteTitle={data.site.siteMetadata.title} />
       <ContentsWrapper>
         <Main>{children}</Main>
