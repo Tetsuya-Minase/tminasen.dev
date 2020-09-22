@@ -5,6 +5,7 @@ import { MdPageDataQuery } from '../../types/graphql-types';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import './MdArticleStyle.css';
+import { TwitterShareButton } from '../components/TwitterShareButton';
 
 type Props = {
   data: MdPageDataQuery;
@@ -40,6 +41,7 @@ export const MdTemplate: React.FC<Props> = ({ data: { markdownRemark } }) => {
           <TitleWrapper>
             <ArticleTitle>{frontmatter.title}</ArticleTitle>
             <ArticleDate>{frontmatter.date}</ArticleDate>
+            <TwitterShareButton title={frontmatter.title} />
           </TitleWrapper>
           <div id="mdArticle" dangerouslySetInnerHTML={{ __html: html }} />
         </Article>
