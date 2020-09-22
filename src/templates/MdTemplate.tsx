@@ -14,6 +14,10 @@ const Article = styled.article``;
 const TitleWrapper = styled.div`
   margin: 0 0 1.6rem 0;
 `;
+const TitleSubWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const ArticleTitle = styled.h1`
   font-size: 2.8rem;
   font-weight: bolder;
@@ -40,8 +44,10 @@ export const MdTemplate: React.FC<Props> = ({ data: { markdownRemark } }) => {
         <Article>
           <TitleWrapper>
             <ArticleTitle>{frontmatter.title}</ArticleTitle>
-            <ArticleDate>{frontmatter.date}</ArticleDate>
-            <TwitterShareButton title={frontmatter.title} />
+            <TitleSubWrapper>
+              <ArticleDate>{frontmatter.date}</ArticleDate>
+              <TwitterShareButton title={frontmatter.title} />
+            </TitleSubWrapper>
           </TitleWrapper>
           <div id="mdArticle" dangerouslySetInnerHTML={{ __html: html }} />
         </Article>
