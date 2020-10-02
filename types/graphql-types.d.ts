@@ -2981,7 +2981,10 @@ export type SeoDataQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMe
 export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IndexPageQuery = { allMarkdownRemark: { nodes: Array<{ frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'tag' | 'title'>> }> } };
+export type IndexPageQuery = { allMarkdownRemark: { nodes: Array<(
+      Pick<MarkdownRemark, 'excerpt'>
+      & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'tag' | 'title'>> }
+    )> } };
 
 export type MdPageDataQueryVariables = Exact<{
   path: Scalars['String'];
