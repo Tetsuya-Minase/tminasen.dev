@@ -24,17 +24,19 @@ type Props = {
   title: string;
   path: string;
   excerpt: string;
+  imagePath: string;
 };
 
 export const CardComponent: React.FC<DeepReadonly<Props>> = ({
   title,
   path,
   excerpt,
+  imagePath,
 }) => {
   return (
     <Article>
       <Link href={path}>
-        <Image width="350px" height="200px" />
+        <Image src={imagePath} width="350px" height="200px" />
         <Title>{title}</Title>
         <Description>{excerpt}</Description>
       </Link>

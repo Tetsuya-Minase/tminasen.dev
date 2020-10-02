@@ -35,6 +35,7 @@ const createArticle = (
       if (
         frontmatter?.path == undefined ||
         frontmatter?.title == undefined ||
+        frontmatter.thumbnailImage?.publicURL == undefined ||
         excerpt == undefined
       ) {
         return undefined;
@@ -44,6 +45,7 @@ const createArticle = (
           key={`${frontmatter.title}:${frontmatter.path}`}
           title={frontmatter.title}
           path={frontmatter.path}
+          imagePath={frontmatter.thumbnailImage.publicURL}
           excerpt={excerpt}
         />
       );
@@ -77,8 +79,11 @@ export const pageQuery = graphql`
           path
           tag
           title
+          thumbnailImage {
+            publicURL
+          }
         }
-        excerpt(format: PLAIN, truncate: true, pruneLength: 150)
+        excerpt(format: PLAIN, truncate: true, pruneLength: 130)
       }
     }
   }
