@@ -7,13 +7,21 @@ const Article = styled.article`
   display: flex;
   flex-direction: column;
   width: 35rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 `;
 const Title = styled.div`
   font-size: ${headerFontSize.h1};
+  text-align: center;
+  margin-top: 8px;
 `;
-const Image = styled.img``;
+const Image = styled.img`
+  border-radius: 10px 10px 0 0;
+`;
 const Description = styled.div`
   font-size: ${bodyFontSize.medium};
+  margin-top: 8px;
+  padding: 4px;
 `;
 const Link = styled.a`
   color: ${fontColor.black};
