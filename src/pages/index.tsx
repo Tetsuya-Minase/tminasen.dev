@@ -87,8 +87,6 @@ export const pageQuery = graphql`
           tag
           title
           thumbnailImage {
-            publicURL
-            base
             childImageSharp {
               fluid(maxWidth: 300) {
                 src
