@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { DeepReadonly, ImageValue } from '../../types/utility';
-import { bodyFontSize, fontColor, headerFontSize } from '../styles/variable';
+import {
+  bodyFontSize,
+  fontColor,
+  headerFontSize,
+  imageStyle,
+} from '../styles/variable';
 import { Image } from './ImageComponent';
 
 const Article = styled.article`
@@ -30,22 +35,19 @@ type Props = {
   title: string;
   path: string;
   excerpt: string;
-  imagePath: ImageValue;
+  image: ImageValue;
 };
 
 export const CardComponent: React.FC<DeepReadonly<Props>> = ({
   title,
   path,
   excerpt,
-  imagePath,
+  image,
 }) => {
   return (
     <Article>
       <Link href={path}>
-        <Image
-          path={imagePath}
-          imageStyle={{ 'border-radius': '10px 10px 0 0' }}
-        />
+        <Image image={image} imageStyle={imageStyle} />
         <Title>{title}</Title>
         <Description>{excerpt}</Description>
       </Link>

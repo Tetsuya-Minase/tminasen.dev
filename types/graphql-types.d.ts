@@ -3079,10 +3079,7 @@ export type IndexPageQuery = { allMarkdownRemark: { nodes: Array<(
       Pick<MarkdownRemark, 'excerpt'>
       & { frontmatter?: Maybe<(
         Pick<MarkdownRemarkFrontmatter, 'path' | 'tag' | 'title'>
-        & { thumbnailImage?: Maybe<(
-          Pick<File, 'publicURL' | 'base'>
-          & { childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'src' | 'aspectRatio' | 'srcSet' | 'sizes'>> }> }
-        )> }
+        & { thumbnailImage?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'src' | 'aspectRatio' | 'srcSet' | 'sizes'>> }> }> }
       )> }
     )> } };
 
@@ -3110,7 +3107,7 @@ export type TagArticlesQuery = { allMarkdownRemark: { nodes: Array<(
       Pick<MarkdownRemark, 'excerpt'>
       & { frontmatter?: Maybe<(
         Pick<MarkdownRemarkFrontmatter, 'path' | 'title' | 'date' | 'tag'>
-        & { thumbnailImage?: Maybe<Pick<File, 'publicURL'>> }
+        & { thumbnailImage?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'src' | 'aspectRatio' | 'srcSet' | 'sizes'>> }> }> }
       )> }
     )> } };
 

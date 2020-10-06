@@ -40,7 +40,6 @@ const createArticle = (
       if (
         frontmatter?.path == undefined ||
         frontmatter?.title == undefined ||
-        frontmatter.thumbnailImage?.publicURL == undefined ||
         frontmatter.thumbnailImage?.childImageSharp?.fluid == undefined ||
         excerpt == undefined
       ) {
@@ -51,7 +50,7 @@ const createArticle = (
           <CardComponent
             title={frontmatter.title}
             path={frontmatter.path}
-            imagePath={frontmatter.thumbnailImage?.childImageSharp?.fluid}
+            image={frontmatter.thumbnailImage?.childImageSharp?.fluid}
             excerpt={excerpt}
           />
         </CardWrapper>
