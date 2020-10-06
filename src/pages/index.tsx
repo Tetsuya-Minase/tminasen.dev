@@ -19,10 +19,10 @@ const ArticleCardList = styled.ul`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  align-content: flex-start;
 `;
 const CardWrapper = styled.li`
-  margin-top: 8px;
+  margin: 12px 20px 0 0;
 `;
 const Article = styled.article``;
 
