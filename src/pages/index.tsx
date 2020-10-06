@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import { PageTemplate } from '../templates/PageTemplate';
 import { IndexPageQuery } from '../../types/graphql-types';
@@ -41,6 +41,7 @@ const createArticle = (
         frontmatter?.path == undefined ||
         frontmatter?.title == undefined ||
         frontmatter.thumbnailImage?.publicURL == undefined ||
+        frontmatter.thumbnailImage?.childImageSharp?.fluid == undefined ||
         excerpt == undefined
       ) {
         return undefined;
@@ -50,7 +51,7 @@ const createArticle = (
           <CardComponent
             title={frontmatter.title}
             path={frontmatter.path}
-            imagePath={frontmatter.thumbnailImage.publicURL}
+            imagePath={frontmatter.thumbnailImage?.childImageSharp?.fluid}
             excerpt={excerpt}
           />
         </CardWrapper>
@@ -87,6 +88,15 @@ export const pageQuery = graphql`
           title
           thumbnailImage {
             publicURL
+            base
+            childImageSharp {
+              fluid(maxWidth: 300) {
+                src
+                aspectRatio
+                srcSet
+                sizes
+              }
+            }
           }
         }
         excerpt(format: PLAIN, truncate: true, pruneLength: 130)
