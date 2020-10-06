@@ -14,12 +14,17 @@ const Title = styled.h1`
     font-size: 2rem;
   `}
 `;
-const Ul = styled.ul`
+const ArticleCardList = styled.ul`
   font-size: 1.6rem;
-`;
-const ArticleWrapper = styled.article`
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;
+const CardWrapper = styled.li`
+  margin-top: 8px;
+`;
+const Article = styled.article``;
 
 type Props = {
   data: IndexPageQuery;
@@ -41,30 +46,31 @@ const createArticle = (
         return undefined;
       }
       return (
-        <CardComponent
-          key={`${frontmatter.title}:${frontmatter.path}`}
-          title={frontmatter.title}
-          path={frontmatter.path}
-          imagePath={frontmatter.thumbnailImage.publicURL}
-          excerpt={excerpt}
-        />
+        <CardWrapper key={`${frontmatter.title}:${frontmatter.path}`}>
+          <CardComponent
+            title={frontmatter.title}
+            path={frontmatter.path}
+            imagePath={frontmatter.thumbnailImage.publicURL}
+            excerpt={excerpt}
+          />
+        </CardWrapper>
       );
     })
     .filter((item): item is JSX.Element => item !== undefined);
   if (linkItems.length === 0) {
     return null;
   }
-  return <Ul>{linkItems}</Ul>;
+  return <ArticleCardList>{linkItems}</ArticleCardList>;
 };
 
 const IndexPage: React.FC<Props> = ({ data }) => {
   const articles = createArticle(data.allMarkdownRemark.nodes);
   return (
     <PageTemplate>
-      <ArticleWrapper>
+      <Article>
         <Title>記事一覧</Title>
         {articles}
-      </ArticleWrapper>
+      </Article>
     </PageTemplate>
   );
 };
