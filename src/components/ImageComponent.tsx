@@ -4,6 +4,9 @@ import { ImageValue } from '../../types/utility';
 
 type Props = {
   path: ImageValue;
+  imageStyle?: { [key: string]: string };
 };
 
-export const Image: React.FC<Props> = ({ path }) => <Img fluid={path} />;
+export const Image: React.FC<Props> = ({ path, imageStyle }) => (
+  <Img fluid={path} imgStyle={imageStyle} />
+);

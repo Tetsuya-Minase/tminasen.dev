@@ -42,7 +42,10 @@ export const CardComponent: React.FC<DeepReadonly<Props>> = ({
   return (
     <Article>
       <Link href={path}>
-        <Image path={imagePath} />
+        <Image
+          path={imagePath}
+          imageStyle={{ 'border-radius': '10px 10px 0 0' }}
+        />
         <Title>{title}</Title>
         <Description>{excerpt}</Description>
       </Link>
