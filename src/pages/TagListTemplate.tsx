@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import { graphql, Link } from 'gatsby';
 import { TagArticlesQuery } from '../../types/graphql-types';
-import { PageTemplate } from './PageTemplate';
+import { PageTemplate } from '../templates/PageTemplate';
 import { fontColor } from '../styles/variable';
 
 type Props = {
