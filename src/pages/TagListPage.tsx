@@ -143,7 +143,7 @@ const getArticles = (
   return <ArticleList>{articleList}</ArticleList>;
 };
 
-export const TagListTemplate: React.FC<Props> = ({
+export const TagListPage: React.FC<Props> = ({
   pageContext: { tagName },
   data: {
     allMarkdownRemark: { nodes },
@@ -159,7 +159,7 @@ export const TagListTemplate: React.FC<Props> = ({
   );
 };
 
-export default TagListTemplate;
+export default TagListPage;
 
 export const articleData = graphql`
   query TagArticles($tagName: String) {
