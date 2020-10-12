@@ -150,7 +150,7 @@ export const TagListTemplate: React.FC<Props> = ({
   },
 }) => {
   return (
-    <PageTemplate>
+    <PageTemplate title={`${tagName}の記事一覧`}>
       <article>
         <PageTitle>{tagName}の記事一覧</PageTitle>
         {getArticles(nodes)}
