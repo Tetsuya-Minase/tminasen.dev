@@ -8,6 +8,10 @@
     margin: 1.2rem 0;
 }
 
+#mdArticle p > strong {
+    font-weight: bold;
+}
+
 /* タイトルの上下は文章部分よりも開ける */
 #mdArticle > h1, h2, h3 {
     margin: 1.6rem 0;
