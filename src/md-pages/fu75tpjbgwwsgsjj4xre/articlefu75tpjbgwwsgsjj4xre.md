@@ -168,10 +168,10 @@ async fn main() -> std::io::Result<()> {
 クライアントサイドの変更が終わったら、serverディレクトリに移動する。  
 `cargo run`で起動後↓のようなURLで問題なく表示できればOK。
 
-**localhost:8080/**
+### localhost:8080/
 ![ssfu75tpjbgwwsgsjj4xre-5.png](./images/ssfu75tpjbgwwsgsjj4xre-5.png)
 
-**localhost:8080/hey**
+### localhost:8080/hey
 ![ssfu75tpjbgwwsgsjj4xre-1.png](./images/ssfu75tpjbgwwsgsjj4xre-1.png)
 
 # Angularのルーティングを追加する
