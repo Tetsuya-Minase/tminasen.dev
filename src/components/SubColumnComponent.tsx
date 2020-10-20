@@ -18,6 +18,7 @@ const Aside = styled.aside`
   align-items: center;
   background-color: ${contentsBackgroundColor.white};
   border-radius: 1rem;
+  margin-bottom: 1rem;
   padding: 0.2rem 0.4rem;
   ${media.lessThan('small')`
     display: none;
