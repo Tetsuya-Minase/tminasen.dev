@@ -7,12 +7,16 @@ import media from 'styled-media-query';
 import './MdArticleStyle.css';
 import { TwitterShareButton } from '../../components/TwitterShareButton';
 import { HatenaBookmarkButton } from '../../components/HatenaBookmarkButton';
+import { contentsBackgroundColor } from '../../styles/variable';
 
 type Props = {
   data: MdPageDataQuery;
 };
 const Article = styled.article``;
 const TitleWrapper = styled.div`
+  background-color: ${contentsBackgroundColor.white};
+  border-radius: 1rem;
+  padding: 0.2rem 0.4rem;
   margin: 0 0 1.6rem 0;
 `;
 const TitleSubWrapper = styled.div`

@@ -1,6 +1,10 @@
 /* markdown記事全体にかけるstyle */
 #mdArticle {
+    background-color: #ffffff;
     font-size: 1.6rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.2rem 0.4rem;
 }
 
 /* 要素ごとにスペースを開ける */
