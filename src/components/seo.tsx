@@ -91,10 +91,10 @@ const SEO: React.FC<Props> = ({ description, meta, title }) => {
         charSet="utf-8"
       />
       <script
+        async
         type="text/javascript"
         src="https://b.st-hatena.com/js/bookmark_button.js"
         charSet="utf-8"
-        async
       />
     </Helmet>
   );
