@@ -62,7 +62,7 @@ export const GithubArticleButton: React.FC<Props> = ({ path }) => {
   const buttonLink = useCreateGithubArticleLink(url, path);
   return (
     <GithubButtonWrapper>
-      <GithubButton href={buttonLink}>
+      <GithubButton href={buttonLink} title="Githubリンク">
         <Image image={icon} />
       </GithubButton>
     </GithubButtonWrapper>

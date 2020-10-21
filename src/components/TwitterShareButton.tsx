@@ -69,6 +69,7 @@ export const TwitterShareButton: React.FC<Props> = ({ title, path }) => {
     <TweetButtonWrapper>
       <TweetButton
         href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
+        title="Twitterに投稿する"
       >
         <Image image={twitterIcon} />
       </TweetButton>
