@@ -3067,10 +3067,10 @@ export type TagListQuery = { allMarkdownRemark: { group: Array<(
       & { nodes: Array<{ frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'title'>> }> }
     )> } };
 
-export type TwitterIconQueryVariables = Exact<{ [key: string]: never; }>;
+export type LinkDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TwitterIconQuery = { imageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> };
+export type LinkDataQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'domain'>> }>, imageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> };
 
 export type SeoDataQueryVariables = Exact<{ [key: string]: never; }>;
 

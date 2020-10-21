@@ -54,7 +54,10 @@ export const MdTemplate: React.FC<Props> = ({ data: { markdownRemark } }) => {
             </TitleSubWrapper>
           </TitleWrapper>
           <div id="mdArticle" dangerouslySetInnerHTML={{ __html: html }} />
-          <TwitterShareButton title={frontmatter.title} />
+          <TwitterShareButton
+            title={frontmatter.title}
+            path={frontmatter.path}
+          />
         </Article>
       </React.Fragment>
     </PageTemplate>
