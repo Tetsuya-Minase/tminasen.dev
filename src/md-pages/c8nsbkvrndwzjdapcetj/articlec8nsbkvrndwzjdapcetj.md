@@ -51,12 +51,12 @@ index.jsとfirst-post.jsを`Link`を使うように修正してみる。
 import Link from 'next/link';
 
 export default function Home() {
-	return (
-		// main直下のh1を修正する
-		<h1>
-			Read <Link href="/posts/first-post"><a>this page!</a></Link>
-		</h1>
-	);
+    return (
+        // main直下のh1を修正する
+        <h1>
+            Read <Link href="/posts/first-post"><a>this page!</a></Link>
+        </h1>
+    );
 }
 ```
 
@@ -156,7 +156,7 @@ $ touch posts/[id].js
 
 ```jsx
 export default function DynamicPosts({ id }) {
-	// pathのidをそのまま表示
+    // pathのidをそのまま表示
   return <h1>{id}</h1>
 }
 
@@ -175,7 +175,7 @@ export function getStaticPaths() {
     paths: [
       {
         params: {
-					// ここのキーが作成したファイルの[]で囲った部分と一致する
+          // ここのキーが作成したファイルの[]で囲った部分と一致する
           id: 'id1'
         }
       },
