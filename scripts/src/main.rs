@@ -37,7 +37,6 @@ fn main() {
             rand_string.to_lowercase()
         }
     };
-    println!("file_name is {}", file_name);
     
     fs::create_dir_all(format!("src/md-pages/{}/images" ,dir_title)).unwrap_or_else(|why| {
         println!("! {:?}", why.kind());
