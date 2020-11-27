@@ -15,21 +15,32 @@ fn echo(s: &str, path: &str) -> io::Result<()> {
 }
 
 fn main() {
-    
     let matches = App::new("article creator")
         .version("0.0.1")
         .author("tminasen")
         .about("article utility tools")
         .arg(Arg::with_name("file-name")
-                .short("n")
-                .long("name")
-                .value_name("FILE_NAME")
-                .help("specify file name")
-                .required(false)
+            .short("n")
+            .long("name")
+            .value_name("FILE_NAME")
+            .help("specify file name")
+            .required(false)
+        )
+        .arg(Arg::with_name("format")
+            .long("format")
+            .help("image files format")
+            .required(false)
         )
         .get_matches();
-
-    let file_name = match matches.value_of("file-name") {
+    
+    // フォーマット変更
+    if matches.is_present("format") {
+        
+        return;
+    }
+    
+    // それ以外はファイル作成
+    let file_name: String = match matches.value_of("file-name") {
         Some(name) => name.to_string(),
         None => {
             let mut rng = thread_rng();
@@ -38,7 +49,7 @@ fn main() {
         }
     };
     
-    fs::create_dir_all(format!("src/md-pages/{}/images" ,dir_title)).unwrap_or_else(|why| {
+    fs::create_dir_all(format!("src/md-pages/{}/images" ,file_name)).unwrap_or_else(|why| {
         println!("! {:?}", why.kind());
     });
     let template_data = format!("---\n\
@@ -49,7 +60,7 @@ fn main() {
     thumbnailImage: \"./images/\"\n\
     ---", dir_title, Local::now().format("%Y/%m/%d").to_string());
     
-    let markdown_path: String = format!("src/md-pages/{}/article{}.md" ,dir_title ,dir_title);
+    let markdown_path: String = format!("src/md-pages/{}/article{}.md" ,file_name ,file_name);
     echo(&template_data, &markdown_path).unwrap_or_else(|why| {
         println!("! {:?}", why.kind());
     });
