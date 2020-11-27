@@ -6,7 +6,7 @@ use std::io::Write;
 use rand::{thread_rng, Rng};
 use rand::distributions::Alphanumeric;
 use chrono::Local;
-use clap::{App, Arg};
+use clap::{App, Arg, ArgMatches};
 
 /// 
 /// file output
@@ -18,6 +18,37 @@ fn write(s: &str, path: &str) -> io::Result<()> {
     let mut f = File::create(path)?;
 
     f.write_all(s.as_bytes())
+}
+
+
+///
+/// create template files.
+/// * `matches` - information about arguments.
+fn create_file(matches: ArgMatches) {
+    let file_name: String = match matches.value_of("file-name") {
+        Some(name) => name.to_string(),
+        None => {
+            let mut rng = thread_rng();
+            let rand_string: String = iter::repeat(()).map(|()| rng.sample(Alphanumeric)).take(20).collect();
+            rand_string.to_lowercase()
+        }
+    };
+
+    fs::create_dir_all(format!("src/md-pages/{}/images" ,file_name)).unwrap_or_else(|why| {
+        println!("! {:?}", why.kind());
+    });
+    let template_data = format!("---\n\
+    path: \"/blog/{}\"\n\
+    date: \"{}\"\n\
+    title: \"\"\n\
+    tag: [\"\"]\n\
+    thumbnailImage: \"./images/\"\n\
+    ---", file_name, Local::now().format("%Y/%m/%d").to_string());
+
+    let markdown_path: String = format!("src/md-pages/{}/article{}.md" ,file_name ,file_name);
+    write(&template_data, &markdown_path).unwrap_or_else(|why| {
+        println!("! {:?}", why.kind());
+    });
 }
 
 fn main() {
@@ -46,28 +77,5 @@ fn main() {
     }
     
     // それ以外はファイル作成
-    let file_name: String = match matches.value_of("file-name") {
-        Some(name) => name.to_string(),
-        None => {
-            let mut rng = thread_rng();
-            let rand_string: String = iter::repeat(()).map(|()| rng.sample(Alphanumeric)).take(20).collect();
-            rand_string.to_lowercase()
-        }
-    };
-    
-    fs::create_dir_all(format!("src/md-pages/{}/images" ,file_name)).unwrap_or_else(|why| {
-        println!("! {:?}", why.kind());
-    });
-    let template_data = format!("---\n\
-    path: \"/blog/{}\"\n\
-    date: \"{}\"\n\
-    title: \"\"\n\
-    tag: [\"\"]\n\
-    thumbnailImage: \"./images/\"\n\
-    ---", dir_title, Local::now().format("%Y/%m/%d").to_string());
-    
-    let markdown_path: String = format!("src/md-pages/{}/article{}.md" ,file_name ,file_name);
-    write(&template_data, &markdown_path).unwrap_or_else(|why| {
-        println!("! {:?}", why.kind());
-    });
+    create_file(matches);
 }
