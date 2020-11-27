@@ -8,7 +8,13 @@ use rand::distributions::Alphanumeric;
 use chrono::Local;
 use clap::{App, Arg};
 
-fn echo(s: &str, path: &str) -> io::Result<()> {
+/// 
+/// file output
+/// 
+/// * `s` - text 
+/// * `path` - output path
+///
+fn write(s: &str, path: &str) -> io::Result<()> {
     let mut f = File::create(path)?;
 
     f.write_all(s.as_bytes())
@@ -61,7 +67,7 @@ fn main() {
     ---", dir_title, Local::now().format("%Y/%m/%d").to_string());
     
     let markdown_path: String = format!("src/md-pages/{}/article{}.md" ,file_name ,file_name);
-    echo(&template_data, &markdown_path).unwrap_or_else(|why| {
+    write(&template_data, &markdown_path).unwrap_or_else(|why| {
         println!("! {:?}", why.kind());
     });
 }
