@@ -6,6 +6,7 @@ use std::io::Write;
 use rand::{thread_rng, Rng};
 use rand::distributions::Alphanumeric;
 use chrono::Local;
+use clap::{App, Arg};
 
 fn echo(s: &str, path: &str) -> io::Result<()> {
     let mut f = File::create(path)?;
@@ -14,9 +15,30 @@ fn echo(s: &str, path: &str) -> io::Result<()> {
 }
 
 fn main() {
-    let mut rng = thread_rng();
-    let rand_string: String = iter::repeat(()).map(|()| rng.sample(Alphanumeric)).take(20).collect();
-    let dir_title: String = rand_string.to_lowercase();
+    
+    let matches = App::new("article creator")
+        .version("0.0.1")
+        .author("tminasen")
+        .about("article utility tools")
+        .arg(Arg::with_name("file-name")
+                .short("n")
+                .long("name")
+                .value_name("FILE_NAME")
+                .help("specify file name")
+                .required(false)
+        )
+        .get_matches();
+
+    let file_name = match matches.value_of("file-name") {
+        Some(name) => name.to_string(),
+        None => {
+            let mut rng = thread_rng();
+            let rand_string: String = iter::repeat(()).map(|()| rng.sample(Alphanumeric)).take(20).collect();
+            rand_string.to_lowercase()
+        }
+    };
+    println!("file_name is {}", file_name);
+    
     fs::create_dir_all(format!("src/md-pages/{}/images" ,dir_title)).unwrap_or_else(|why| {
         println!("! {:?}", why.kind());
     });
