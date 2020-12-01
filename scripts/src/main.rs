@@ -24,6 +24,7 @@ fn write(s: &str, path: &str) -> io::Result<()> {
 ///
 /// create template files.
 /// * `matches` - information about arguments.
+/// 
 fn create_file(matches: ArgMatches) {
     let file_name: String = match matches.value_of("file-name") {
         Some(name) => name.to_string(),
@@ -34,7 +35,7 @@ fn create_file(matches: ArgMatches) {
         }
     };
 
-    fs::create_dir_all(format!("src/md-pages/{}/images" ,file_name)).unwrap_or_else(|why| {
+    fs::create_dir_all(format!("src/md-pages/{}/images", file_name)).unwrap_or_else(|why| {
         println!("! {:?}", why.kind());
     });
     let template_data = format!("---\n\
@@ -45,10 +46,34 @@ fn create_file(matches: ArgMatches) {
     thumbnailImage: \"./images/\"\n\
     ---", file_name, Local::now().format("%Y/%m/%d").to_string());
 
-    let markdown_path: String = format!("src/md-pages/{}/article{}.md" ,file_name ,file_name);
+    let markdown_path: String = format!("src/md-pages/{}/article{}.md", file_name, file_name);
     write(&template_data, &markdown_path).unwrap_or_else(|why| {
         println!("! {:?}", why.kind());
     });
+}
+
+fn rename_images(matches: ArgMatches) -> io::Result<Vec<String>> {
+    let dir_name: String = match matches.value_of("rename") {
+        Some(name) => name.to_string(),
+        _ => "".to_string()
+    };
+    println!("-----rename_images-----");
+    println!("dir_name: {:?}", dir_name);
+    let result = fs::read_dir(format!("src/md-pages/{}/images", dir_name))?
+        .filter_map(|entry| {
+            let entry = entry.ok()?;
+            if entry.file_type().ok()?.is_file() {
+                Some(entry.file_name().to_string_lossy().into_owned())
+            } else {
+                None
+            }
+        })
+        .map(|file_name| {
+            println!("image file name: {}", file_name);
+            file_name
+        })
+        .collect();
+    Ok(result)
 }
 
 fn main() {
@@ -61,21 +86,24 @@ fn main() {
             .long("name")
             .value_name("FILE_NAME")
             .help("specify file name")
+            .takes_value(true)
             .required(false)
         )
-        .arg(Arg::with_name("format")
-            .long("format")
-            .help("image files format")
+        .arg(Arg::with_name("rename")
+            .long("rename")
+            .value_name("TARGET_DIR_NAME")
+            .help("rename image files")
+            .takes_value(true)
+            .multiple(true)
             .required(false)
         )
         .get_matches();
-    
+
     // フォーマット変更
-    if matches.is_present("format") {
-        
+    if matches.is_present("rename") {
+        rename_images(matches);
         return;
     }
-    
     // それ以外はファイル作成
     create_file(matches);
 }
