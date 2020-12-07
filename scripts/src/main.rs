@@ -52,22 +52,15 @@ fn create_file(matches: ArgMatches) {
     });
 }
 
-fn rename_images(matches: ArgMatches) -> io::Result<Vec<String>> {
+///
+/// rename image_files
+/// * `matches` - rename file directory.
+fn rename_images(matches: ArgMatches) -> io::Result<()> {
     let dir_name: String = match matches.value_of("rename") {
         Some(name) => name.to_string(),
         _ => "".to_string()
     };
 
-    let result = fs::read_dir(format!("src/md-pages/{}/images", dir_name))?
-        .filter_map(|entry| {
-            let entry = entry.ok()?;
-            if entry.file_type().ok()?.is_file() {
-                Some(entry.file_name().to_string_lossy().into_owned())
-            } else {
-                None
-            }
-        })
-        .collect();
     let mut index = 1;
     fs::read_dir(format!("src/md-pages/{}/images", dir_name))?
         .filter_map(|entry| {
@@ -84,7 +77,7 @@ fn rename_images(matches: ArgMatches) -> io::Result<Vec<String>> {
             fs::rename(before_filename, after_filename);
             index += 1;
         });
-    Ok(result)
+    Ok(())
 }
 
 fn main() {
