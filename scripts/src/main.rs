@@ -57,8 +57,7 @@ fn rename_images(matches: ArgMatches) -> io::Result<Vec<String>> {
         Some(name) => name.to_string(),
         _ => "".to_string()
     };
-    println!("-----rename_images-----");
-    println!("dir_name: {:?}", dir_name);
+
     let result = fs::read_dir(format!("src/md-pages/{}/images", dir_name))?
         .filter_map(|entry| {
             let entry = entry.ok()?;
@@ -68,11 +67,23 @@ fn rename_images(matches: ArgMatches) -> io::Result<Vec<String>> {
                 None
             }
         })
-        .map(|file_name| {
-            println!("image file name: {}", file_name);
-            file_name
-        })
         .collect();
+    let mut index = 1;
+    fs::read_dir(format!("src/md-pages/{}/images", dir_name))?
+        .filter_map(|entry| {
+            let entry = entry.ok()?;
+            if entry.file_type().ok()?.is_file() {
+                Some(entry.file_name().to_string_lossy().into_owned())
+            } else {
+                None
+            }
+        })
+        .for_each(move |file| {
+            let before_filename = format!("src/md-pages/{}/images/{}", dir_name, file);
+            let after_filename = format!("src/md-pages/{}/images/ss{}-{}.png", dir_name, dir_name, index);
+            fs::rename(before_filename, after_filename);
+            index += 1;
+        });
     Ok(result)
 }
 
