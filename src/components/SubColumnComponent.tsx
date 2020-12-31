@@ -57,37 +57,39 @@ const convertTagList = (group: TagListQuery['allMarkdownRemark']['group']) => {
 };
 
 export const SubColumnComponent: React.FC = () => {
-  const data: TagListQuery = useStaticQuery(graphql`
-    query TagList {
-      allMarkdownRemark {
-        group(field: frontmatter___tag) {
-          fieldValue
-          nodes {
-            frontmatter {
-              path
-              title
-            }
-          }
-        }
-      }
-    }
-  `);
-  const tagLinkList: TagLink[] = convertTagList(data.allMarkdownRemark.group);
-  if (tagLinkList.length === 0) {
-    return null;
-  }
-  const tagList = tagLinkList.map(tagLink => (
-    <TagListItem key={tagLink.name}>
-      <Link
-        to={tagLink.url}
-        style={LinkStyle}
-      >{`${tagLink.name}(${tagLink.articleCount})`}</Link>
-    </TagListItem>
-  ));
-  return (
-    <Aside>
-      <Title>タグ一覧</Title>
-      {tagList.length ? <TagList>{tagList}</TagList> : null}
-    </Aside>
-  );
+  // TODO: graphql箇所修正
+  // const data: TagListQuery = useStaticQuery(graphql`
+  //   query TagList {
+  //     allMarkdownRemark {
+  //       group(field: frontmatter___tag) {
+  //         fieldValue
+  //         nodes {
+  //           frontmatter {
+  //             path
+  //             title
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
+  // const tagLinkList: TagLink[] = convertTagList(data.allMarkdownRemark.group);
+  // if (tagLinkList.length === 0) {
+  //   return null;
+  // }
+  // const tagList = tagLinkList.map(tagLink => (
+  //   <TagListItem key={tagLink.name}>
+  //     <Link
+  //       to={tagLink.url}
+  //       style={LinkStyle}
+  //     >{`${tagLink.name}(${tagLink.articleCount})`}</Link>
+  //   </TagListItem>
+  // ));
+  // return (
+  //   <Aside>
+  //     <Title>タグ一覧</Title>
+  //     {tagList.length ? <TagList>{tagList}</TagList> : null}
+  //   </Aside>
+  // );
+  return null;
 };

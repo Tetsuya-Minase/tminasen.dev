@@ -10,29 +10,28 @@ type Props = {
 };
 
 const SEO: React.FC<Props> = ({ description, meta, title }) => {
-  const { site, imageSharp } = useStaticQuery(
-    graphql`
-      query SEOData {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-            domain
-          }
-        }
-        imageSharp(fluid: { originalName: { eq: "ogp.png" } }) {
-          fluid {
-            originalImg
-          }
-        }
-      }
-    `,
-  );
-  const metaDescription = description || site.siteMetadata.description;
-  const metaTitle = title
-    ? `${title} - ${site.siteMetadata.title}`
-    : site.siteMetadata.title;
+  // TODO: graphql箇所修正
+  // const { site, imageSharp } = useStaticQuery(
+  //   graphql`
+  //     query SEOData {
+  //       site {
+  //         siteMetadata {
+  //           title
+  //           description
+  //           author
+  //           domain
+  //         }
+  //       }
+  //       imageSharp(fluid: { originalName: { eq: "ogp.png" } }) {
+  //         fluid {
+  //           originalImg
+  //         }
+  //       }
+  //     }
+  //   `,
+  // );
+  const metaDescription = description || 'description';
+  const metaTitle = title ? `${title} - ${'title'}` : 'title';
   return (
     <Helmet
       htmlAttributes={{ lang: 'ja' }}
@@ -61,7 +60,8 @@ const SEO: React.FC<Props> = ({ description, meta, title }) => {
         },
         {
           property: `og:image`,
-          content: `${site.siteMetadata.domain}${imageSharp.fluid.originalImg}`,
+          // content: `${site.siteMetadata.domain}${imageSharp.fluid.originalImg}`,
+          content: ``,
         },
         {
           name: `twitter:card`,
@@ -69,7 +69,8 @@ const SEO: React.FC<Props> = ({ description, meta, title }) => {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: 'tminasen',
+          // content: site.siteMetadata.author,
         },
         {
           name: `twitter:title`,
@@ -81,7 +82,8 @@ const SEO: React.FC<Props> = ({ description, meta, title }) => {
         },
         {
           name: `twitter:image`,
-          content: `${site.siteMetadata.domain}${imageSharp.fluid.originalImg}`,
+          // content: `${site.siteMetadata.domain}${imageSharp.fluid.originalImg}`,
+          content: ``,
         },
       ].concat(meta || [])}
     />

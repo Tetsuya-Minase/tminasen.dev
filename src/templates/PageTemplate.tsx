@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+// import { useStaticQuery, graphql } from 'gatsby';
 
 import { HeaderComponent } from '../components/HeaderComponent';
 import { FooterComponent } from '../components/FooterComponent';
@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import media from 'styled-media-query';
 import { SubColumnComponent } from '../components/SubColumnComponent';
 import SEO from '../components/seo';
-import { SiteTitleQueryQuery } from '../../types/graphql-types';
+// import { SiteTitleQueryQuery } from '../../types/graphql-types';
 import { Maybe } from '../../types/utility';
 
 type Props = {
@@ -39,19 +39,21 @@ const Main = styled.main`
 `;
 
 export const PageTemplate: React.FC<Props> = ({ title, children }) => {
-  const data: SiteTitleQueryQuery = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+  // TODO: graphql箇所修正
+  // const data: SiteTitleQueryQuery = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `);
   return (
     <BodyWrapper>
       <SEO title={title} meta={undefined} description={undefined} />
-      <HeaderComponent siteTitle={data.site?.siteMetadata?.title || ''} />
+      <HeaderComponent siteTitle={''} />
+      {/*<HeaderComponent siteTitle={data.site?.siteMetadata?.title || ''} />*/}
       <ContentsWrapper>
         <Main>{children}</Main>
         <SubColumnComponent />

@@ -1,4 +1,4 @@
-import { Link } from 'gatsby';
+import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
@@ -23,17 +23,17 @@ const Wrapper = styled.div`
   max-width: 96rem;
   padding: 1.5rem 1.1rem;
 `;
-const LinkStyle: React.CSSProperties = {
-  color: fontColor.white,
-  textDecoration: 'none',
-};
+const StyledLink = styled.a`
+  color: ${fontColor.white};
+  text-decoration: none;
+`;
 
 export const HeaderComponent: React.FC<Props> = ({ siteTitle }) => (
   <Header>
     <Wrapper>
       <Heading>
-        <Link to="/" style={LinkStyle}>
-          {siteTitle}
+        <Link href="/" passHref>
+          <StyledLink>{siteTitle}</StyledLink>
         </Link>
       </Heading>
     </Wrapper>
