@@ -3,7 +3,7 @@ path: "/blog/c8nsbkvrndwzjdapcetj"
 date: "2020/11/13"
 title: "Next.js事始め"
 tag: ["Next.js", "React"]
-thumbnailImage: "./images/ssc8nsbkvrndwzjdapcetj.png"
+thumbnailImage: "/images/article/c8nsbkvrndwzjdapcetj/ssc8nsbkvrndwzjdapcetj.png"
 ---
 # はじめに
 ずっと触ろうと思って触っていなかったNextを触ってみる。 

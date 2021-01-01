@@ -3089,23 +3089,10 @@ export type GithubLinkDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GithubLinkDataQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'githubUrl'>> }>, imageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> };
 
-export type TagListQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type TagListQuery = { allMarkdownRemark: { group: Array<(
-      Pick<MarkdownRemarkGroupConnection, 'fieldValue'>
-      & { nodes: Array<{ frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'title'>> }> }
-    )> } };
-
 export type LinkDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type LinkDataQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'domain'>> }>, imageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> };
-
-export type SeoDataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SeoDataQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'domain'>> }>, imageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'originalImg'>> }> };
 
 export type TagArticlesQueryVariables = Exact<{
   tagName?: Maybe<Scalars['String']>;
@@ -3130,11 +3117,6 @@ export type IndexPageQuery = { allMarkdownRemark: { nodes: Array<(
         & { thumbnailImage?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'src' | 'aspectRatio' | 'srcSet' | 'sizes'>> }> }> }
       )> }
     )> } };
-
-export type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SiteTitleQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 export type MdPageDataQueryVariables = Exact<{
   path: Scalars['String'];

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { DeepReadonly, ImageValue } from '../../types/utility';
+import { DeepReadonly } from '../../types/utility';
 import {
   bodyFontSize,
   contentsBackgroundColor,
@@ -8,8 +8,8 @@ import {
   headerFontSize,
   imageStyle,
 } from '../styles/variable';
-import { Image } from './ImageComponent';
 import media from 'styled-media-query';
+import Image from 'next/image';
 
 const Article = styled.article`
   display: flex;
@@ -41,7 +41,7 @@ type Props = {
   title: string;
   path: string;
   excerpt: string;
-  image?: ImageValue;
+  image: string;
 };
 
 export const CardComponent: React.FC<DeepReadonly<Props>> = ({
@@ -53,7 +53,7 @@ export const CardComponent: React.FC<DeepReadonly<Props>> = ({
   return (
     <Article>
       <Link href={path}>
-        {/*<Image image={image} imageStyle={imageStyle} />*/}
+        <Image src={image} alt="test" width="350" height="300" />
         <Title>{title}</Title>
         <Description>{excerpt}</Description>
       </Link>

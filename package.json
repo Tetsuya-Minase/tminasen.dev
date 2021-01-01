@@ -52,7 +52,7 @@
     "clean": "gatsby clean",
     "create:md": "./scripts/target/release/article-scripts",
     "dev": "next",
-    "build:next": "build next",
+    "build:next": "next build",
     "start:next": "next start",
     "type-check": "tsc"
   }

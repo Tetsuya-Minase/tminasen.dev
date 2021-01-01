@@ -3,7 +3,7 @@ path: "/blog/fu75tpjbgwwsgsjj4xre"
 date: "2020/10/15"
 title: "ActixWeb+Angularを試してみる"
 tag: ["Rust", "Angular"]
-thumbnailImage: "./images/ssfu75tpjbgwwsgsjj4xre-3.png"
+thumbnailImage: "/images/article/fu75tpjbgwwsgsjj4xre/ssfu75tpjbgwwsgsjj4xre-3.png"
 ---
 # はじめに
 Rustが気になっている今日このごろ。  

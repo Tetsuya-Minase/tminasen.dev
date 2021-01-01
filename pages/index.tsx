@@ -38,7 +38,7 @@ const createArticle = (articleData: ArticleMetaData[]) => {
         <CardComponent
           title={item.title}
           path={item.path}
-          image={undefined}
+          image={item.thumbnailImage}
           excerpt={item.description}
         />
       </CardWrapper>

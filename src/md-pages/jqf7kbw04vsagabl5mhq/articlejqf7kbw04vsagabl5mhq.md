@@ -3,7 +3,7 @@ path: "/blog/jqf7kbw04vsagabl5mhq"
 date: "2020/12/28"
 title: "Next.jsでmdxを使ってみる"
 tag: ["Next.js"]
-thumbnailImage: "./images/ssjqf7kbw04vsagabl5mhq-3.png"
+thumbnailImage: "/images/article/jqf7kbw04vsagabl5mhq/ssjqf7kbw04vsagabl5mhq-3.png"
 ---
 
 # はじめに

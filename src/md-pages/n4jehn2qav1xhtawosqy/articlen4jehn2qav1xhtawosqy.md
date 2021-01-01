@@ -3,7 +3,7 @@ path: "/blog/n4jehn2qav1xhtawosqy"
 date: "2020/10/25"
 title: "Vue3.0 + Vuex + tailwindcssを試してみる"
 tag: ["vue"]
-thumbnailImage: "./images/ssn4jehn2qav1xhtawosqy-2.png"
+thumbnailImage: "/images/article/n4jehn2qav1xhtawosqy/ssn4jehn2qav1xhtawosqy-2.png"
 ---
 # はじめに
 vue3.0が出てしばらくたった今日このごろ。  
