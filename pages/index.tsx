@@ -1,10 +1,10 @@
 import React from 'react';
-// import { PageTemplate } from '../templates/PageTemplate';
-// import { IndexPageQuery } from '../../types/graphql-types';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { PageTemplate } from '../src/templates/PageTemplate';
-// import { CardComponent } from '../components/CardComponent';
+import { getArticleMetaData } from '../src/libraries/articles';
+import { ArticleMetaData } from '../types/article';
+import { CardComponent } from '../src/components/CardComponent';
 
 const Title = styled.h1`
   font-size: 2.4rem;
@@ -31,50 +31,31 @@ const CardWrapper = styled.li`
 `;
 const Article = styled.article``;
 
-// type Props = {
-//   data: IndexPageQuery;
-// };
+const createArticle = (articleData: ArticleMetaData[]) => {
+  const linkItems = articleData.map(item => {
+    return (
+      <CardWrapper key={`${item.title}:${item.path}`}>
+        <CardComponent
+          title={item.title}
+          path={item.path}
+          image={undefined}
+          excerpt={item.description}
+        />
+      </CardWrapper>
+    );
+  });
+  return <ArticleCardList>{linkItems}</ArticleCardList>;
+};
 
-// const createArticle = (
-//   articleData: IndexPageQuery['allMarkdownRemark']['nodes'],
-// ) => {
-//   const linkItems = articleData
-//     .map(item => {
-//       const frontmatter = item.frontmatter;
-//       const excerpt = item.excerpt;
-//       if (
-//         frontmatter?.path == undefined ||
-//         frontmatter?.title == undefined ||
-//         frontmatter.thumbnailImage?.childImageSharp?.fluid == undefined ||
-//         excerpt == undefined
-//       ) {
-//         return undefined;
-//       }
-//       return (
-//         <CardWrapper key={`${frontmatter.title}:${frontmatter.path}`}>
-//           <CardComponent
-//             title={frontmatter.title}
-//             path={frontmatter.path}
-//             image={frontmatter.thumbnailImage?.childImageSharp?.fluid}
-//             excerpt={excerpt}
-//           />
-//         </CardWrapper>
-//       );
-//     })
-//     .filter((item): item is JSX.Element => item !== undefined);
-//   if (linkItems.length === 0) {
-//     return null;
-//   }
-//   return <ArticleCardList>{linkItems}</ArticleCardList>;
-// };
-
-const IndexPage: React.FC = () => {
-  // const articles = createArticle(data.allMarkdownRemark.nodes);
+const IndexPage: React.FC<{ articleMetaData: ArticleMetaData[] }> = ({
+  articleMetaData,
+}) => {
+  const articles = createArticle(articleMetaData);
   return (
     <PageTemplate title={undefined}>
       <Article>
         <Title>記事一覧</Title>
-        {/*{articles}*/}
+        {articles}
       </Article>
     </PageTemplate>
   );
@@ -82,27 +63,13 @@ const IndexPage: React.FC = () => {
 
 export default IndexPage;
 
-// export const pageQuery = graphql`
-//     query IndexPage {
-//         allMarkdownRemark(sort: { order: DESC, fields: frontmatter___date }) {
-//             nodes {
-//                 frontmatter {
-//                     path
-//                     tag
-//                     title
-//                     thumbnailImage {
-//                         childImageSharp {
-//                             fluid(maxWidth: 300) {
-//                                 src
-//                                 aspectRatio
-//                                 srcSet
-//                                 sizes
-//                             }
-//                         }
-//                     }
-//                 }
-//                 excerpt(format: PLAIN, truncate: true, pruneLength: 130)
-//             }
-//         }
-//     }
-// `;
+export const getStaticProps = async (): Promise<{
+  props: { articleMetaData: ArticleMetaData[] };
+}> => {
+  const data = getArticleMetaData();
+  return {
+    props: {
+      articleMetaData: data,
+    },
+  };
+};

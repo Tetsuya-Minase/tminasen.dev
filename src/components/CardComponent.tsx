@@ -41,7 +41,7 @@ type Props = {
   title: string;
   path: string;
   excerpt: string;
-  image: ImageValue;
+  image?: ImageValue;
 };
 
 export const CardComponent: React.FC<DeepReadonly<Props>> = ({
@@ -53,7 +53,7 @@ export const CardComponent: React.FC<DeepReadonly<Props>> = ({
   return (
     <Article>
       <Link href={path}>
-        <Image image={image} imageStyle={imageStyle} />
+        {/*<Image image={image} imageStyle={imageStyle} />*/}
         <Title>{title}</Title>
         <Description>{excerpt}</Description>
       </Link>
