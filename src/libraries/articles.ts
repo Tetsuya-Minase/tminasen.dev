@@ -1,11 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { ArticleMetaData } from '../../types/article';
+import { ArticleMetaData, TagCount } from '../../types/article';
 import { removeTags } from './markdown';
 
 /**
  * 記事の概要表示に必要なデータを取得する
+ * @return {@see ArticleMetaData}
  */
 export function getArticleMetaData(): ArticleMetaData[] {
   const mdPagePath: string = path.join(process.cwd(), 'src/md-pages');
@@ -25,6 +26,23 @@ export function getArticleMetaData(): ArticleMetaData[] {
       return convertArticleMetaData(matterResult.data, matterResult.content);
     })
     .filter((item): item is ArticleMetaData => item !== undefined);
+}
+
+/**
+ * 記事毎のタグ数から表示に必要なデータに整形する
+ * @param tagCount 記事毎のタグ数
+ * @returns {
+ *   name: タグ名
+ *   articleCount: 記事数
+ *   url: タグ別URL
+ * }
+ */
+export function convertTagList(tagCount: TagCount) {
+  return Object.entries(tagCount).map(([tag, count]) => ({
+    name: tag,
+    articleCount: count,
+    url: `/tags/${tag}`,
+  }));
 }
 
 function convertArticleMetaData(

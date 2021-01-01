@@ -6,5 +6,8 @@ interface _ArticleMetaData {
   thumbnailImage: string;
   description: string;
 }
-
 export type ArticleMetaData = Readonly<_ArticleMetaData>;
+
+export interface TagCount {
+  [key: string]: number;
+}

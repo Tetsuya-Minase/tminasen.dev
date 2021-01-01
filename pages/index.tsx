@@ -52,7 +52,7 @@ const IndexPage: React.FC<{ articleMetaData: ArticleMetaData[] }> = ({
 }) => {
   const articles = createArticle(articleMetaData);
   return (
-    <PageTemplate title={undefined}>
+    <PageTemplate title="水無瀬のプログラミング日記" metaData={articleMetaData}>
       <Article>
         <Title>記事一覧</Title>
         {articles}

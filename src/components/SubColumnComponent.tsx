@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { useStaticQuery, graphql, Link } from 'gatsby';
-import { TagListQuery } from '../../types/graphql-types';
 import { contentsBackgroundColor, fontColor } from '../styles/variable';
+import { TagCount } from '../../types/article';
+import { LinkComponent } from './LinkComponent';
+import { convertTagList } from '../libraries/articles';
 
 type TagLink = {
   name: string;
   articleCount: number;
   url: string;
 };
+interface Props {
+  tagCount: TagCount;
+}
 
 const Aside = styled.aside`
   display: flex;
@@ -36,60 +40,25 @@ const TagListItem = styled.li`
     margin: 0 0 0.8rem 0;
   }
 `;
-const LinkStyle: React.CSSProperties = {
-  color: fontColor.black,
-  textDecoration: 'none',
-};
 
-const convertTagList = (group: TagListQuery['allMarkdownRemark']['group']) => {
-  return group
-    .map(field => {
-      if (field.fieldValue == undefined || field.nodes.length == 0) {
-        return;
-      }
-      return {
-        name: field.fieldValue,
-        articleCount: field.nodes.length,
-        url: `/tags/${field.fieldValue}`,
-      };
-    })
-    .filter((item): item is TagLink => item != undefined);
-};
-
-export const SubColumnComponent: React.FC = () => {
-  // TODO: graphql箇所修正
-  // const data: TagListQuery = useStaticQuery(graphql`
-  //   query TagList {
-  //     allMarkdownRemark {
-  //       group(field: frontmatter___tag) {
-  //         fieldValue
-  //         nodes {
-  //           frontmatter {
-  //             path
-  //             title
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `);
-  // const tagLinkList: TagLink[] = convertTagList(data.allMarkdownRemark.group);
-  // if (tagLinkList.length === 0) {
-  //   return null;
-  // }
-  // const tagList = tagLinkList.map(tagLink => (
-  //   <TagListItem key={tagLink.name}>
-  //     <Link
-  //       to={tagLink.url}
-  //       style={LinkStyle}
-  //     >{`${tagLink.name}(${tagLink.articleCount})`}</Link>
-  //   </TagListItem>
-  // ));
-  // return (
-  //   <Aside>
-  //     <Title>タグ一覧</Title>
-  //     {tagList.length ? <TagList>{tagList}</TagList> : null}
-  //   </Aside>
-  // );
-  return null;
+export const SubColumnComponent: React.FC<Props> = ({ tagCount }) => {
+  const tagLinkList: TagLink[] = convertTagList(tagCount);
+  if (tagLinkList.length === 0) {
+    return null;
+  }
+  const tagList = tagLinkList.map(tagLink => (
+    <TagListItem key={tagLink.name}>
+      <LinkComponent
+        url={tagLink.url}
+        text={`${tagLink.name}(${tagLink.articleCount})`}
+        color="black"
+      />
+    </TagListItem>
+  ));
+  return (
+    <Aside>
+      <Title>タグ一覧</Title>
+      {tagList.length ? <TagList>{tagList}</TagList> : null}
+    </Aside>
+  );
 };
