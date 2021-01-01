@@ -1,8 +1,7 @@
-import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { fontColor } from '../styles/variable';
+import { LinkComponent } from './LinkComponent';
 
 type Props = {
   siteTitle: string;
@@ -23,18 +22,12 @@ const Wrapper = styled.div`
   max-width: 96rem;
   padding: 1.5rem 1.1rem;
 `;
-const StyledLink = styled.a`
-  color: ${fontColor.white};
-  text-decoration: none;
-`;
 
 export const HeaderComponent: React.FC<Props> = ({ siteTitle }) => (
   <Header>
     <Wrapper>
       <Heading>
-        <Link href="/" passHref>
-          <StyledLink>{siteTitle}</StyledLink>
-        </Link>
+        <LinkComponent url="/" text={siteTitle} color="white" />
       </Heading>
     </Wrapper>
   </Header>
