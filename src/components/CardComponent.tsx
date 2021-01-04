@@ -6,10 +6,8 @@ import {
   contentsBackgroundColor,
   fontColor,
   headerFontSize,
-  imageStyle,
 } from '../styles/variable';
 import media from 'styled-media-query';
-import Image from 'next/image';
 
 const Article = styled.article`
   display: flex;
@@ -53,7 +51,7 @@ export const CardComponent: React.FC<DeepReadonly<Props>> = ({
   return (
     <Article>
       <Link href={path}>
-        <Image src={image} alt="test" width="350" height="300" />
+        <img src={image} alt="test" width="350" height="300" />
         <Title>{title}</Title>
         <Description>{excerpt}</Description>
       </Link>
