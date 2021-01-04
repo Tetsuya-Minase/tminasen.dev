@@ -265,7 +265,7 @@ $ cargo add serde_json
 
 それぞれのバージョンは下記の通り。 
 
-```txt
+```
 [dependencies]
 serde = "1.0.116"
 serde_json = "1.0.59"

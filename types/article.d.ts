@@ -4,6 +4,7 @@ interface _ArticleMetaData {
   title: string;
   tag: string[];
   thumbnailImage: string;
+  html: string;
   description: string;
 }
 export type ArticleMetaData = Readonly<_ArticleMetaData>;

@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { graphql, Link } from 'gatsby';
-import { TagArticlesQuery } from '../../types/graphql-types';
-import { PageTemplate } from '../templates/PageTemplate';
+// import { graphql, Link } from 'gatsby';
+// import { PageTemplate } from '../templates/PageTemplate';
 import { fontColor } from '../styles/variable';
 
-type Props = {
-  pageContext: {
-    tagName: string;
-  };
-  data: TagArticlesQuery;
-};
+// type Props = {
+//   pageContext: {
+//     tagName: string;
+//   };
+//   data: TagArticlesQuery;
+// };
 const PageTitle = styled.h1`
   color: ${fontColor.black};
   font-size: 2.8rem;
@@ -82,103 +81,107 @@ const LinkStyle: React.CSSProperties = {
   textDecoration: 'none',
 };
 
-const getArticles = (
-  nodes: TagArticlesQuery['allMarkdownRemark']['nodes'],
-): JSX.Element | null => {
-  const articleList = nodes
-    .map(({ frontmatter, excerpt }): JSX.Element | null => {
-      if (
-        frontmatter?.path == null ||
-        frontmatter?.title == null ||
-        frontmatter?.date == null ||
-        frontmatter.thumbnailImage?.publicURL == undefined ||
-        frontmatter?.tag == null
-      ) {
-        return null;
-      }
-      const { path, title, date, tag } = frontmatter;
-      const tagList =
-        tag
-          ?.filter((t): t is string => !!t)
-          .map(t => (
-            <TitleTagListItem key={`/tags/${t}`}>
-              <Link to={`/tags/${t}`} style={LinkStyle}>
-                {t}
-              </Link>
-            </TitleTagListItem>
-          )) ?? [];
+// const getArticles = (
+//   nodes: TagArticlesQuery['allMarkdownRemark']['nodes'],
+// ): JSX.Element | null => {
+//   const articleList = nodes
+//     .map(({ frontmatter, excerpt }): JSX.Element | null => {
+//       if (
+//         frontmatter?.path == null ||
+//         frontmatter?.title == null ||
+//         frontmatter?.date == null ||
+//         frontmatter.thumbnailImage?.publicURL == undefined ||
+//         frontmatter?.tag == null
+//       ) {
+//         return null;
+//       }
+//       const { path, title, date, tag } = frontmatter;
+//       const tagList =
+//         tag
+//           ?.filter((t): t is string => !!t)
+//           .map(t => (
+//             <TitleTagListItem key={`/tags/${t}`}>
+//               <Link to={`/tags/${t}`} style={LinkStyle}>
+//                 {t}
+//               </Link>
+//             </TitleTagListItem>
+//           )) ?? [];
+//
+//       return (
+//         <ArticleListItem key={`${path}`}>
+//           <ArticleWrapper>
+//             <ArticleTitleWrapper>
+//               <Link to={path} style={LinkStyle}>
+//                 <ArticleTitle>{title}</ArticleTitle>
+//               </Link>
+//               <ArticleDate>{date}</ArticleDate>
+//               {tagList.length !== 0 ? (
+//                 <TitleTagList>{tagList}</TitleTagList>
+//               ) : null}
+//             </ArticleTitleWrapper>
+//             <DescriptionWrapper>
+//               <ArticleImage
+//                 src={frontmatter.thumbnailImage?.publicURL}
+//                 width="150px"
+//                 height="100px"
+//               />
+//               <ArticleDescription>
+//                 <Link to={path} style={LinkStyle}>
+//                   {excerpt}
+//                 </Link>
+//               </ArticleDescription>
+//             </DescriptionWrapper>
+//           </ArticleWrapper>
+//         </ArticleListItem>
+//         </ArticleListItem>
+//       );
+//     })
+//     .filter((element): element is JSX.Element => element !== null);
+//   if (articleList.length === 0) {
+//     return null;
+//   }
+//   return <ArticleList>{articleList}</ArticleList>;
+// };
 
-      return (
-        <ArticleListItem key={`${path}`}>
-          <ArticleWrapper>
-            <ArticleTitleWrapper>
-              <Link to={path} style={LinkStyle}>
-                <ArticleTitle>{title}</ArticleTitle>
-              </Link>
-              <ArticleDate>{date}</ArticleDate>
-              {tagList.length !== 0 ? (
-                <TitleTagList>{tagList}</TitleTagList>
-              ) : null}
-            </ArticleTitleWrapper>
-            <DescriptionWrapper>
-              <ArticleImage
-                src={frontmatter.thumbnailImage?.publicURL}
-                width="150px"
-                height="100px"
-              />
-              <ArticleDescription>
-                <Link to={path} style={LinkStyle}>
-                  {excerpt}
-                </Link>
-              </ArticleDescription>
-            </DescriptionWrapper>
-          </ArticleWrapper>
-        </ArticleListItem>
-      );
-    })
-    .filter((element): element is JSX.Element => element !== null);
-  if (articleList.length === 0) {
-    return null;
-  }
-  return <ArticleList>{articleList}</ArticleList>;
-};
-
-export const TagListPage: React.FC<Props> = ({
-  pageContext: { tagName },
-  data: {
-    allMarkdownRemark: { nodes },
-  },
-}) => {
-  return (
-    <PageTemplate title={`${tagName}の記事一覧`}>
-      <article>
-        <PageTitle>{tagName}の記事一覧</PageTitle>
-        {getArticles(nodes)}
-      </article>
-    </PageTemplate>
-  );
-};
+export const TagListPage: React.FC = () =>
+  //   {
+  //   pageContext: { tagName },
+  //   data: {
+  //     allMarkdownRemark: { nodes },
+  //   },
+  // }
+  {
+    return (
+      <div>hoge</div>
+      // <PageTemplate title={`${tagName}の記事一覧`}>
+      //   <article>
+      //     <PageTitle>{tagName}の記事一覧</PageTitle>
+      //     {getArticles(nodes)}
+      //   </article>
+      // </PageTemplate>
+    );
+  };
 
 export default TagListPage;
 
-export const articleData = graphql`
-  query TagArticles($tagName: String) {
-    allMarkdownRemark(
-      filter: { frontmatter: { tag: { eq: $tagName } } }
-      sort: { fields: frontmatter___date, order: DESC }
-    ) {
-      nodes {
-        frontmatter {
-          path
-          title
-          date
-          tag
-          thumbnailImage {
-            publicURL
-          }
-        }
-        excerpt(format: PLAIN, truncate: true, pruneLength: 150)
-      }
-    }
-  }
-`;
+// export const articleData = graphql`
+//   query TagArticles($tagName: String) {
+//     allMarkdownRemark(
+//       filter: { frontmatter: { tag: { eq: $tagName } } }
+//       sort: { fields: frontmatter___date, order: DESC }
+//     ) {
+//       nodes {
+//         frontmatter {
+//           path
+//           title
+//           date
+//           tag
+//           thumbnailImage {
+//             publicURL
+//           }
+//         }
+//         excerpt(format: PLAIN, truncate: true, pruneLength: 150)
+//       }
+//     }
+//   }
+// `;

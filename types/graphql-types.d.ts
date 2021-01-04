@@ -697,42 +697,7 @@ export type FileFieldsEnum =
   | 'childMarkdownRemark___frontmatter___path'
   | 'childMarkdownRemark___frontmatter___date'
   | 'childMarkdownRemark___frontmatter___tag'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___sourceInstanceName'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___absolutePath'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___relativePath'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___extension'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___size'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___prettySize'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___modifiedTime'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___accessTime'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___changeTime'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___birthTime'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___root'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___dir'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___base'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___ext'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___name'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___relativeDirectory'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___dev'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___mode'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___nlink'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___uid'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___gid'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___rdev'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___ino'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___atimeMs'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___mtimeMs'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___ctimeMs'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___atime'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___mtime'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___ctime'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___birthtime'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___birthtimeMs'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___blksize'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___blocks'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___publicURL'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___id'
-  | 'childMarkdownRemark___frontmatter___thumbnailImage___children'
+  | 'childMarkdownRemark___frontmatter___thumbnailImage'
   | 'childMarkdownRemark___excerpt'
   | 'childMarkdownRemark___rawMarkdownBody'
   | 'childMarkdownRemark___fileAbsolutePath'
@@ -1500,67 +1465,7 @@ export type MarkdownRemarkFieldsEnum =
   | 'frontmatter___path'
   | 'frontmatter___date'
   | 'frontmatter___tag'
-  | 'frontmatter___thumbnailImage___sourceInstanceName'
-  | 'frontmatter___thumbnailImage___absolutePath'
-  | 'frontmatter___thumbnailImage___relativePath'
-  | 'frontmatter___thumbnailImage___extension'
-  | 'frontmatter___thumbnailImage___size'
-  | 'frontmatter___thumbnailImage___prettySize'
-  | 'frontmatter___thumbnailImage___modifiedTime'
-  | 'frontmatter___thumbnailImage___accessTime'
-  | 'frontmatter___thumbnailImage___changeTime'
-  | 'frontmatter___thumbnailImage___birthTime'
-  | 'frontmatter___thumbnailImage___root'
-  | 'frontmatter___thumbnailImage___dir'
-  | 'frontmatter___thumbnailImage___base'
-  | 'frontmatter___thumbnailImage___ext'
-  | 'frontmatter___thumbnailImage___name'
-  | 'frontmatter___thumbnailImage___relativeDirectory'
-  | 'frontmatter___thumbnailImage___dev'
-  | 'frontmatter___thumbnailImage___mode'
-  | 'frontmatter___thumbnailImage___nlink'
-  | 'frontmatter___thumbnailImage___uid'
-  | 'frontmatter___thumbnailImage___gid'
-  | 'frontmatter___thumbnailImage___rdev'
-  | 'frontmatter___thumbnailImage___ino'
-  | 'frontmatter___thumbnailImage___atimeMs'
-  | 'frontmatter___thumbnailImage___mtimeMs'
-  | 'frontmatter___thumbnailImage___ctimeMs'
-  | 'frontmatter___thumbnailImage___atime'
-  | 'frontmatter___thumbnailImage___mtime'
-  | 'frontmatter___thumbnailImage___ctime'
-  | 'frontmatter___thumbnailImage___birthtime'
-  | 'frontmatter___thumbnailImage___birthtimeMs'
-  | 'frontmatter___thumbnailImage___blksize'
-  | 'frontmatter___thumbnailImage___blocks'
-  | 'frontmatter___thumbnailImage___publicURL'
-  | 'frontmatter___thumbnailImage___childImageSharp___id'
-  | 'frontmatter___thumbnailImage___childImageSharp___children'
-  | 'frontmatter___thumbnailImage___id'
-  | 'frontmatter___thumbnailImage___parent___id'
-  | 'frontmatter___thumbnailImage___parent___children'
-  | 'frontmatter___thumbnailImage___children'
-  | 'frontmatter___thumbnailImage___children___id'
-  | 'frontmatter___thumbnailImage___children___children'
-  | 'frontmatter___thumbnailImage___internal___content'
-  | 'frontmatter___thumbnailImage___internal___contentDigest'
-  | 'frontmatter___thumbnailImage___internal___description'
-  | 'frontmatter___thumbnailImage___internal___fieldOwners'
-  | 'frontmatter___thumbnailImage___internal___ignoreType'
-  | 'frontmatter___thumbnailImage___internal___mediaType'
-  | 'frontmatter___thumbnailImage___internal___owner'
-  | 'frontmatter___thumbnailImage___internal___type'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___id'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___excerpt'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___rawMarkdownBody'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___fileAbsolutePath'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___html'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___htmlAst'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___excerptAst'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___headings'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___timeToRead'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___tableOfContents'
-  | 'frontmatter___thumbnailImage___childMarkdownRemark___children'
+  | 'frontmatter___thumbnailImage'
   | 'excerpt'
   | 'rawMarkdownBody'
   | 'fileAbsolutePath'
@@ -1685,7 +1590,7 @@ export type MarkdownRemarkFrontmatter = {
   path?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   tag?: Maybe<Array<Maybe<Scalars['String']>>>;
-  thumbnailImage?: Maybe<File>;
+  thumbnailImage?: Maybe<Scalars['String']>;
 };
 
 export type MarkdownRemarkFrontmatterFilterInput = {
@@ -1693,7 +1598,7 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   path?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<StringQueryOperatorInput>;
   tag?: Maybe<StringQueryOperatorInput>;
-  thumbnailImage?: Maybe<FileFilterInput>;
+  thumbnailImage?: Maybe<StringQueryOperatorInput>;
 };
 
 export type MarkdownRemarkGroupConnection = {
@@ -1921,6 +1826,8 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -2031,6 +1938,8 @@ export type QueryAllSitePluginArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
+  port?: Maybe<Scalars['Int']>;
+  host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
@@ -2235,6 +2144,8 @@ export type SiteFieldsEnum =
   | 'siteMetadata___author'
   | 'siteMetadata___domain'
   | 'siteMetadata___githubUrl'
+  | 'port'
+  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'id'
@@ -2327,6 +2238,8 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
+  port?: Maybe<IntQueryOperatorInput>;
+  host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   id?: Maybe<StringQueryOperatorInput>;
@@ -3093,40 +3006,6 @@ export type LinkDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type LinkDataQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'domain'>> }>, imageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>> }> };
-
-export type TagArticlesQueryVariables = Exact<{
-  tagName?: Maybe<Scalars['String']>;
-}>;
-
-
-export type TagArticlesQuery = { allMarkdownRemark: { nodes: Array<(
-      Pick<MarkdownRemark, 'excerpt'>
-      & { frontmatter?: Maybe<(
-        Pick<MarkdownRemarkFrontmatter, 'path' | 'title' | 'date' | 'tag'>
-        & { thumbnailImage?: Maybe<Pick<File, 'publicURL'>> }
-      )> }
-    )> } };
-
-export type IndexPageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type IndexPageQuery = { allMarkdownRemark: { nodes: Array<(
-      Pick<MarkdownRemark, 'excerpt'>
-      & { frontmatter?: Maybe<(
-        Pick<MarkdownRemarkFrontmatter, 'path' | 'tag' | 'title'>
-        & { thumbnailImage?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<Pick<ImageSharpFluid, 'src' | 'aspectRatio' | 'srcSet' | 'sizes'>> }> }> }
-      )> }
-    )> } };
-
-export type MdPageDataQueryVariables = Exact<{
-  path: Scalars['String'];
-}>;
-
-
-export type MdPageDataQuery = { markdownRemark?: Maybe<(
-    Pick<MarkdownRemark, 'html'>
-    & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'path' | 'title'>> }
-  )> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

@@ -66,7 +66,7 @@ export default IndexPage;
 export const getStaticProps = async (): Promise<{
   props: { articleMetaData: ArticleMetaData[] };
 }> => {
-  const data = getArticleMetaData();
+  const data = await getArticleMetaData();
   return {
     props: {
       articleMetaData: data,

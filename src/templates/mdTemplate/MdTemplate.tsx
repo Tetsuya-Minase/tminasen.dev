@@ -1,81 +1,117 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { PageTemplate } from '../PageTemplate';
-import { MdPageDataQuery } from '../../../types/graphql-types';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import './MdArticleStyle.css';
-import { TwitterShareButton } from '../../components/TwitterShareButton';
-import { contentsBackgroundColor } from '../../styles/variable';
-import { GithubArticleButton } from '../../components/GithubArticleButton';
 
-type Props = {
-  data: MdPageDataQuery;
-};
-const Article = styled.article``;
-const TitleWrapper = styled.div`
-  background-color: ${contentsBackgroundColor.white};
-  border-radius: 1rem;
-  padding: 0.2rem 0.4rem;
-  margin: 0 0 1.6rem 0;
-`;
-const TitleSubWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const ArticleTitle = styled.h1`
-  font-size: 2.8rem;
-  font-weight: bolder;
-  margin: 0 0 0.8rem 0;
-  ${media.lessThan('small')`
-    font-size: 2rem;
-  `}
-`;
-const ArticleDate = styled.time`
+interface Props {
+  html: string;
+}
+
+const MarkDownArticle = styled.div`
+  background-color: #ffffff;
   font-size: 1.6rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.2rem 0.4rem;
+
+  & > p,
+  pre,
+  ul,
+  ol {
+    margin: 1.2rem 0;
+  }
+  & p > strong {
+    font-weight: bold;
+  }
+
+  /* タイトルの上下は文章部分よりも開ける */
+  & > h1,
+  h2,
+  h3 {
+    margin: 1.6rem 0;
+  }
+
+  /* 見出しのStyle */
+  & h1 {
+    font-size: 2.8rem;
+    font-weight: bolder;
+  }
+  & h2 {
+    font-size: 2.4rem;
+    font-weight: bolder;
+  }
+  & h3 {
+    font-size: 2rem;
+    font-weight: bolder;
+  }
+
+  /* リンクにカーソル合わせたとき色を変える */
+  & a:hover {
+    color: #ed0077;
+  }
+
+  /* リストの先頭に点出す */
+  & ul > li:before {
+    content: '\\025b7';
+    margin-right: 0.4rem;
+  }
+  & ul > li {
+    margin-top: 0.4rem;
+  }
+  & li > p {
+    display: inline-block;
+  }
+
+  /* 入れ子対応 */
+  & li > ul > li:before {
+    content: '\\025CB';
+    margin-right: 0.4rem;
+  }
+
+  & li > ul {
+    margin: 0.4rem 0 0 2rem;
+  }
+
+  /* olの場合数字を出すようにする */
+  & ol {
+    counter-reset: item;
+  }
+
+  & ol > li:before {
+    counter-increment: item;
+    content: counter(item) '. ';
+  }
+
   ${media.lessThan('small')`
-    font-size: 1.2rem;
+    & {
+        font-size: 1.4rem;
+    }
+    /* 要素ごとにスペースを開ける */
+    & > p, pre, ul, ol {
+        margin: 1.2rem 0;
+    }
+    /* タイトルの上下は文章部分よりも開ける */
+    & > h1, h2, h3 {
+        margin: 1.6rem 0;
+    }
+
+    /* 見出しのStyle */
+    & h1 {
+        font-size: 2.4rem !important;
+        font-weight: bolder;
+    }
+
+    & h2 {
+        font-size: 2rem;
+        font-weight: bolder;
+    }
+
+    & h3 {
+        font-size: 1.6rem;
+        font-weight: bolder;
+    }
   `}
 `;
 
-export const MdTemplate: React.FC<Props> = ({ data: { markdownRemark } }) => {
-  const { frontmatter, html } = markdownRemark ?? {};
-  if (frontmatter == null || html == null) {
-    return null;
-  }
-  return (
-    <PageTemplate title={frontmatter.title}>
-      <React.Fragment>
-        <Article>
-          <TitleWrapper>
-            <ArticleTitle>{frontmatter.title}</ArticleTitle>
-            <TitleSubWrapper>
-              <ArticleDate>{frontmatter.date}</ArticleDate>
-            </TitleSubWrapper>
-          </TitleWrapper>
-          <div id="mdArticle" dangerouslySetInnerHTML={{ __html: html }} />
-          <TwitterShareButton
-            title={frontmatter.title}
-            path={frontmatter.path}
-          />
-          <GithubArticleButton path={frontmatter.path} />
-        </Article>
-      </React.Fragment>
-    </PageTemplate>
-  );
+export const MdTemplate: React.FC<Props> = ({ html }) => {
+  return <MarkDownArticle dangerouslySetInnerHTML={{ __html: html }} />;
 };
-
-export default MdTemplate;
-
-export const pageQuery = graphql`
-  query MdPageData($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
-      frontmatter {
-        date
-        path
-        title
-      }
-    }
-  }
-`;
