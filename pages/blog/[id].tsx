@@ -84,6 +84,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (id == null || Array.isArray(id)) {
     return { props: { id: null } };
   }
-  const metaData: ArticleMetaData[] = await getArticleMetaData();
-  return { props: { id, articleMetaData: metaData } };
+  const articleMetaData: ArticleMetaData[] = await getArticleMetaData();
+  return { props: { id, articleMetaData } };
 };
