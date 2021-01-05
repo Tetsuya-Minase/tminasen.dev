@@ -39,6 +39,7 @@ export default function FirstPost() {
 ```
 
 アプリケーション起動後、`localhost:3000/posts/first-post`にアクセスできて表示されればOK。
+![ssc8nsbkvrndwzjdapcetj.png](/images/article/c8nsbkvrndwzjdapcetj/ssc8nsbkvrndwzjdapcetj.png)
 
 # リンク作成
 SPAの様にアプリケーションのみで遷移するようなリンクを作るには、  

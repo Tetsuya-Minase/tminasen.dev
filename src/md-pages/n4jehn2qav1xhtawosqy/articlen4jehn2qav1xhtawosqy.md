@@ -51,7 +51,7 @@ $ npx @vue/cli add typescript
 ここまでできたら一旦`npm run serve`で起動してみる。  
 画像の様なデフォルトの画面が出てくればOK。
 
-![ssn4jehn2qav1xhtawosqy-3.png](./images/ssn4jehn2qav1xhtawosqy-3.png)
+![ssn4jehn2qav1xhtawosqy-3.png](/images/article/n4jehn2qav1xhtawosqy/ssn4jehn2qav1xhtawosqy-3.png)
 
 # TODOリストを作ってみる
 お試しとしてTODOリストを作ってみる。  
@@ -247,7 +247,7 @@ cssを使えるようにApp.vueを修正する。
 
 画像のようにデフォルトの見た目から変わっていればOK。
 
-![ssn4jehn2qav1xhtawosqy-1.png](./images/ssn4jehn2qav1xhtawosqy-1.png)
+![ssn4jehn2qav1xhtawosqy-1.png](/images/article/n4jehn2qav1xhtawosqy/ssn4jehn2qav1xhtawosqy-1.png)
 
 # 見た目修正
 このままでも良いがせっかくtailwindcssを導入したのでちょろっと見た目を修正する。
@@ -317,7 +317,7 @@ cssを使えるようにApp.vueを修正する。
 
 修正したところで画像の様になっていればOK。
 
-![ssn4jehn2qav1xhtawosqy-2.png](./images/ssn4jehn2qav1xhtawosqy-2.png)
+![ssn4jehn2qav1xhtawosqy-2.png](/images/article/n4jehn2qav1xhtawosqy/ssn4jehn2qav1xhtawosqy-2.png)
 
 # まとめ
 今回はvue3 + vuex + tailwindcssを試してみた。  

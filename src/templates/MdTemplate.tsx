@@ -81,6 +81,11 @@ const MarkDownArticle = styled.div`
     content: counter(item) '. ';
   }
 
+  /* 画像はみ出すのでリサイズ */
+  & img {
+    width: 100%;
+  }
+
   ${media.lessThan('small')`
     & {
         font-size: 1.4rem;
@@ -109,6 +114,12 @@ const MarkDownArticle = styled.div`
         font-size: 1.6rem;
         font-weight: bolder;
     }
+    
+    /* 画像はみ出すのでリサイズ */
+    & img {
+      width: 100%;
+    }
+
   `}
 `;
 

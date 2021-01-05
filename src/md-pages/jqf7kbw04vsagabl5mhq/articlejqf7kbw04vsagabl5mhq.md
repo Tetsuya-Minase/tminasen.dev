@@ -73,7 +73,7 @@ $ touch pages/hello.mdx
 
 `yarn dev`で起動後、`localhost:3000/hello`で↓の様な画面が表示されればOK。
 
-![ssjqf7kbw04vsagabl5mhq-1.png](images/ssjqf7kbw04vsagabl5mhq-1.png)
+![ssjqf7kbw04vsagabl5mhq-1.png](/images/article/jqf7kbw04vsagabl5mhq/ssjqf7kbw04vsagabl5mhq-1.png)
 
 # component読みこむ
 ## header component作成
@@ -141,7 +141,7 @@ import {HeaderComponent} from '../components/header/Header.tsx';
 ```
 
 ↓の画像のように変更されていればOK。
-![ssjqf7kbw04vsagabl5mhq-2.png](images/ssjqf7kbw04vsagabl5mhq-2.png)
+![ssjqf7kbw04vsagabl5mhq-2.png](/images/article/jqf7kbw04vsagabl5mhq/ssjqf7kbw04vsagabl5mhq-2.png)
 
 # コードブロック作ってみる
 mdのコードブロックでシンタックスハイライトが効かないっぽかったので自作する。  
@@ -217,7 +217,7 @@ console.log(hoge);
 ```
 
 ↓の様にコンポーネントに渡した方はちゃんとハイライトが効くようになる。  
-![ssjqf7kbw04vsagabl5mhq-3.png](images/ssjqf7kbw04vsagabl5mhq-3.png)
+![ssjqf7kbw04vsagabl5mhq-3.png](/images/article/jqf7kbw04vsagabl5mhq/ssjqf7kbw04vsagabl5mhq-3.png)
 
 # まとめ
 今回はNext.jsでmdxを使うのを試してみた。  
