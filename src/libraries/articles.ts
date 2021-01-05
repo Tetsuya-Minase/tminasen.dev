@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { ArticleMetaData, TagCount } from '../../types/article';
 import { markdown2Html, removeTags } from './markdown';
+import { parseStringDate } from './data';
 
 /**
  * 記事の概要表示に必要なデータを取得する
@@ -29,7 +30,9 @@ export async function getArticleMetaData(): Promise<ArticleMetaData[]> {
     );
     result.push(metaData);
   }
-  return result.filter((item): item is ArticleMetaData => item !== undefined);
+  return result
+    .filter((item): item is ArticleMetaData => item !== undefined)
+    .sort(sortArticleDescDate);
 }
 
 /**
@@ -81,4 +84,13 @@ function isArticleMetaData(data: {
     !!data?.tag &&
     !!data?.thumbnailImage
   );
+}
+
+/**
+ * 記事を作成日の降順で作成する
+ * @param a
+ * @param b
+ */
+function sortArticleDescDate(a: ArticleMetaData, b: ArticleMetaData) {
+  return parseStringDate(b.date) - parseStringDate(a.date);
 }
