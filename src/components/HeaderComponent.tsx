@@ -27,7 +27,9 @@ export const HeaderComponent: React.FC<Props> = ({ siteTitle }) => (
   <Header>
     <Wrapper>
       <Heading>
-        <LinkComponent url="/" text={siteTitle} color="white" />
+        <LinkComponent url="/" color="white">
+          {siteTitle}
+        </LinkComponent>
       </Heading>
     </Wrapper>
   </Header>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { contentsBackgroundColor, fontColor } from '../styles/variable';
+import { contentsBackgroundColor } from '../styles/variable';
 import { TagCount } from '../../types/article';
 import { LinkComponent } from './LinkComponent';
 import { convertTagList } from '../libraries/articles';
@@ -48,11 +48,9 @@ export const SubColumnComponent: React.FC<Props> = ({ tagCount }) => {
   }
   const tagList = tagLinkList.map(tagLink => (
     <TagListItem key={tagLink.name}>
-      <LinkComponent
-        url={tagLink.url}
-        text={`${tagLink.name}(${tagLink.articleCount})`}
-        color="black"
-      />
+      <LinkComponent url={tagLink.url} color="black">
+        {`${tagLink.name}(${tagLink.articleCount})`}
+      </LinkComponent>
     </TagListItem>
   ));
   return (

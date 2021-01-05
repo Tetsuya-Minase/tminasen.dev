@@ -7,7 +7,6 @@ export type LinkColor = 'white' | 'black';
 
 interface Props {
   url: string;
-  text: string;
   color: LinkColor;
 }
 
@@ -28,10 +27,10 @@ const getLinkColor = (color: LinkColor): string => {
   }
 };
 
-export const LinkComponent: React.FC<Props> = ({ url, text, color }) => {
+export const LinkComponent: React.FC<Props> = ({ url, color, children }) => {
   return (
     <Link href={url} passHref>
-      <StyledLink color={color}>{text}</StyledLink>
+      <StyledLink color={color}>{children}</StyledLink>
     </Link>
   );
 };
