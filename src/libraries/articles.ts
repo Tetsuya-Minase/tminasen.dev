@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { ArticleMetaData, TagCount } from '../../types/article';
+import { ArticleMetaData, Tag, TagCount } from '../../types/article';
 import { markdown2Html, removeTags } from './markdown';
 import { parseStringDate } from './data';
 
@@ -44,12 +44,16 @@ export async function getArticleMetaData(): Promise<ArticleMetaData[]> {
  *   url: タグ別URL
  * }
  */
-export function convertTagList(tagCount: TagCount) {
-  return Object.entries(tagCount).map(([tag, count]) => ({
-    name: tag,
-    articleCount: count,
-    url: `/tags/${tag}`,
-  }));
+export function convertTagList(tagCount: TagCount): Tag[] {
+  return Object.entries(tagCount)
+    .map(
+      ([tag, count]): Tag => ({
+        name: tag,
+        articleCount: count,
+        url: `/tags/${tag}`,
+      }),
+    )
+    .sort(sortTagDescArticleCount);
 }
 
 async function convertArticleMetaData(
@@ -87,10 +91,19 @@ function isArticleMetaData(data: {
 }
 
 /**
- * 記事を作成日の降順で作成する
+ * 記事を作成日の降順でソートする
  * @param a
  * @param b
  */
 function sortArticleDescDate(a: ArticleMetaData, b: ArticleMetaData) {
   return parseStringDate(b.date) - parseStringDate(a.date);
+}
+
+/**
+ * タグリストを記事数の降順でソートする
+ * @param a
+ * @param b
+ */
+function sortTagDescArticleCount(a: Tag, b: Tag) {
+  return b.articleCount - a.articleCount;
 }
