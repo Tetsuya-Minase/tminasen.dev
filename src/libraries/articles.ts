@@ -1,14 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import unified from 'unified';
-import remarkParse from 'remark-parse';
-import remark2rehype from 'remark-rehype';
-import html from 'rehype-stringify';
 import { ArticleMetaData, TagCount } from '../../types/article';
-import { removeTags } from './markdown';
-
-const rehypePrism = require('@mapbox/rehype-prism');
+import { markdown2Html, removeTags } from './markdown';
 
 /**
  * 記事の概要表示に必要なデータを取得する
@@ -64,13 +58,7 @@ async function convertArticleMetaData(
   if (!isArticleMetaData(data)) {
     throw new Error('data is invalid.');
   }
-  const processedContent = await unified()
-    .use(remarkParse)
-    .use(remark2rehype)
-    .use(rehypePrism)
-    .use(html)
-    .process(context);
-  const highlightHtml = processedContent.toString();
+  const highlightHtml = await markdown2Html(context);
 
   return {
     path: data.path,
