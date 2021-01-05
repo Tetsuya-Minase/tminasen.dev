@@ -49,7 +49,6 @@ const articlePage = ({ id, articleMetaData }: Props) => {
   if (targetMetaData == null) {
     return null;
   }
-  console.log('article page ');
   return (
     <PageTemplate title={targetMetaData.title} metaData={articleMetaData}>
       <React.Fragment>

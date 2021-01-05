@@ -43,6 +43,7 @@ export const TwitterShareButton: React.FC<Props> = ({ title, path }) => {
         href={`https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}`}
         title="Twitterに投稿する"
       >
+        {/* TODO: スマホは30*30 */}
         <Image
           imageSrc={metaData.twitterIcon}
           alt="twitterに投稿する"
