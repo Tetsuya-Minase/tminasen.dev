@@ -9,7 +9,7 @@ import { contentsBackgroundColor } from '../../src/styles/variable';
 import media from 'styled-media-query';
 import { TwitterShareButton } from '../../src/components/TwitterShareButton';
 import { GithubArticleButton } from '../../src/components/GithubArticleButton';
-import { MdTemplate } from '../../src/templates/mdTemplate/MdTemplate';
+import { MdTemplate } from '../../src/templates/MdTemplate';
 
 const Article = styled.article``;
 const TitleWrapper = styled.div`
