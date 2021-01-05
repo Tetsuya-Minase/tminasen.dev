@@ -61,11 +61,11 @@ const articlePage = ({ id, articleMetaData }: Props) => {
             </TitleSubWrapper>
           </TitleWrapper>
           <MdTemplate html={targetMetaData.html} />
-          {/*<TwitterShareButton*/}
-          {/*  title={targetMetaData.title}*/}
-          {/*  path={targetMetaData.path}*/}
-          {/*/>*/}
-          {/*<GithubArticleButton path={targetMetaData.path} />*/}
+          <TwitterShareButton
+            title={targetMetaData.title}
+            path={targetMetaData.path}
+          />
+          <GithubArticleButton path={targetMetaData.path} />
         </Article>
       </React.Fragment>
     </PageTemplate>
