@@ -5,13 +5,13 @@ import { fontColor } from '../../src/styles/variable';
 import media from 'styled-media-query';
 import { PageTemplate } from '../../src/templates/PageTemplate';
 import { getArticleMetaData } from '../../src/libraries/articles';
-import { ArticleMetaData } from '../../types/article';
+import { MarkdownMetaData } from '../../types/article';
 import { LinkComponent } from '../../src/components/LinkComponent';
 import { Image } from '../../src/components/ImageComponent';
 
 interface Props {
   tagName: string;
-  articleMetaData: ArticleMetaData[];
+  articleMetaData: MarkdownMetaData[];
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (tagName == null || Array.isArray(tagName)) {
     return { props: { tagName: null, articleMetaData: [] } };
   }
-  const articleMetaData: ArticleMetaData[] = await getArticleMetaData();
+  const articleMetaData: MarkdownMetaData[] = await getArticleMetaData();
   return { props: { tagName, articleMetaData } };
 };
 
@@ -99,7 +99,7 @@ const DescriptionWrapper = styled.div`
 
 const getArticles = (
   tagName: string,
-  articleMetaData: ArticleMetaData[],
+  articleMetaData: MarkdownMetaData[],
 ): JSX.Element | null => {
   const articleList = articleMetaData
     .filter(data => data.tag.includes(tagName))

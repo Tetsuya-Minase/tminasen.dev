@@ -56,7 +56,7 @@ export const PageTemplate: React.FC<Props> = ({
   return (
     <BodyWrapper>
       <SEO title={title} meta={undefined} description={undefined} />
-      <HeaderComponent siteTitle="" />
+      <HeaderComponent siteTitle="水無瀬のプログラミング日記" />
       <ContentsWrapper>
         <Main>{children}</Main>
         <SubColumnComponent tagCount={tagCount} />

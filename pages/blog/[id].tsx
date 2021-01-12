@@ -2,7 +2,7 @@ import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { getArticleMetaData } from '../../src/libraries/articles';
 import { PageTemplate } from '../../src/templates/PageTemplate';
-import { ArticleMetaData } from '../../types/article';
+import { MarkdownMetaData } from '../../types/article';
 import { Optional } from '../../types/utility';
 import styled from 'styled-components';
 import { contentsBackgroundColor } from '../../src/styles/variable';
@@ -39,11 +39,11 @@ const ArticleDate = styled.time`
 
 interface Props {
   id: string;
-  articleMetaData: ArticleMetaData[];
+  articleMetaData: MarkdownMetaData[];
 }
 
 const articlePage = ({ id, articleMetaData }: Props) => {
-  const targetMetaData: Optional<ArticleMetaData> = articleMetaData.filter(
+  const targetMetaData: Optional<MarkdownMetaData> = articleMetaData.filter(
     data => data.path === `/blog/${id}`,
   )[0];
   if (targetMetaData == null) {
@@ -84,6 +84,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (id == null || Array.isArray(id)) {
     return { props: { id: null } };
   }
-  const articleMetaData: ArticleMetaData[] = await getArticleMetaData();
+  const articleMetaData: MarkdownMetaData[] = await getArticleMetaData();
   return { props: { id, articleMetaData } };
 };
