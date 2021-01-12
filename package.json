@@ -45,6 +45,6 @@
     "type-check": "tsc"
   },
   "resolutions": {
-    "sharp": "0.27.0"
+    "sharp": "0.26.2"
   }
 }
