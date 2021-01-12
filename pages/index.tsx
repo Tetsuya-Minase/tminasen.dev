@@ -18,8 +18,9 @@ const ArticleCardList = styled.ul`
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 384px);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  margin: 1rem 0;
   ${media.lessThan('small')`
     grid-template-columns: repeat(auto-fill, 320px);
   `}
