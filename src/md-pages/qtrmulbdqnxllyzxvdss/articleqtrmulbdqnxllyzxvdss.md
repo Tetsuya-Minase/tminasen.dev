@@ -1,9 +1,9 @@
 ---
 path: "/blog/qtrmulbdqnxllyzxvdss"
 date: "2021/01/20"
-title: "NestJS+Angular+Scully"
+title: "NestJS+Angular+Scullyを試してみる"
 tag: ["Angular", "NestJS", "Scully"]
-thumbnailImage: "/images/ssqtrmulbdqnxllyzxvdss.png"
+thumbnailImage: "/images/article/qtrmulbdqnxllyzxvdss/ssqtrmulbdqnxllyzxvdss.png"
 ---
 
 # 概要
