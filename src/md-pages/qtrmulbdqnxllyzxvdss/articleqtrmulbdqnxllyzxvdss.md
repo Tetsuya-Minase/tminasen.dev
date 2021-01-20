@@ -3,7 +3,7 @@ path: "/blog/qtrmulbdqnxllyzxvdss"
 date: "2021/01/20"
 title: "NestJS+Angular+Scully"
 tag: ["Angular", "NestJS", "Scully"]
-thumbnailImage: "/images/ssqtrmulbdqnxllyzxvdss"
+thumbnailImage: "/images/ssqtrmulbdqnxllyzxvdss.png"
 ---
 
 # 概要
