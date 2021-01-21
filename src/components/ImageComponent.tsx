@@ -1,5 +1,4 @@
 import React from 'react';
-import NextImage from 'next/image';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
@@ -27,7 +26,7 @@ interface ImageProps {
   };
 }
 
-const StyledImage = styled(NextImage)<ImageProps>`
+const StyledImage = styled.img<ImageProps>`
   border-radius: 10px 10px 0 0;
   width: ${({ styledWidth: { pc } }) => pc}px;
   height: ${({ styledHeight: { pc } }) => pc}px;
