@@ -2,6 +2,7 @@ import unified from 'unified';
 import remarkParse from 'remark-parse';
 import remark2rehype from 'remark-rehype';
 import html from 'rehype-stringify';
+import { getImageSize } from './image';
 const rehypePrism = require('@mapbox/rehype-prism');
 
 /**
@@ -26,12 +27,46 @@ export function removeTags(markdownText: string): string {
  * @param markdownText markdownテキスト
  * @returns html
  */
-export async function markdown2Html(markdownText: string): Promise<string> {
+export async function markdown2Html(markdownText: string): Promise<any> {
   const processedContent = await unified()
     .use(remarkParse)
     .use(remark2rehype)
     .use(rehypePrism)
     .use(html)
+    .use(setImageSize)
     .process(markdownText);
   return processedContent.toString();
+}
+
+/**
+ * imgタグにwidthとheightを指定する
+ */
+function setImageSize() {
+  return function(node: any, vfile: any, done: any) {
+    const children = node.children.map((child: any) => {
+
+      // 画像のサイズ指定
+      if (child.type === 'element' && child.tagName === 'p') {
+        const image = child.children.find((c: any) => c.type === 'element' && c.tagName === 'img');
+        if (!image) {
+          return child;
+        }
+        const imagePath = image.properties.src;
+        const imageSize = getImageSize(imagePath, 'article');
+        const replacedImage = {
+          ...image,
+          properties: {
+            ...image.properties,
+            width: imageSize.pc.width,
+            height: imageSize.pc.height,
+          }
+        };
+        // 変更したいので今あるやつは削除
+        child.children = [...child.children.filter((c:any) => c.type !== 'element' && c.tagName !== 'img'), replacedImage];
+      }
+      return child;
+    });
+    node.children = children;
+    done();
+  }
 }
