@@ -51,6 +51,10 @@ function setImageSize() {
         if (!image) {
           return child;
         }
+        // 画像中央寄せ
+        child.properties = {
+          style: 'display: flex; justify-content: center;'
+        }
         const imagePath = image.properties.src;
         const imageSize = getImageSize(imagePath, 'article');
         const replacedImage = {
