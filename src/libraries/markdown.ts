@@ -51,10 +51,6 @@ function setImageSize() {
         if (!image) {
           return child;
         }
-        // 画像中央寄せ
-        child.properties = {
-          style: 'display: flex; justify-content: center;'
-        }
         const imagePath = image.properties.src;
         const imageSize = getImageSize(imagePath, 'article');
         const replacedImage = {
@@ -66,8 +62,26 @@ function setImageSize() {
             sizes: `(max-width: 450px) ${imageSize.sp.width}px, ${imageSize.pc.width}`
           }
         };
-        // 変更したいので今あるやつは削除
-        child.children = [...child.children.filter((c:any) => c.type !== 'element' && c.tagName !== 'img'), replacedImage];
+        // webpタグ作成
+        const webpImage = {
+          type: 'element',
+          tagName: 'source',
+          properties: {
+            type: 'image/webp',
+            srcset: image.properties.src.replace(/\.png$/, '.webp')
+          }
+        };
+        // webpとimg使えるようにpicture tag追加
+        const pictureTag = {
+          type: 'element',
+          tagName: 'picture',
+          children: [webpImage, replacedImage],
+          properties: {
+            style: 'display: flex; justify-content: center;'
+          }
+        };
+        // webp込のデータ使うので今あるimgは削除
+        child.children = [...child.children.filter((c:any) => c.type !== 'element' && c.tagName !== 'img'), pictureTag];
       }
       return child;
     });
