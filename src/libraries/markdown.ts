@@ -61,8 +61,9 @@ function setImageSize() {
           ...image,
           properties: {
             ...image.properties,
-            width: imageSize.pc.width,
             height: imageSize.pc.height,
+            width: imageSize.pc.width,
+            sizes: `(max-width: 450px) ${imageSize.sp.width}px, ${imageSize.pc.width}`
           }
         };
         // 変更したいので今あるやつは削除
