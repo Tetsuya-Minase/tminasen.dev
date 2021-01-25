@@ -40,13 +40,19 @@ const StyledImage = styled.img<ImageProps>`
 
 export const Image: React.FC<Props> = ({ imageSrc, alt, width, height }) => {
   return (
-    <StyledImage
-      src={imageSrc}
-      alt={alt}
-      width={width.pc}
-      height={height.pc}
-      styledWidth={width}
-      styledHeight={height}
-    />
+    <picture>
+      <source
+        type="image/webp"
+        srcSet={imageSrc.replace(/\.png$/, '.webp')}
+      />
+      <StyledImage
+        src={imageSrc}
+        alt={alt}
+        width={width.pc}
+        height={height.pc}
+        styledWidth={width}
+        styledHeight={height}
+      />
+    </picture>
   );
 };
