@@ -12,6 +12,7 @@ import { ArticleMetaData, TagCount } from '../../types/article';
 interface Props {
   title: Maybe<string>;
   metaData: ArticleMetaData[];
+  isEnableViewPort: boolean;
   children: JSX.Element | JSX.Element[];
 }
 
