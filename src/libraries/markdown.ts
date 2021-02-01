@@ -52,6 +52,7 @@ function setImageSize() {
           return child;
         }
         const imagePath = image.properties.src;
+        const imageAlt = image.properties.alt;
         const imageSize = getImageSize(imagePath, 'article');
         // 既存の画像をamp-imgに置き換え
         const replacedImage = {
@@ -81,6 +82,7 @@ function setImageSize() {
           children: [replacedImage],
           properties: {
             src: image.properties.src.replace(/\.png$/, '.webp'),
+            alt: imageAlt,
             width: imageSize.pc.width,
             height: imageSize.pc.height,
             media: '(min-width: 451px)'
@@ -92,6 +94,7 @@ function setImageSize() {
           children: [replacedImageSp],
           properties: {
             src: image.properties.src.replace(/\.png$/, '.webp'),
+            alt: imageAlt,
             width: imageSize.sp.width,
             height: imageSize.sp.height,
             media: '(max-width: 450px)'
@@ -99,10 +102,6 @@ function setImageSize() {
         };
         // webp込のデータ使うので今あるimgは削除
         child.children = [...child.children.filter((c:any) => c.type !== 'element' && c.tagName !== 'img'), webpImage, webpImageSp];
-        child.properties = {
-          ...child.properties,
-          style: 'position: relative;'
-        };
       }
       return child;
     });
