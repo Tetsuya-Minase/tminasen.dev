@@ -7,8 +7,8 @@ import { Optional } from '../../types/utility';
 import styled from 'styled-components';
 import { contentsBackgroundColor } from '../../src/styles/variable';
 import media from 'styled-media-query';
-import { TwitterShareButton } from '../../src/components/TwitterShareButton';
-import { GithubArticleButton } from '../../src/components/GithubArticleButton';
+import { TwitterShareButton } from '../../src/components/atoms/TwitterShareButton';
+import { GithubArticleButton } from '../../src/components/atoms/GithubArticleButton';
 import { MdTemplate } from '../../src/templates/MdTemplate';
 
 export const config = { amp: true };

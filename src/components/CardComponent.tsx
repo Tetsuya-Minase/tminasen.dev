@@ -8,7 +8,7 @@ import {
   headerFontSize,
 } from '../styles/variable';
 import media from 'styled-media-query';
-import { Image } from './ImageComponent';
+import { Image } from './atoms/ImageComponent';
 import { ThumbnailImage } from '../../types/article';
 
 const Article = styled.article`
