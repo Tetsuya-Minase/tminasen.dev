@@ -5,7 +5,7 @@ import { FooterComponent } from '../components/FooterComponent';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { SubColumnComponent } from '../components/SubColumnComponent';
-import SEO from '../components/seo';
+import { HeadComponent } from '../components/HeadComponent';
 import { Maybe } from '../../types/utility';
 import { ArticleMetaData, TagCount } from '../../types/article';
 
@@ -57,7 +57,7 @@ export const PageTemplate: React.FC<Props> = ({
 
   return (
     <BodyWrapper>
-      <SEO title={title} meta={undefined} description={undefined} isEnableViewPort={isEnableViewPort} />
+      <HeadComponent title={title} meta={undefined} description={undefined} isEnableViewPort={isEnableViewPort} />
       <HeaderComponent siteTitle="水無瀬のプログラミング日記" />
       <ContentsWrapper>
         <Main>{children}</Main>

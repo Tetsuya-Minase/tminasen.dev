@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { PageTemplate } from '../templates/PageTemplate';
-import SEO from '../components/seo';
+import {HeadComponent} from '../components/HeadComponent';
 
 const NotFoundPage = () => (
   <PageTemplate title="404: Not found" metaData={[]} isEnableViewPort={true}>

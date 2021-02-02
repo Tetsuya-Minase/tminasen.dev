@@ -10,7 +10,7 @@ type Props = {
   isEnableViewPort: boolean;
 };
 
-const SEO: React.FC<Props> = ({ description, meta, title, isEnableViewPort }) => {
+export const HeadComponent: React.FC<Props> = ({ description, meta, title, isEnableViewPort }) => {
   const metaDescription = description || metaData.description;
   const metaTitle = title ? `${title} - ${metaData.title}` : metaData.title;
   return (
@@ -42,5 +42,3 @@ const SEO: React.FC<Props> = ({ description, meta, title, isEnableViewPort }) =>
     </Head>
   );
 };
-
-export default SEO;
