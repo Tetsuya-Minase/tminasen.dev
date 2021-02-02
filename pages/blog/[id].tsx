@@ -11,7 +11,7 @@ import { TwitterShareButton } from '../../src/components/TwitterShareButton';
 import { GithubArticleButton } from '../../src/components/GithubArticleButton';
 import { MdTemplate } from '../../src/templates/MdTemplate';
 
-export const config = {amp: true};
+export const config = { amp: true };
 
 const Article = styled.article``;
 const TitleWrapper = styled.div`
@@ -53,22 +53,20 @@ const articlePage = ({ id, articleMetaData }: Props) => {
   }
   return (
     <PageTemplate title={targetMetaData.title} metaData={articleMetaData} isEnableViewPort={false}>
-      <React.Fragment>
-        <Article>
-          <TitleWrapper>
-            <ArticleTitle>{targetMetaData.title}</ArticleTitle>
-            <TitleSubWrapper>
-              <ArticleDate>{targetMetaData.date}</ArticleDate>
-            </TitleSubWrapper>
-          </TitleWrapper>
-          <MdTemplate html={targetMetaData.html} />
-          <TwitterShareButton
-            title={targetMetaData.title}
-            path={targetMetaData.path}
-          />
-          <GithubArticleButton path={targetMetaData.path} />
-        </Article>
-      </React.Fragment>
+      <Article>
+        <TitleWrapper>
+          <ArticleTitle>{targetMetaData.title}</ArticleTitle>
+          <TitleSubWrapper>
+            <ArticleDate>{targetMetaData.date}</ArticleDate>
+          </TitleSubWrapper>
+        </TitleWrapper>
+        <MdTemplate html={targetMetaData.html} />
+        <TwitterShareButton
+          title={targetMetaData.title}
+          path={targetMetaData.path}
+        />
+        <GithubArticleButton path={targetMetaData.path} />
+      </Article>
     </PageTemplate>
   );
 };
