@@ -4,13 +4,13 @@ import { Maybe, Optional } from '../../types/utility';
 import { metaData } from '../constants/metaData';
 
 type Props = {
-  title: Maybe<string>;
-  meta: Optional<Array<{ name: string; content: string }>>;
-  description: Optional<string>;
   isEnableViewPort: boolean;
+  title: Maybe<string>;
+  additionalMetaData: Optional<Array<{ name: string; content: string }>>;
+  description: Optional<string>;
+  canonicalPath: Optional<string>;
 };
-
-export const HeadComponent: React.FC<Props> = ({ description, meta, title, isEnableViewPort }) => {
+export const HeadComponent: React.FC<Props> = ({ description, additionalMetaData, title, isEnableViewPort, canonicalPath }) => {
   const metaDescription = description || metaData.description;
   const metaTitle = title ? `${title} - ${metaData.title}` : metaData.title;
   return (
@@ -36,8 +36,9 @@ export const HeadComponent: React.FC<Props> = ({ description, meta, title, isEna
         name="twitter:image"
         content={`${metaData.domain}${metaData.ogpImage}`}
       />
-      {meta
-        ? meta.map(item => <meta name={item.name} content={item.content} />)
+      <link rel="canonical" href={`${metaData.domain}${canonicalPath ?? '/'}`}/>
+      {additionalMetaData
+        ? additionalMetaData.map(item => <meta name={item.name} content={item.content} />)
         : null}
     </Head>
   );

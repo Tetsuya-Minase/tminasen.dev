@@ -52,7 +52,7 @@ const articlePage = ({ id, articleMetaData }: Props) => {
     return null;
   }
   return (
-    <PageTemplate title={targetMetaData.title} metaData={articleMetaData} isEnableViewPort={false}>
+    <PageTemplate title={targetMetaData.title} metaData={articleMetaData} isEnableViewPort={false} canonicalPath={articleMetaData[0]?.path}>
       <Article>
         <TitleWrapper>
           <ArticleTitle>{targetMetaData.title}</ArticleTitle>
