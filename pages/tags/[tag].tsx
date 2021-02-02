@@ -127,6 +127,7 @@ const getArticles = (
             <DescriptionWrapper>
               <Image
                 imageSrc={data.thumbnailImage.url}
+                isRounded={false}
                 alt={data.title}
                 width={{ pc: 150, sp: 150 }}
                 height={{ pc: 100, sp: 100 }}
