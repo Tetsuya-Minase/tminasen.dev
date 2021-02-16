@@ -35,20 +35,30 @@ fn create_file(matches: ArgMatches) {
         }
     };
 
-    fs::create_dir_all(format!("src/md-pages/{}/images", file_name)).unwrap_or_else(|why| {
+    // 画像用のディレクトリ作成
+    fs::create_dir_all(format!("public/images/article/{}", file_name)).unwrap_or_else(|why| {
+        println!("create image dir error: {:?}", why.kind());
+    });
+    // 記事用のディレクトリ作成
+    fs::create_dir_all(format!("src/md-pages/{}", file_name)).unwrap_or_else(|why| {
         println!("! {:?}", why.kind());
     });
+
     let template_data = format!("---\n\
     path: \"/blog/{}\"\n\
     date: \"{}\"\n\
     title: \"\"\n\
     tag: [\"\"]\n\
-    thumbnailImage: \"./images/\"\n\
+    thumbnailImage: \"/images/\"\n\
     ---", file_name, Local::now().format("%Y/%m/%d").to_string());
 
     let markdown_path: String = format!("src/md-pages/{}/article{}.md", file_name, file_name);
     write(&template_data, &markdown_path).unwrap_or_else(|why| {
-        println!("! {:?}", why.kind());
+        println!("write markdown file error: {:?}", why.kind());
+    });
+    let image_path: String = format!("public/images/article/{}/.gitkeep", file_name);
+    write("", &image_path).unwrap_or_else(|why| {
+        println!("write image_path file error: {:?}", why.kind());
     });
 }
 
@@ -62,7 +72,7 @@ fn rename_images(matches: ArgMatches) -> io::Result<()> {
     };
 
     let mut index = 1;
-    fs::read_dir(format!("src/md-pages/{}/images", dir_name))?
+    fs::read_dir(format!("public/images/article/{}", dir_name))?
         .filter_map(|entry| {
             let entry = entry.ok()?;
             if entry.file_type().ok()?.is_file() {
@@ -72,8 +82,8 @@ fn rename_images(matches: ArgMatches) -> io::Result<()> {
             }
         })
         .for_each(move |file| {
-            let before_filename = format!("src/md-pages/{}/images/{}", dir_name, file);
-            let after_filename = format!("src/md-pages/{}/images/ss{}-{}.png", dir_name, dir_name, index);
+            let before_filename = format!("public/images/article/{}/{}", dir_name, file);
+            let after_filename = format!("public/images/article/{}/ss{}-{}.png", dir_name, dir_name, index);
             fs::rename(before_filename, after_filename);
             index += 1;
         });
