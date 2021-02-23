@@ -24,7 +24,7 @@ const ampAnalytics = () => {
   return <amp-analytics type="gtag" data-credentials="include"><script type="application/json" dangerouslySetInnerHTML={{ __html: json }}></script></amp-analytics>
 };
 
-export const HeadComponent: React.FC<Props> = ({ description, additionalMetaData, title, isEnableViewPort, isEnableAmpAnalytics, canonicalPath }) => {
+export const HeadComponent: React.FC<Props> = ({ description, additionalMetaData, title, isEnableViewPort, canonicalPath }) => {
   const metaDescription = description || metaData.description;
   const metaTitle = title ? `${title} - ${metaData.title}` : metaData.title;
   return (
