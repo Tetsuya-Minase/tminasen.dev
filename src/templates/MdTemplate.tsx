@@ -7,7 +7,7 @@ interface Props {
 }
 
 const MarkDownArticle = styled.div`
-  background-color: #ffffff;
+  background-color: #fff;
   font-size: 1.6rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
