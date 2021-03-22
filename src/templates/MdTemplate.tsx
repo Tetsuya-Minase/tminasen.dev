@@ -11,8 +11,8 @@ const MarkDownArticle = styled.div`
   font-size: 1.6rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
-  padding: 0.2rem 0.4rem;
-  
+  padding: 0.2rem 1.2rem;
+
   & > p,
   pre,
   ul,
@@ -24,10 +24,16 @@ const MarkDownArticle = styled.div`
   }
 
   /* タイトルの上下は文章部分よりも開ける */
-  & > h1,
-  h2,
-  h3 {
-    margin: 1.6rem 0;
+  & > h1 {
+    margin: 0.8rem 0 0;
+
+    &:nth-child(n + 2) {
+      margin: 2rem 0 0;
+    }
+  }
+  & > h2,
+  & > h3 {
+    margin: 2rem 0 0.4rem;
   }
 
   /* 見出しのStyle */
