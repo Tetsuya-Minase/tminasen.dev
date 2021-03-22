@@ -123,8 +123,14 @@ const MarkDownArticle = styled.div`
         margin: 1.2rem 0;
     }
     /* タイトルの上下は文章部分よりも開ける */
-    & > h1, h2, h3 {
-        margin: 1.6rem 0;
+    & > h1 {
+      margin: 0.4rem 0 0;
+      &:nth-child(n + 2) {
+        margin: 1.6rem 0 0;
+      }
+    }
+    & > h2, & > h3 {
+      margin: 1.6rem 0;
     }
 
     /* 見出しのStyle */
