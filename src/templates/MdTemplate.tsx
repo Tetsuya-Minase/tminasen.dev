@@ -55,26 +55,48 @@ const MarkDownArticle = styled.div`
     color: #ed0077;
   }
 
-  /* リストの先頭に点出す */
-  & ul > li:before {
-    content: '\\025b7';
-    margin-right: 0.4rem;
-  }
   & ul > li {
     margin-top: 0.4rem;
+    position: relative;
+
+    /* リストの先頭に点出す */
+    &:before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: solid 5px transparent;
+      border-left: solid 5px #333;
+      border-bottom: solid 5px transparent;
+      left: -8px;
+      top: calc(1.6rem / 2 - 5px);
+      margin-right: 0.4rem;
+    }
   }
   & li > p {
     display: inline-block;
   }
 
-  /* 入れ子対応 */
-  & li > ul > li:before {
-    content: '\\025CB';
-    margin-right: 0.4rem;
-  }
-
   & li > ul {
     margin: 0.4rem 0 0 2rem;
+  }
+
+  /* 入れ子対応 */
+  & li > ul > li {
+    position: relative;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border: solid 1px #333;
+      border-radius: 50%;
+      margin-right: 0.4rem;
+      top: calc(1.6rem / 2 - 2px);
+      left: -8px;
+    }
   }
 
   /* olの場合数字を出すようにする */
