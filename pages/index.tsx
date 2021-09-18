@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import media from 'styled-media-query';
 import { PageTemplate } from '../src/templates/PageTemplate';
 import { getArticleMetaData } from '../src/libraries/articles';
 import { ArticleMetaData } from '../types/article';
@@ -37,10 +36,10 @@ const IndexPage: React.FC<{ articleMetaData: ArticleMetaData[] }> = ({
 }) => {
   return (
     <PageTemplate
-      title="水無瀬のプログラミング日記"
-      metaData={articleMetaData}
+      title={null}
       isEnableViewPort={true}
       canonicalPath="/"
+      ogType="website"
     >
       <ArticleCardList>
         {articleMetaData.map(article => (

@@ -4,18 +4,17 @@ import { HeaderComponent } from '../components/HeaderComponent';
 import { FooterComponent } from '../components/FooterComponent';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { SubColumnComponent } from '../components/SubColumnComponent';
 import { HeadComponent } from '../components/HeadComponent';
 import { Maybe, Optional } from '../../types/utility';
-import { ArticleMetaData, TagCount } from '../../types/article';
 import { color } from '../styles/variable';
+import { OgType } from '../../types/mets';
 
 interface Props {
   title: Maybe<string>;
-  metaData: ArticleMetaData[];
   isEnableViewPort: boolean;
   canonicalPath: Optional<string>;
   children: JSX.Element | JSX.Element[];
+  ogType: OgType;
 }
 
 const BodyWrapper = styled.div`
@@ -44,21 +43,11 @@ const Main = styled.main`
 
 export const PageTemplate: React.FC<Props> = ({
   title,
-  metaData,
   children,
   isEnableViewPort,
   canonicalPath,
+  ogType,
 }) => {
-  const tagCount = metaData
-    .map(data => data.tag)
-    .reduce((pre, cur) => [...pre, ...cur], [])
-    .reduce((result: TagCount, tag, _, list) => {
-      if (result[tag] == undefined) {
-        result[tag] = list.filter(i => i === tag).length;
-      }
-      return result;
-    }, {});
-
   return (
     <BodyWrapper>
       <HeadComponent
@@ -67,11 +56,11 @@ export const PageTemplate: React.FC<Props> = ({
         description={undefined}
         isEnableViewPort={isEnableViewPort}
         canonicalPath={canonicalPath}
+        ogType={ogType}
       />
       <HeaderComponent siteTitle="水無瀬のプログラミング日記" />
       <ContentsWrapper>
         <Main>{children}</Main>
-        {/*<SubColumnComponent tagCount={tagCount} />*/}
       </ContentsWrapper>
       <FooterComponent />
     </BodyWrapper>

@@ -15,9 +15,13 @@ const Message = styled.p`
   margin-top: 8px;
 `;
 
-
 const NotFoundPage = () => (
-  <PageTemplate title="Not found" metaData={[]} isEnableViewPort={true} canonicalPath={undefined}>
+  <PageTemplate
+    title="Not found"
+    isEnableViewPort={true}
+    canonicalPath={undefined}
+    ogType="website"
+  >
     <React.Fragment>
       <Heading>NOT FOUND</Heading>
       <Message>そんなページないです🙈</Message>

@@ -54,9 +54,9 @@ const articlePage = ({ id, articleMetaData }: Props) => {
   return (
     <PageTemplate
       title={targetMetaData.title}
-      metaData={articleMetaData}
       isEnableViewPort={false}
       canonicalPath={articleMetaData[0]?.path}
+      ogType="article"
     >
       <Article>
         <TitleWrapper>
