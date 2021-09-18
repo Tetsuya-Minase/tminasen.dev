@@ -3,6 +3,7 @@ export const color: { [key: string]: string } = {
   textWhite: '#ffffff',
   bgWhite: '#ffffff',
   bgGray: '#f5f5f5',
+  headerBgBlue: '#448aff',
 } as const;
 export const fontSize = {
   h1: '2.4rem',

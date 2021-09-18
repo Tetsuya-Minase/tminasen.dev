@@ -31,9 +31,9 @@ const ContentsWrapper = styled.div`
   flex: 1 0 auto;
   display: flex;
   justify-content: space-between;
-  margin: 0 8px;
+  margin: 20px 8px 0;
   ${media.lessThan('small')`
-    margin: 0 4px;
+    margin: 20px 4px 0;
     justify-content: center;
   `}
 `;

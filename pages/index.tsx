@@ -13,7 +13,6 @@ const ArticleCardList = styled.ul`
   grid-template-columns: repeat(auto-fill, ${size.cardImageWidth});
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  margin: 10px 0;
 `;
 
 const ArticleCardItem: (param: {
