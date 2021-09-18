@@ -2,36 +2,33 @@ import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import { LinkComponent } from './atoms/LinkComponent';
-import { color } from '../styles/variable';
+import { color, fontSize } from '../styles/variable';
 
 type Props = {
   siteTitle: string;
 };
 
 const Header = styled.header`
+  display: flex;
   background: ${color.headerBgBlue};
-  //margin-bottom: 1.45rem;
+  max-height: 64px;
+  align-items: center;
+  justify-content: center;
 `;
 const Heading = styled.h1`
-  margin: 0;
-  font-size: 3.2rem;
+  font-size: ${fontSize.px32};
+  line-height: 1.5;
   ${media.lessThan('small')`
-    font-size: 2.4rem;
+    font-size: ${fontSize.px24};
   `}
-`;
-const Wrapper = styled.div`
-  max-width: 96rem;
-  padding: 1.5rem 1.1rem;
 `;
 
 export const HeaderComponent: React.FC<Props> = ({ siteTitle }) => (
   <Header>
-    <Wrapper>
-      <Heading>
-        <LinkComponent url="/" color="white">
-          {siteTitle}
-        </LinkComponent>
-      </Heading>
-    </Wrapper>
+    <Heading>
+      <LinkComponent url="/" color="white">
+        {siteTitle}
+      </LinkComponent>
+    </Heading>
   </Header>
 );
