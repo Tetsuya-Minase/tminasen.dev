@@ -4,6 +4,7 @@ export const color: { [key: string]: string } = {
   bgWhite: '#ffffff',
   bgGray: '#f5f5f5',
   headerBgBlue: '#448aff',
+  borderWhite: '#ffffff',
 } as const;
 export const fontSize = {
   h1: '2.4rem',

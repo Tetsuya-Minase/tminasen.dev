@@ -10,6 +10,7 @@ type Props = {
 
 const Header = styled.header`
   display: flex;
+  position: relative;
   background: ${color.headerBgBlue};
   max-height: 64px;
   align-items: center;
@@ -23,8 +24,34 @@ const Heading = styled.h1`
   `}
 `;
 
+const MenuButton = styled.button`
+  font-size: 0;
+  position: absolute;
+  width: 48px;
+  left: 28px;
+  border: none;
+  background-color: transparent;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    height: 8px;
+  }
+  &::before {
+    border-top: solid 4px ${color.borderWhite};
+  }
+  &::after {
+    border-top: solid 4px ${color.borderWhite};
+    border-bottom: solid 4px ${color.borderWhite};
+  }
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 export const HeaderComponent: React.FC<Props> = ({ siteTitle }) => (
   <Header>
+    <MenuButton>メニュー</MenuButton>
     <Heading>
       <LinkComponent url="/" color="white">
         {siteTitle}
