@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { DeepReadonly } from '../../types/utility';
-import { bodyFontSize, color, fontSize } from '../styles/variable';
+import { color, fontSize, size } from '../styles/variable';
 import { Image } from './atoms/ImageComponent';
 import { ThumbnailImage } from '../../types/article';
 
 const Article = styled.article`
   display: flex;
   flex-direction: column;
-  width: 336px;
-  max-height: 448px;
+  width: ${size.cardImageWidth};
+  max-height: ${size.cardMaxHeight};
   border-radius: 10px;
   background-color: ${color.bgWhite};
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);

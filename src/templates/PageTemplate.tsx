@@ -8,6 +8,7 @@ import { SubColumnComponent } from '../components/SubColumnComponent';
 import { HeadComponent } from '../components/HeadComponent';
 import { Maybe, Optional } from '../../types/utility';
 import { ArticleMetaData, TagCount } from '../../types/article';
+import { color } from '../styles/variable';
 
 interface Props {
   title: Maybe<string>;
@@ -18,26 +19,27 @@ interface Props {
 }
 
 const BodyWrapper = styled.div`
-  background-color: #f5f5f5;
+  background-color: ${color.bgGray};
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 1064px;
+  ${media.lessThan('small')`
+    min-width: 345px;
+  `}
 `;
 const ContentsWrapper = styled.div`
   flex: 1 0 auto;
   display: flex;
   justify-content: space-between;
-  margin: 0 3rem;
+  margin: 0 8px;
   ${media.lessThan('small')`
-    margin: 0 1rem;
+    margin: 0 4px;
     justify-content: center;
   `}
 `;
 const Main = styled.main`
-  width: 80%;
-  ${media.lessThan('small')`
-    width: 100%;
-  `}
+  width: 100%;
 `;
 
 export const PageTemplate: React.FC<Props> = ({
@@ -45,7 +47,7 @@ export const PageTemplate: React.FC<Props> = ({
   metaData,
   children,
   isEnableViewPort,
-  canonicalPath
+  canonicalPath,
 }) => {
   const tagCount = metaData
     .map(data => data.tag)
@@ -59,11 +61,17 @@ export const PageTemplate: React.FC<Props> = ({
 
   return (
     <BodyWrapper>
-      <HeadComponent title={title} additionalMetaData={undefined} description={undefined} isEnableViewPort={isEnableViewPort} canonicalPath={canonicalPath} />
+      <HeadComponent
+        title={title}
+        additionalMetaData={undefined}
+        description={undefined}
+        isEnableViewPort={isEnableViewPort}
+        canonicalPath={canonicalPath}
+      />
       <HeaderComponent siteTitle="水無瀬のプログラミング日記" />
       <ContentsWrapper>
         <Main>{children}</Main>
-        <SubColumnComponent tagCount={tagCount} />
+        {/*<SubColumnComponent tagCount={tagCount} />*/}
       </ContentsWrapper>
       <FooterComponent />
     </BodyWrapper>

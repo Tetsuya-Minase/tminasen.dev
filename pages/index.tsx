@@ -5,18 +5,16 @@ import { PageTemplate } from '../src/templates/PageTemplate';
 import { getArticleMetaData } from '../src/libraries/articles';
 import { ArticleMetaData } from '../types/article';
 import { CardComponent } from '../src/components/CardComponent';
+import { fontSize, size } from '../src/styles/variable';
 
 const ArticleCardList = styled.ul`
-  font-size: 1.6rem;
+  font-size: ${fontSize.px16};
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, 384px);
-  grid-column-gap: 2rem;
-  grid-row-gap: 2rem;
-  margin: 1rem 0;
-  ${media.lessThan('small')`
-    grid-template-columns: repeat(auto-fill, 320px);
-  `}
+  grid-template-columns: repeat(auto-fill, ${size.cardImageWidth});
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  margin: 10px 0;
 `;
 
 const ArticleCardItem: (param: {
