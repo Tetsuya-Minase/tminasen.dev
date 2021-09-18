@@ -22,12 +22,12 @@ const Article = styled.article`
     width: 32rem;
   `}
 `;
-const Title = styled.div`
+const Title = styled.h1`
   font-size: ${headerFontSize.h1};
   text-align: center;
   margin-top: 8px;
 `;
-const Description = styled.div`
+const Description = styled.p`
   font-size: ${bodyFontSize.medium};
   margin-top: 8px;
   padding: 4px;
