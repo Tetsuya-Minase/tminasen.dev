@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
-import { contentsBackgroundColor } from '../styles/variable';
+import { color } from '../styles/variable';
 import { TagCount } from '../../types/article';
 import { LinkComponent } from './atoms/LinkComponent';
 import { convertTagList } from '../libraries/articles';
@@ -20,7 +20,7 @@ const Aside = styled.aside`
   flex-direction: column;
   width: 15%;
   align-items: center;
-  background-color: ${contentsBackgroundColor.white};
+  background-color: ${color.backgroundWhite};
   border-radius: 1rem;
   margin-bottom: 1rem;
   padding: 0.2rem 0.4rem;

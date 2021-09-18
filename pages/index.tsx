@@ -6,13 +6,6 @@ import { getArticleMetaData } from '../src/libraries/articles';
 import { ArticleMetaData } from '../types/article';
 import { CardComponent } from '../src/components/CardComponent';
 
-const Title = styled.h1`
-  font-size: 2.4rem;
-  font-weight: bold;
-  ${media.lessThan('small')`
-    font-size: 2rem;
-  `}
-`;
 const ArticleCardList = styled.ul`
   font-size: 1.6rem;
   display: grid;
@@ -25,35 +18,37 @@ const ArticleCardList = styled.ul`
     grid-template-columns: repeat(auto-fill, 320px);
   `}
 `;
-const CardWrapper = styled.li``;
-const Article = styled.article``;
 
-const createArticle = (articleData: ArticleMetaData[]) => {
-  const linkItems = articleData.map(item => {
-    return (
-      <CardWrapper key={`${item.title}:${item.path}`}>
-        <CardComponent
-          title={item.title}
-          path={item.path}
-          image={item.thumbnailImage}
-          excerpt={item.description}
-        />
-      </CardWrapper>
-    );
-  });
-  return <ArticleCardList>{linkItems}</ArticleCardList>;
+const ArticleCardItem: (param: {
+  articleData: ArticleMetaData;
+}) => JSX.Element = ({ articleData }) => {
+  return (
+    <li key={`${articleData.title}:${articleData.path}`}>
+      <CardComponent
+        title={articleData.title}
+        path={articleData.path}
+        image={articleData.thumbnailImage}
+        excerpt={articleData.description}
+      />
+    </li>
+  );
 };
 
 const IndexPage: React.FC<{ articleMetaData: ArticleMetaData[] }> = ({
   articleMetaData,
 }) => {
-  const articles = createArticle(articleMetaData);
   return (
-    <PageTemplate title="水無瀬のプログラミング日記" metaData={articleMetaData} isEnableViewPort={true} canonicalPath="/">
-      <Article>
-        <Title>記事一覧</Title>
-        {articles}
-      </Article>
+    <PageTemplate
+      title="水無瀬のプログラミング日記"
+      metaData={articleMetaData}
+      isEnableViewPort={true}
+      canonicalPath="/"
+    >
+      <ArticleCardList>
+        {articleMetaData.map(article => (
+          <ArticleCardItem articleData={article} />
+        ))}
+      </ArticleCardList>
     </PageTemplate>
   );
 };

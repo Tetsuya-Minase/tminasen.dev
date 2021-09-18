@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import styled from 'styled-components';
-import { fontColor } from '../../src/styles/variable';
+import { color } from '../../src/styles/variable';
 import media from 'styled-media-query';
 import { PageTemplate } from '../../src/templates/PageTemplate';
 import { getArticleMetaData } from '../../src/libraries/articles';
@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const PageTitle = styled.h1`
-  color: ${fontColor.black};
+  color: ${color.textBlack};
   font-size: 2.8rem;
   margin-bottom: 1.5rem;
   ${media.lessThan('small')`
@@ -50,7 +50,7 @@ const ArticleListItem = styled.li`
   margin-bottom: 2rem;
 `;
 const ArticleWrapper = styled.section`
-  color: ${fontColor.black};
+  color: ${color.textBlack};
 `;
 const ArticleTitle = styled.h1`
   font-size: 2.4rem;
@@ -151,7 +151,12 @@ const getArticles = (
 
 const tagPage: React.FC<Props> = ({ tagName, articleMetaData }) => {
   return (
-    <PageTemplate title={`${tagName}の記事一覧`} metaData={articleMetaData} isEnableViewPort={true} canonicalPath={`/tags/${tagName}`}>
+    <PageTemplate
+      title={`${tagName}の記事一覧`}
+      metaData={articleMetaData}
+      isEnableViewPort={true}
+      canonicalPath={`/tags/${tagName}`}
+    >
       <article>
         <PageTitle>{tagName}の記事一覧</PageTitle>
         {getArticles(tagName, articleMetaData)}

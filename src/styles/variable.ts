@@ -1,13 +1,9 @@
-export const fontColor = {
-  black: '#333333',
-  white: '#ffffff',
+export const color = {
+  textBlack: '#333333',
+  textWhite: '#ffffff',
+  backgroundWhite: '#ffffff',
 } as const;
-export const headerFontSize = {
+export const fontSize = {
   h1: '2.4rem',
-} as const;
-export const bodyFontSize = {
-  medium: '1.6rem',
-} as const;
-export const contentsBackgroundColor = {
-  white: '#ffffff',
+  px16: '1.6rem',
 } as const;

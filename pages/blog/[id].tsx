@@ -5,7 +5,7 @@ import { PageTemplate } from '../../src/templates/PageTemplate';
 import { ArticleMetaData } from '../../types/article';
 import { Optional } from '../../types/utility';
 import styled from 'styled-components';
-import { contentsBackgroundColor } from '../../src/styles/variable';
+import { color } from '../../src/styles/variable';
 import media from 'styled-media-query';
 import { TwitterShareButton } from '../../src/components/atoms/TwitterShareButton';
 import { GithubArticleButton } from '../../src/components/atoms/GithubArticleButton';
@@ -15,7 +15,7 @@ export const config = { amp: true };
 
 const Article = styled.article``;
 const TitleWrapper = styled.div`
-  background-color: ${contentsBackgroundColor.white};
+  background-color: ${color.backgroundWhite};
   border-radius: 1rem;
   padding: 0.2rem 0.4rem;
   margin: 0 0 1.6rem 0;
@@ -52,7 +52,12 @@ const articlePage = ({ id, articleMetaData }: Props) => {
     return null;
   }
   return (
-    <PageTemplate title={targetMetaData.title} metaData={articleMetaData} isEnableViewPort={false} canonicalPath={articleMetaData[0]?.path}>
+    <PageTemplate
+      title={targetMetaData.title}
+      metaData={articleMetaData}
+      isEnableViewPort={false}
+      canonicalPath={articleMetaData[0]?.path}
+    >
       <Article>
         <TitleWrapper>
           <ArticleTitle>{targetMetaData.title}</ArticleTitle>
