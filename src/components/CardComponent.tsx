@@ -11,7 +11,7 @@ const Article = styled.article`
   width: 336px;
   max-height: 448px;
   border-radius: 10px;
-  background-color: ${color.backgroundWhite};
+  background-color: ${color.bgWhite};
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 `;
 const Title = styled.h1`

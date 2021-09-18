@@ -15,7 +15,7 @@ export const config = { amp: true };
 
 const Article = styled.article``;
 const TitleWrapper = styled.div`
-  background-color: ${color.backgroundWhite};
+  background-color: ${color.bgWhite};
   border-radius: 1rem;
   padding: 0.2rem 0.4rem;
   margin: 0 0 1.6rem 0;

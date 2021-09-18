@@ -1,7 +1,7 @@
 export const color = {
   textBlack: '#333333',
   textWhite: '#ffffff',
-  backgroundWhite: '#ffffff',
+  bgWhite: '#ffffff',
 } as const;
 export const fontSize = {
   h1: '2.4rem',

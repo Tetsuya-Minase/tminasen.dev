@@ -20,7 +20,7 @@ const Aside = styled.aside`
   flex-direction: column;
   width: 15%;
   align-items: center;
-  background-color: ${color.backgroundWhite};
+  background-color: ${color.bgWhite};
   border-radius: 1rem;
   margin-bottom: 1rem;
   padding: 0.2rem 0.4rem;
