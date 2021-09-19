@@ -40,6 +40,7 @@ const TagListPage: React.FC<Props> = ({ tagList }) => {
     <PageTemplate
       title={`タグ一覧`}
       isEnableViewPort={true}
+      isHiddenMenu={false}
       canonicalPath={`/tags`}
       ogType="website"
     >

@@ -90,6 +90,7 @@ const articlePage = ({ id, articleMetaData }: Props) => {
     <PageTemplate
       title={targetMetaData.title}
       isEnableViewPort={false}
+      isHiddenMenu={true}
       canonicalPath={targetMetaData.path}
       ogType="article"
     >

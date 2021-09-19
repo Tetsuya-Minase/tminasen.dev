@@ -6,6 +6,8 @@ import { color, fontSize, layer } from '../styles/variable';
 
 type Props = {
   siteTitle: string;
+  // TODO: ampで対応する方法思いついたらやめる
+  isHiddenMenu: boolean;
   showModal: boolean;
   openModal: () => void;
   closeModal: () => void;
@@ -120,13 +122,16 @@ const LinkText = styled.span`
 
 export const HeaderComponent: React.FC<Props> = ({
   siteTitle,
+  isHiddenMenu,
   showModal,
   openModal,
   closeModal,
 }) => {
   return (
     <Header>
-      <MenuButton onClick={openModal}>メニュー</MenuButton>
+      {isHiddenMenu ? null : (
+        <MenuButton onClick={openModal}>メニュー</MenuButton>
+      )}
       <Heading>
         <LinkComponent url="/" color="white">
           {siteTitle}

@@ -37,6 +37,7 @@ const IndexPage: React.FC<{ articleMetaData: ArticleMetaData[] }> = ({
     <PageTemplate
       title={null}
       isEnableViewPort={true}
+      isHiddenMenu={false}
       canonicalPath="/"
       ogType="website"
     >

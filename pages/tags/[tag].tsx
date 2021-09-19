@@ -135,6 +135,7 @@ const tagPage: React.FC<Props> = ({ tagName, articleMetaData }) => {
     <PageTemplate
       title={`${tagName}の記事一覧`}
       isEnableViewPort={true}
+      isHiddenMenu={false}
       canonicalPath={`/tags/${tagName}`}
       ogType="website"
     >
