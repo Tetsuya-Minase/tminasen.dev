@@ -6,9 +6,11 @@ export const color: { [key: string]: string } = {
   bgOverlay: 'rgba(0, 0, 0, 0.2)',
   headerBgBlue: '#448aff',
   borderWhite: '#ffffff',
+  borderBlack: '#000000',
 } as const;
 export const fontSize = {
   h1: '2.4rem',
+  px14: '1.4rem',
   px16: '1.6rem',
   px20: '2rem',
   px24: '2.4rem',

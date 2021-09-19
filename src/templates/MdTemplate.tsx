@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
+import { color, fontSize } from '../styles/variable';
 
 interface Props {
   html: string;
 }
 
 const MarkDownArticle = styled.div`
-  background-color: #fff;
-  font-size: 1.6rem;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-  padding: 0.2rem 1.2rem;
+  background-color: ${color.bgWhite};
+  margin-top: 32px;
+  font-size: ${fontSize.px16};
+  border-radius: 4px;
+  padding: 8px 16px;
 
   & > p,
   pre,
@@ -115,9 +116,11 @@ const MarkDownArticle = styled.div`
   }
 
   ${media.lessThan('small')`
-    & {
-        font-size: 1.4rem;
-    }
+    margin-top: 20px;
+    font-size: ${fontSize.px16};
+    border-radius: 4px;
+    padding: 8px 12px;
+  
     /* 要素ごとにスペースを開ける */
     & > p, pre, ul, ol {
         margin: 1.2rem 0;
