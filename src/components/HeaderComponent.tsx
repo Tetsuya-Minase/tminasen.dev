@@ -23,6 +23,7 @@ const Header = styled.header`
 `;
 const Heading = styled.h1`
   font-size: ${fontSize.px32};
+  font-weight: bold;
   line-height: 1.5;
   ${media.lessThan('small')`
     font-size: ${fontSize.px24};
