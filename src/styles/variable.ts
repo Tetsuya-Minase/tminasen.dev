@@ -10,6 +10,7 @@ export const color: { [key: string]: string } = {
 export const fontSize = {
   h1: '2.4rem',
   px16: '1.6rem',
+  px20: '2rem',
   px24: '2.4rem',
   px28: '2.8rem',
   px32: '3.2rem',

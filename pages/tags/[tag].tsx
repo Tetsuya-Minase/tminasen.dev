@@ -14,25 +14,6 @@ interface Props {
   articleMetaData: ArticleMetaData[];
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const metaData = await getArticleMetaData();
-  const tagList: string[] = metaData
-    .map(data => data.tag)
-    .reduce((pre, cur) => [...pre, ...cur], []);
-  const paths: string[] = Array.from(new Set(tagList)).map(
-    tag => `/tags/${tag}`,
-  );
-  return { paths, fallback: false };
-};
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const tagName = params?.tag;
-  if (tagName == null || Array.isArray(tagName)) {
-    return { props: { tagName: null, articleMetaData: [] } };
-  }
-  const articleMetaData: ArticleMetaData[] = await getArticleMetaData();
-  return { props: { tagName, articleMetaData } };
-};
-
 const PageTitle = styled.h1`
   color: ${color.textBlack};
   font-size: 2.8rem;
@@ -165,3 +146,22 @@ const tagPage: React.FC<Props> = ({ tagName, articleMetaData }) => {
   );
 };
 export default tagPage;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const metaData = await getArticleMetaData();
+  const tagList: string[] = metaData
+    .map(data => data.tag)
+    .reduce((pre, cur) => [...pre, ...cur], []);
+  const paths: string[] = Array.from(new Set(tagList)).map(
+    tag => `/tags/${tag}`,
+  );
+  return { paths, fallback: false };
+};
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const tagName = params?.tag;
+  if (tagName == null || Array.isArray(tagName)) {
+    return { props: { tagName: null, articleMetaData: [] } };
+  }
+  const articleMetaData: ArticleMetaData[] = await getArticleMetaData();
+  return { props: { tagName, articleMetaData } };
+};

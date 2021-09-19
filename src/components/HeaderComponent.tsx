@@ -113,6 +113,9 @@ const LinkItem = styled.li`
 const LinkText = styled.span`
   font-size: ${fontSize.px32};
   font-weight: 700;
+  ${media.lessThan('small')`
+    font-size: ${fontSize.px24};
+  `}
 `;
 
 export const HeaderComponent: React.FC<Props> = ({
