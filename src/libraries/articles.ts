@@ -50,7 +50,6 @@ export function getTagCount(articleMetaData: ArticleMetaData[]): TagCount {
     articleMetaData
       .map(data => data.tag)
       .flat()
-      // .reduce((pre, cur) => [...pre, ...cur], [])
       .reduce((result: TagCount, tag, _, list) => {
         if (result[tag] == undefined) {
           result[tag] = list.filter(i => i === tag).length;
@@ -82,9 +81,7 @@ export function convertTagList(tagCount: TagCount): Tag[] {
 }
 
 async function convertArticleMetaData(
-  data: {
-    [key: string]: any;
-  },
+  data: Record<string, any>,
   context: string,
 ): Promise<ArticleMetaData | undefined> {
   if (!isArticleMetaData(data)) {
@@ -133,8 +130,4 @@ function sortArticleDescDate(a: ArticleMetaData, b: ArticleMetaData) {
  */
 function sortTagDescArticleCount(a: Tag, b: Tag) {
   return b.articleCount - a.articleCount;
-}
-
-function flatten<T>(deepList: T[][]): T[] {
-  return deepList.reduce((pre, cur) => [...pre, ...cur], []);
 }
