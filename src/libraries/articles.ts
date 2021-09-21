@@ -25,6 +25,9 @@ export async function getArticleMetaData(): Promise<ArticleMetaData[]> {
     const file: string | undefined = files.filter(file =>
       file.endsWith('.md'),
     )[0];
+    if (file === undefined) {
+      throw new Error(`file is required. articleDirPath: ${articleDirPath}`);
+    }
     const fileDetail = fs.readFileSync(
       path.join(mdPagePath, articleDir, file),
       'utf8',
@@ -46,17 +49,15 @@ export async function getArticleMetaData(): Promise<ArticleMetaData[]> {
  * @param articleMetaData
  */
 export function getTagCount(articleMetaData: ArticleMetaData[]): TagCount {
-  return (
-    articleMetaData
-      .map(data => data.tag)
-      .flat()
-      .reduce((result: TagCount, tag, _, list) => {
-        if (result[tag] == undefined) {
-          result[tag] = list.filter(i => i === tag).length;
-        }
-        return result;
-      }, {})
-  );
+  return articleMetaData
+    .map(data => data.tag)
+    .flat()
+    .reduce((result: TagCount, tag, _, list) => {
+      if (result[tag] == undefined) {
+        result[tag] = list.filter(i => i === tag).length;
+      }
+      return result;
+    }, {});
 }
 
 /**
