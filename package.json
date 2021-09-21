@@ -23,7 +23,6 @@
     "remark-rehype": "^8.0.0",
     "styled-components": "^5.1.1",
     "styled-media-query": "^2.1.2",
-    "ts-node": "^10.2.1",
     "typescript": "4.0",
     "unified": "^9.2.0"
   },
@@ -35,11 +34,12 @@
     "@types/styled-components": "^5.1.2",
     "feed": "^4.2.2",
     "prettier": "2.0.5",
-    "raw-loader": "^4.0.2"
+    "raw-loader": "^4.0.2",
+    "ts-node": "^10.2.1"
   },
   "license": "MIT",
   "scripts": {
-    "build": "npm run generate:rss && next build && next export",
+    "build": "next build && next export",
     "dev": "next",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "next start",
