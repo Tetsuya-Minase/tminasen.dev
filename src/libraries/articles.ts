@@ -8,7 +8,7 @@ import {
   TagCount,
 } from '../../types/article';
 import { markdown2Html, removeTags } from './markdown';
-import { parseStringDate } from './data';
+import { parseStringDate } from './date';
 import { getImageSize } from './image';
 
 /**
