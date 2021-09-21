@@ -39,12 +39,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "next build && next export",
+    "build": "npm run generate:rss && next build && next export",
     "dev": "next",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "next start",
     "create:md": "./scripts/article-scripts/target/release/article-scripts",
     "rename:files": "./scripts/target/release/article-scripts --rename ",
+    "generate:rss": "ts-node --project ./scripts/tsconfig.scripts.json ./scripts/generate-rss/GenerateRss.ts",
     "type-check": "tsc"
   },
   "resolutions": {
