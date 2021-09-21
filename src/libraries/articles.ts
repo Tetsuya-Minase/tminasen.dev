@@ -12,8 +12,8 @@ import { parseStringDate } from './data';
 import { getImageSize } from './image';
 
 /**
- * 記事の概要表示に必要なデータを取得する
- * @return {@see MarkdownMetaData}
+ * 記事の概要表示に必要なデータを更新日降順で取得する
+ * @return @see {@link MarkdownMetaData}
  */
 export async function getArticleMetaData(): Promise<ArticleMetaData[]> {
   const mdPagePath: string = path.join(process.cwd(), 'src/md-pages');
