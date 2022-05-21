@@ -19,7 +19,7 @@ const ArticleCardItem: (param: {
   articleData: ArticleMetaData;
 }) => JSX.Element = ({ articleData }) => {
   return (
-    <li key={`${articleData.title}:${articleData.path}`}>
+    <li>
       <CardComponent
         title={articleData.title}
         path={articleData.path}
@@ -43,7 +43,7 @@ const IndexPage: React.FC<{ articleMetaData: ArticleMetaData[] }> = ({
     >
       <ArticleCardList>
         {articleMetaData.map(article => (
-          <ArticleCardItem articleData={article} />
+          <ArticleCardItem articleData={article} key={article.path} />
         ))}
       </ArticleCardList>
     </PageTemplate>
