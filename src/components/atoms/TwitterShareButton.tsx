@@ -17,7 +17,7 @@ const TweetButton = styled.a`
   display: block;
   height: 4rem;
   width: 4rem;
-  position:relative;
+  position: relative;
 
   ${media.lessThan('small')`
     height: 3rem;
