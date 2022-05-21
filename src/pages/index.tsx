@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PageTemplate } from '../src/templates/PageTemplate';
-import { getArticleMetaData } from '../src/libraries/articles';
-import { ArticleMetaData } from '../types/article';
-import { CardComponent } from '../src/components/CardComponent';
-import { fontSize, size } from '../src/styles/variable';
+import { PageTemplate } from '../templates/PageTemplate';
+import { getArticleMetaData } from '../libraries/articles';
+import { ArticleMetaData } from '../../types/article';
+import { CardComponent } from '../components/CardComponent';
+import { fontSize, size } from '../styles/variable';
 
 const ArticleCardList = styled.ul`
   font-size: ${fontSize.px16};

@@ -1,9 +1,9 @@
 import Document, { DocumentContext, Html, Main, Head, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 // @ts-ignore
-import css from '!!raw-loader!../src/index.css';
+import css from '!!raw-loader!../index.css';
 // @ts-ignore
-import prismCss from "!!raw-loader!../src/styles/highlight/prism.css";
+import prismCss from "!!raw-loader!../styles/highlight/prism.css";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
