@@ -1,12 +1,14 @@
-import Document, { DocumentContext, Html, Main, Head, NextScript } from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import React from 'react';
+import Document, {DocumentContext, Html, Main, Head, NextScript} from 'next/document';
+import {ServerStyleSheet} from 'styled-components';
 // @ts-ignore
 import css from '!!raw-loader!../index.css';
 // @ts-ignore
 import prismCss from "!!raw-loader!../styles/highlight/prism.css";
+import {DocumentInitialProps} from "next/dist/shared/lib/utils";
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
+  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
@@ -19,30 +21,29 @@ export default class MyDocument extends Document {
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            <style
-              key="custom"
-              dangerouslySetInnerHTML={{
-                __html: `${css}\n${prismCss}`,
-              }}
-            />
-            {sheet.getStyleElement()}
-          </>
-        ),
+        styles: [
+          ...React.Children.toArray(initialProps.styles),
+          <style
+            key="custom"
+            dangerouslySetInnerHTML={{
+              __html: `${css}\n${prismCss}`,
+            }}
+          />,
+          ...sheet.getStyleElement()
+        ]
       };
     } finally {
       sheet.seal();
     }
   }
+
   render() {
     return (
       <Html lang="ja">
-        <Head />
+        <Head/>
         <body>
-          <Main />
-          <NextScript />
+        <Main/>
+        <NextScript/>
         </body>
       </Html>
     );
