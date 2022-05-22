@@ -31,9 +31,9 @@ const Article = styled.article`
 const TitleWrapper = styled.div`
   background-color: ${color.bgWhite};
   border-radius: 4px;
-  padding: 0 16px;
+  padding: 4px 16px;
   ${media.lessThan('small')`
-    padding: 0 12px;
+    padding: 4px 12px;
   `}
 `;
 const ArticleTitle = styled.h1`
@@ -47,7 +47,7 @@ const ArticleTitle = styled.h1`
 const ArticleDate = styled.time`
   display: block;
   margin-top: 4px;
-  font-size: ${fontSize.px14};
+  font-size: ${fontSize.px16};
   line-height: 1.5;
 `;
 const TagList = styled.ul`
@@ -58,9 +58,9 @@ const TagList = styled.ul`
 const TagListItem = styled.li`
   border: solid 1px ${color.borderBlack};
   border-radius: 30px;
-  font-size: ${fontSize.px14};
+  font-size: ${fontSize.px16};
   line-height: 1.5;
-  padding: 0 4px;
+  padding: 0 8px;
   & + & {
     margin-left: 4px;
   }
