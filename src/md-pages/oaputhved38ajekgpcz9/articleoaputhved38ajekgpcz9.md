@@ -3,8 +3,8 @@ path: "/blog/oaputhved38ajekgpcz9"
 date: "2020/10/12"
 title: "Rust事始め"
 tag: ["Rust"]
-thumbnailImage: "/images/article/oaputhved38ajekgpcz9/ogp.png"
-headerImage: "/images/ogp.png"
+ogpImage: "/images/article/oaputhved38ajekgpcz9/ogp.png"
+thumbnailImage: "/images/ogp.png"
 ---
 
 # はじめに

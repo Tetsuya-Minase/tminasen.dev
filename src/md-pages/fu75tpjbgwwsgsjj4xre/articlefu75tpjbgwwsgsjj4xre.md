@@ -3,8 +3,8 @@ path: "/blog/fu75tpjbgwwsgsjj4xre"
 date: "2020/10/15"
 title: "ActixWeb+Angularを試してみる"
 tag: ["Rust", "Angular"]
-thumbnailImage: "/images/article/fu75tpjbgwwsgsjj4xre/ogp.png"
-headerImage: "/images/article/fu75tpjbgwwsgsjj4xre/ssfu75tpjbgwwsgsjj4xre-3.png"
+ogpImage: "/images/article/fu75tpjbgwwsgsjj4xre/ogp.png"
+thumbnailImage: "/images/article/fu75tpjbgwwsgsjj4xre/ssfu75tpjbgwwsgsjj4xre-3.png"
 ---
 
 # はじめに
@@ -58,29 +58,29 @@ use actix_web::{get, web, App, HttpResponse, HttpServer, Responder};
 // こう書くことで、`/`にGetのリクエストが来たときのハンドリングができる
 #[get("/")]
 async fn greet() -> impl Responder {
-    // ステータス200(OK)で、bodyに`Hello world!`を入れて返す
-    HttpResponse::Ok().body("Hello world!")
+  // ステータス200(OK)で、bodyに`Hello world!`を入れて返す
+  HttpResponse::Ok().body("Hello world!")
 }
 
 // `#[get(...)]`を指定しないと使うときに指定するときもできる
 async fn manual_greet() -> impl Responder {
-    HttpResponse::Ok().body("Hey! Hey!! Hey!!!")
+  HttpResponse::Ok().body("Hey! Hey!! Hey!!!")
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
-        App::new()
+  HttpServer::new(|| {
+    App::new()
             // マクロでroutingを指定した関数はserviceに渡せばOK
             .service(greet)
             // routingを指定していない関数には、ここで指定することができる
             // ↓であれば、`/hey`にgetのリクエストが来たとき
             .route("/hey", web::get().to(manual_greet))
-    })
-        // ローカルホストのport8080で起動
-        .bind("127.0.0.1:8080")?
-        .run()
-        .await
+  })
+          // ローカルホストのport8080で起動
+          .bind("127.0.0.1:8080")?
+          .run()
+          .await
 }
 ```
 
@@ -117,18 +117,18 @@ use actix_files;
 use actix_web::{web, App, HttpResponse, HttpServer, Responder, Result};
 
 async fn index() -> Result<actix_files::NamedFile> {
-    Ok(actix_files::NamedFile::open("target/public/index.html")?)
+  Ok(actix_files::NamedFile::open("target/public/index.html")?)
 }
 
 // `#[get(...)]`を指定しないと使うときに指定するときもできる
 async fn manual_greet() -> impl Responder {
-    HttpResponse::Ok().body("Hey! Hey!! Hey!!!")
+  HttpResponse::Ok().body("Hey! Hey!! Hey!!!")
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
-        App::new()
+  HttpServer::new(|| {
+    App::new()
             // ルートにアクセスされたときは`index.html`を返す
             .route("/", web::get().to(index))
             // routingを指定していない関数には、ここで指定することができる
@@ -138,12 +138,12 @@ async fn main() -> std::io::Result<()> {
             .service(actix_files::Files::new("", "target/public"))
             // どこにもマッチしなければ`index.html`を返す
             .default_service(
-                web::route().to(index)
+              web::route().to(index)
             )
-    })
-        .bind("127.0.0.1:8080")?
-        .run()
-        .await
+  })
+          .bind("127.0.0.1:8080")?
+          .run()
+          .await
 }
 ```
 
@@ -304,33 +304,33 @@ serde_json = "1.0.59"
 
 ```rust
 async fn first() -> impl Responder {
-    // 文字列のリストを作成
-    let first_data: Vec<String> = vec!["hoge".to_owned(), "huga".to_owned(), "piyo".to_owned()];
-    // リストから文字列へ変換
-    let first_data_response = serde_json::to_string(&first_data).unwrap();
-    // `ContentType: application/json`で返却
-    HttpResponse::Ok()
-        .content_type("application/json")
-        .body(first_data_response)
+  // 文字列のリストを作成
+  let first_data: Vec<String> = vec!["hoge".to_owned(), "huga".to_owned(), "piyo".to_owned()];
+  // リストから文字列へ変換
+  let first_data_response = serde_json::to_string(&first_data).unwrap();
+  // `ContentType: application/json`で返却
+  HttpResponse::Ok()
+          .content_type("application/json")
+          .body(first_data_response)
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
-        App::new()
+  HttpServer::new(|| {
+    App::new()
             .route("/", web::get().to(index))
             .service(
-                // scopeを指定することで以降指定するrouteは`/api`が先頭についているのと同義になる
-                web::scope("/api")
-                    // ここは`/api/first`にリクエストが来たとき
-                    .route("/first", web::get().to(first))
+              // scopeを指定することで以降指定するrouteは`/api`が先頭についているのと同義になる
+              web::scope("/api")
+                      // ここは`/api/first`にリクエストが来たとき
+                      .route("/first", web::get().to(first))
             )
             .service(actix_files::Files::new("", "target/public"))
             .default_service(web::route().to(index))
-    })
-        .bind("127.0.0.1:8080")?
-        .run()
-        .await
+  })
+          .bind("127.0.0.1:8080")?
+          .run()
+          .await
 }
 ```
 
@@ -355,69 +355,69 @@ $ curl localhost:8080/api/first
 // →`SecondDataResponse`にだけ付けてもエラーになる
 #[derive(Serialize)]
 struct SecondData {
-    id: i32,
-    name: String,
+  id: i32,
+  name: String,
 }
 
 // レスポンス用のデータ
 #[derive(Serialize)]
 struct SecondDataResponse {
-    // ↑で定義した構造体のリストを返却する
-    list: Vec<SecondData>,
+  // ↑で定義した構造体のリストを返却する
+  list: Vec<SecondData>,
 }
 
 async fn second() -> impl Responder {
-    // 返却用データを作成
-    let data: Vec<SecondData> = vec![
-        SecondData {
-            id: 1,
-            name: "hoge".to_owned(),
-        },
-        SecondData {
-            id: 2,
-            name: "huga".to_owned(),
-        },
-        SecondData {
-            id: 3,
-            name: "piyo".to_owned(),
-        },
-    ];
-    // SecondDataResponseに合わせた上で文字列化
-    let second_data_response = serde_json::to_string(&SecondDataResponse { list: data }).unwrap();
+  // 返却用データを作成
+  let data: Vec<SecondData> = vec![
+    SecondData {
+      id: 1,
+      name: "hoge".to_owned(),
+    },
+    SecondData {
+      id: 2,
+      name: "huga".to_owned(),
+    },
+    SecondData {
+      id: 3,
+      name: "piyo".to_owned(),
+    },
+  ];
+  // SecondDataResponseに合わせた上で文字列化
+  let second_data_response = serde_json::to_string(&SecondDataResponse { list: data }).unwrap();
 
-    HttpResponse::Ok()
-        .content_type("application/json")
-        .body(second_data_response)
+  HttpResponse::Ok()
+          .content_type("application/json")
+          .body(second_data_response)
 }
 
 async fn first() -> impl Responder {
-    // 文字列のリストを作成
-    let first_data: Vec<String> = vec!["hoge".to_owned(), "huga".to_owned(), "piyo".to_owned()];
-    // リストから文字列へ変換
-    let first_data_response = serde_json::to_string(&first_data).unwrap();
-    // `ContentType: application/json`で返却
-    HttpResponse::Ok()
-        .content_type("application/json")
-        .body(first_data_response)
+  // 文字列のリストを作成
+  let first_data: Vec<String> = vec!["hoge".to_owned(), "huga".to_owned(), "piyo".to_owned()];
+  // リストから文字列へ変換
+  let first_data_response = serde_json::to_string(&first_data).unwrap();
+  // `ContentType: application/json`で返却
+  HttpResponse::Ok()
+          .content_type("application/json")
+          .body(first_data_response)
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
-        App::new()
+  HttpServer::new(|| {
+    App::new()
             .route("/", web::get().to(index))
             .service(
-                web::scope("/api")
-                    .route("/first", web::get().to(first))
-                    // ここは`/api/second`にリクエストが来たとき
-                    .route("/second", web::get().to(second)),
+              web::scope("/api")
+                      .route("/first", web::get().to(first))
+                      // ここは`/api/second`にリクエストが来たとき
+                      .route("/second", web::get().to(second)),
             )
             .service(actix_files::Files::new("", "target/public"))
             .default_service(web::route().to(index))
-    })
-        .bind("127.0.0.1:8080")?
-        .run()
-        .await
+  })
+          .bind("127.0.0.1:8080")?
+          .run()
+          .await
 }
 ```
 
@@ -514,8 +514,8 @@ export class FirstPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpService.get<string[]>('/api/first').subscribe(
-      res => this._firstData$ = res,
-      err => console.error('err: ', err)
+            res => this._firstData$ = res,
+            err => console.error('err: ', err)
     );
   }
 
@@ -573,8 +573,8 @@ export class SecondPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpService.get<SecondDataResponse>('/api/second').subscribe(
-      res => this._secondDataList$ = res.list,
-      err => console.error('err: ', err)
+            res => this._secondDataList$ = res.list,
+            err => console.error('err: ', err)
     );
   }
 
@@ -614,13 +614,13 @@ Rustでやった場合の個人的なメリット、デメリットは↓の通�
 
 - サーバーの起動が早い(気がする)
 - Rustの安心感
-    - ちゃんと静的な型がある + 怪しい実装はそもそもコンパイルが通らない
+  - ちゃんと静的な型がある + 怪しい実装はそもそもコンパイルが通らない
 
 ## デメリット
 
 - そもそも言語2つ使うのが難しい
 - 環境設定が手間
-    - tsで書いてもめんどくさい気がしなくも無いけど
+  - tsで書いてもめんどくさい気がしなくも無いけど
 
 自分としてはRust書くのがちょっと楽しかったのでもう少し試して見ようと思った。  
 ただ、やっぱりtsのみの方が楽な気もする。

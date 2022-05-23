@@ -69,7 +69,6 @@ async function getArticleMetaData() {
     await page.evaluate(
       ({ title }) => {
         const titleElement = document.getElementById('title')!;
-        console.log('title: ', title);
         titleElement.innerText = title;
       },
       { title: data.title },

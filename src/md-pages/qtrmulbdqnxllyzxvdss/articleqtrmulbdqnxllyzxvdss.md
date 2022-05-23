@@ -3,8 +3,8 @@ path: "/blog/qtrmulbdqnxllyzxvdss"
 date: "2021/01/20"
 title: "NestJS+Angular+Scullyを試してみる"
 tag: ["Angular", "NestJS", "Scully"]
-thumbnailImage: "/images/article/qtrmulbdqnxllyzxvdss/ogp.png"
-headerImage: "/images/article/qtrmulbdqnxllyzxvdss/ssqtrmulbdqnxllyzxvdss.png"
+ogpImage: "/images/article/qtrmulbdqnxllyzxvdss/ogp.png"
+thumbnailImage: "/images/article/qtrmulbdqnxllyzxvdss/ssqtrmulbdqnxllyzxvdss.png"
 ---
 
 # はじめに

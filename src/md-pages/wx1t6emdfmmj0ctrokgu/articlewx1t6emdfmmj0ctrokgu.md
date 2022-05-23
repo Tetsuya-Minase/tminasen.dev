@@ -3,8 +3,8 @@ path: "/blog/wx1t6emdfmmj0ctrokgu"
 date: "2021/02/12"
 title: "Angular+TailwindCSSを試してみる"
 tag: ["Angular"]
-thumbnailImage: "/images/article/wx1t6emdfmmj0ctrokgu/ogp.png"
-headerImage: "/images/article/wx1t6emdfmmj0ctrokgu/sswx1t6emdfmmj0ctrokgu-2.png"
+ogpImage: "/images/article/wx1t6emdfmmj0ctrokgu/ogp.png"
+thumbnailImage: "/images/article/wx1t6emdfmmj0ctrokgu/sswx1t6emdfmmj0ctrokgu-2.png"
 ---
 
 # はじめに

@@ -3,8 +3,8 @@ path: "/blog/11c2a153a6dce58dd93fc2d0a364fe"
 date: "2021/06/06"
 title: "JSで画像を扱うときのメモ"
 tag: ["JavaScript", "React"]
-thumbnailImage: "/images/article/11c2a153a6dce58dd93fc2d0a364fe/ogp.png"
-headerImage: "/images/ogp.png"
+ogpImage: "/images/article/11c2a153a6dce58dd93fc2d0a364fe/ogp.png"
+thumbnailImage: "/images/ogp.png"
 ---
 
 # はじめに

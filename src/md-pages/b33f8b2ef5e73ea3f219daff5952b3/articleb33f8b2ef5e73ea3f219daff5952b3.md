@@ -3,8 +3,8 @@ path: "/blog/b33f8b2ef5e73ea3f219daff5952b3"
 date: "2021/09/18"
 title: "Next.js+linariaを試してみる"
 tag: ["Next.js"]
-thumbnailImage: "/images/article/b33f8b2ef5e73ea3f219daff5952b3/ogp.png"
-headerImage: "/images/article/b33f8b2ef5e73ea3f219daff5952b3/b33f8b2ef5e73ea3f219daff5952b3-1.png"
+ogpImage: "/images/article/b33f8b2ef5e73ea3f219daff5952b3/ogp.png"
+thumbnailImage: "/images/article/b33f8b2ef5e73ea3f219daff5952b3/b33f8b2ef5e73ea3f219daff5952b3-1.png"
 ---
 
 # はじめに

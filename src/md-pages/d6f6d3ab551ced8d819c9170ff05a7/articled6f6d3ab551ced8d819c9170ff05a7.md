@@ -3,8 +3,8 @@ path: "/blog/d6f6d3ab551ced8d819c9170ff05a7"
 date: "2021/03/13"
 title: "Recoilことはじめ"
 tag: ["React"]
-thumbnailImage: "/images/article/d6f6d3ab551ced8d819c9170ff05a7/ogp.png"
-headerImage: "/images/article/d6f6d3ab551ced8d819c9170ff05a7/ssd6f6d3ab551ced8d819c9170ff05a7-2.png"
+ogpImage: "/images/article/d6f6d3ab551ced8d819c9170ff05a7/ogp.png"
+thumbnailImage: "/images/article/d6f6d3ab551ced8d819c9170ff05a7/ssd6f6d3ab551ced8d819c9170ff05a7-2.png"
 ---
 
 # はじめに

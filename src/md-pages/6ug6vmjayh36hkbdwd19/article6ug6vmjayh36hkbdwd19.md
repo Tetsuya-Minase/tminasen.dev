@@ -3,8 +3,8 @@ path: "/blog/6ug6vmjayh36hkbdwd19"
 date: "2021/02/11"
 title: "Jest再入門"
 tag: ["TypeScript"]
-thumbnailImage: "/images/article/6ug6vmjayh36hkbdwd19/ogp.png"
-headerImage: "/images/ogp.png"
+ogpImage: "/images/article/6ug6vmjayh36hkbdwd19/ogp.png"
+thumbnailImage: "/images/ogp.png"
 ---
 
 # はじめに

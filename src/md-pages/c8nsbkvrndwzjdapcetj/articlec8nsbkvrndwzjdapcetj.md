@@ -3,8 +3,8 @@ path: "/blog/c8nsbkvrndwzjdapcetj"
 date: "2020/11/13"
 title: "Next.js事始め"
 tag: ["Next.js", "React"]
-thumbnailImage: "/images/article/c8nsbkvrndwzjdapcetj/ogp.png"
-headerImage: "/images/article/c8nsbkvrndwzjdapcetj/ssc8nsbkvrndwzjdapcetj.png"
+ogpImage: "/images/article/c8nsbkvrndwzjdapcetj/ogp.png"
+thumbnailImage: "/images/article/c8nsbkvrndwzjdapcetj/ssc8nsbkvrndwzjdapcetj.png"
 ---
 
 # はじめに

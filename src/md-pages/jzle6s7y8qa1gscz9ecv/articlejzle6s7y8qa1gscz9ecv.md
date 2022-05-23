@@ -3,8 +3,8 @@ path: "/blog/jzle6s7y8qa1gscz9ecv"
 date: "2021/02/04"
 title: "markdown内の画像をamp-img対応メモ"
 tag: ["TypeScript"]
-thumbnailImage: "/images/article/jzle6s7y8qa1gscz9ecv/ogp.png"
-headerImage: "/images/ogp.png"
+ogpImage: "/images/article/jzle6s7y8qa1gscz9ecv/ogp.png"
+thumbnailImage: "/images/ogp.png"
 ---
 
 # はじめに
