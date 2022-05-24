@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { Feed } from 'feed';
-import { getArticleMetaData } from '../../src/libraries/articles';
-import { dateFromDateString } from '../../src/libraries/date';
+import { getArticleMetaData } from '../functions/article';
+import { dateFromDateString } from '../functions/date';
 
 const BASE_URL = 'https://tminasen.dev';
 const RSS_DIRECTORY = path.join(process.cwd(), 'public/rss');
@@ -41,7 +41,7 @@ const feed = new Feed({
         },
       ],
       date,
-      image: `${BASE_URL}${d.thumbnailImage.url}`,
+      image: `${BASE_URL}${d.ogpImage}`,
     });
   });
   if (!fs.existsSync(RSS_DIRECTORY)) {
