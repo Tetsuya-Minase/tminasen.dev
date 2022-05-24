@@ -10,8 +10,23 @@ const OGP_BASE_HTML = `file:${path.resolve(
 const OGP_IMAGE_BASE_PATH = 'public/images/article/';
 
 (async () => {
+  const commandArguments = process.argv.filter(
+    a =>
+      !a.includes('node_modules/.bin/ts-node') &&
+      !a.includes('scripts/generate-ogp/GenerateOgp.ts'),
+  );
+  if (commandArguments.length === 0) {
+    throw new Error('required git diff result.');
+  }
+  const changedArticles = commandArguments.filter(a =>
+    a.includes('src/md-pages'),
+  );
   const metaData = await getArticleMetaData();
   for (const data of metaData) {
+    const fullFilePath = `src/md-pages/${data.path}/article${data.path}.md`;
+    if (!changedArticles.includes(fullFilePath)) {
+      continue;
+    }
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({ width: 1200, height: 630 });
