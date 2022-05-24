@@ -31,8 +31,8 @@ const feed = new Feed({
     }
     feed.addItem({
       title: d.title,
-      id: `${BASE_URL}${d.path}`,
-      link: `${BASE_URL}${d.path}`,
+      id: `${BASE_URL}/blog/${d.path}`,
+      link: `${BASE_URL}/blog/${d.path}`,
       description: d.description,
       author: [
         {
