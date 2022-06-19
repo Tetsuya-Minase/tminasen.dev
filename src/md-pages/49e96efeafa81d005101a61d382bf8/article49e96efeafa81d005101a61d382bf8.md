@@ -149,7 +149,7 @@ Rustで定義した関数に引数を渡すには、Rust側の関数の仮引数
 ```tsx
 import {invoke} from '@tauri-apps/api';
 
-function greet() {
+async function greet() {
   const result = await invoke('custom_greet', {name: 'Taro'});
 }  
 ```
