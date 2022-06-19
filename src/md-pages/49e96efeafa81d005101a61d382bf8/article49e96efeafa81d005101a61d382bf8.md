@@ -3,7 +3,7 @@ path: "/blog/49e96efeafa81d005101a61d382bf8"
 date: "2022/06/19"
 title: "Tauriを試してみる"
 tag: ["Rust", "Angular"]
-thumbnailImage: "/images/undraw_online_stats_0g94.png"
+thumbnailImage: "/images/article/49e96efeafa81d005101a61d382bf8/undraw_online_stats_0g94.png"
 ogpImage: "/images/article/49e96efeafa81d005101a61d382bf8/ogp.png"
 ---
 
