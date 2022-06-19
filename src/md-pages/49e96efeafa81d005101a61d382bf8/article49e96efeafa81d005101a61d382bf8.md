@@ -89,6 +89,7 @@ details and how to change this setting, see https://angular.io/analytics. (y/N) 
 同意は初回だけなので、一度`npm start`して別途回答してあげれば解決する。
 
 同意後、改めて`npm run tauri dev`を実行し、Angular CLIで設定した場合の初期(＋tauriのメッセージ)が表示されるウィンドウが立ち上がればOK。
+![ss49e96efeafa81d005101a61d382bf8-1.png](/images/article/49e96efeafa81d005101a61d382bf8/ss49e96efeafa81d005101a61d382bf8-1.png)
 
 # 他にも色々試してみる
 
@@ -235,6 +236,9 @@ import {AppComponent} from './app.component';
 export class AppModule {
 }
 ```
+
+下記の通り動けばOK。
+![ss49e96efeafa81d005101a61d382bf8-2.png](/images/article/49e96efeafa81d005101a61d382bf8/ss49e96efeafa81d005101a61d382bf8-2.png)
 
 ### Dev Toolを開くとエラーになる？
 
