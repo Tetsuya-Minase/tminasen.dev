@@ -13,8 +13,7 @@ thumbnailImage: "/images/article/1ba0f384ec9f09200bac8ef1a98542/Files_And_Folder
 
 # TL;DR.
 
-キレイに書けなかったのでgist行き。
-[https://gist.github.com/Tetsuya-Minase/1192b77321e1d52888110b5932e4ea34](https://gist.github.com/Tetsuya-Minase/1192b77321e1d52888110b5932e4ea34)
+キレイに書けなかったので[gist](https://gist.github.com/Tetsuya-Minase/1192b77321e1d52888110b5932e4ea34)行き。
 
 # ディレクトリ詳細
 
