@@ -4,7 +4,7 @@ date: "2022/12/02"
 title: "Next.jsでbetterなディレクトリ構成を考える"
 tag: ["Next.js"]
 ogpImage: "/images/article/1ba0f384ec9f09200bac8ef1a98542/ogp.png"
-thumbnailImage: "/images/ogp.png"
+thumbnailImage: "/images/article/1ba0f384ec9f09200bac8ef1a98542/Files_And_Folder_Monochromatic.png"
 ---
 
 # はじめに
@@ -115,6 +115,12 @@ Componentの中身については、`src/features/【ページ名】`と同じ�
 
 それぞれページ共通のものを置くディレクトリ。  
 ページのユースケースが入り込まないように気をつける。
+
+# まとめ
+
+今回は`Next.js`でのディレクトリ構成について考えた。  
+記載した内容はあくまで執筆時点で何もしないよりは良いかなと考えている内容なので、もっとこうしたほうが良いとか数ヶ月に見てこれじゃキツイだろとかは出てくるかもしれない。  
+そのため常に最新の情報をキャッチアップしつつアップデートしていければ良さそう。
 
 # 関連リンク
 
