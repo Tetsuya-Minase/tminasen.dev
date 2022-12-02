@@ -13,54 +13,7 @@ thumbnailImage: "/images/article/1ba0f384ec9f09200bac8ef1a98542/Files_And_Folder
 
 # TL;DR.
 
-```
-.
-├── README.md
-├── next-env.d.ts
-├── next.config.js
-├── package-lock.json
-├── package.json
-├── public # 静的ファイル置き場
-│   ├── favicon.ico
-│   └── vercel.svg
-├── src # アプリケーションのメインとなるディレクトリ
-│   ├── components # ページ共通のComponentを入れる
-│   │   └── header # Component毎にディレクトリを切る。Component, test, storybookは必ずセットにする
-│   │       ├── Header.stories.tsx 
-│   │       ├── Header.test.tsx
-│   │       ├── Header.tsx
-│   │       └── index.tsx # importする時はindex経由にする
-│   ├── config # 設定ファイルを入れる
-│   ├── features # ページ、APIの機能を実現するための詳細をまとめる
-│   │   ├── api # APIの実態。`pagges/api/`配下をinterface層とする4層のLayered Architectureとする
-│   │   │   ├── application
-│   │   │   ├── domain
-│   │   │   └── infrastructure
-│   │   └── users # ページの実態。`pages/xxx`で使うものをすべてまとめる
-│   │       ├── components # ページ固有のComponent。Component毎にディレクトリを切る
-│   │       │   └── button # `src/components`同様Component, test, storybookを必ずセットにする
-│   │       │       ├── Button.stories.tsx
-│   │       │       ├── Button.test.tsx
-│   │       │       ├── Button.tsx
-│   │       │       └── index.tsx
-│   │       ├── functions # ページ固有のhooksじゃない関数があれば入れる
-│   │       ├── hooks # ページ固有のhooksを入れる
-│   │       ├── stores # ページ固有のstoreを入れる
-│   │       └── types # ページ固有の型定義を入れる
-│   ├── functions # ページ共通の関数を入れる
-│   ├── hooks # ページ共通のhooksを入れる
-│   ├── pages # Next.jsのエントリ用。pages配下のファイルは基本抜け殻にする(featuresに機能を集約する)
-│   │   ├── _app.tsx
-│   │   ├── api
-│   │   │   └── hello.ts
-│   │   ├── index.tsx
-│   │   └── users # 階層を掘れるようにファイル名でファなくディレクトリ名でパスを決める
-│   │       └── index.tsx
-│   ├── stores # ページ共通のstoreを入れる
-│   └── styles # ページ共通のstyleを置く
-│       └── globals.css
-└── tsconfig.json
-```
+<script src="https://gist.github.com/Tetsuya-Minase/1192b77321e1d52888110b5932e4ea34.js"></script>
 
 # ディレクトリ詳細
 
