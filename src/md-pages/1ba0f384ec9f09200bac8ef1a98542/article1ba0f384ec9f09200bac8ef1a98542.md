@@ -4,7 +4,7 @@ date: "2022/12/02"
 title: "Next.jsでbetterなディレクトリ構成を考える"
 tag: ["Next.js"]
 ogpImage: "/images/article/1ba0f384ec9f09200bac8ef1a98542/ogp.png"
-thumbnailImage: "/images/article/1ba0f384ec9f09200bac8ef1a98542/Files_And_Folder_Monochromatic.png"
+thumbnailImage: "/images/article/1ba0f384ec9f09200bac8ef1a98542/undraw_Folder_files_re_2cbm.png"
 ---
 
 # はじめに
