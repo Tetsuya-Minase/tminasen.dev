@@ -11,8 +11,8 @@ interface Props {
   children: React.ReactNode;
 }
 
-const StyledLink = styled(Link)<Readonly<{ linkColor: LinkColor }>>`
-  color: ${({ linkColor }) => getLinkColor(linkColor)};
+const StyledLink = styled(Link)<Readonly<{ $linkColor: LinkColor }>>`
+  color: ${({ $linkColor }) => getLinkColor($linkColor)};
   text-decoration: none;
 `;
 
@@ -31,7 +31,7 @@ const getLinkColor = (linkColor: LinkColor): string => {
 
 export const LinkComponent: React.FC<Props> = ({ url, color, children }) => {
   return (
-    <StyledLink href={url} linkColor={color}>
+    <StyledLink href={url} $linkColor={color}>
       {children}
     </StyledLink>
   );
