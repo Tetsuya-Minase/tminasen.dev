@@ -50,5 +50,8 @@
     "raw-loader": "^4.0.2",
     "ts-node": "^10.8.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  }
 }
