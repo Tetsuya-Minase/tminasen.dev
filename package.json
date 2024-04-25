@@ -12,8 +12,7 @@
     "create:md": "./scripts/article-scripts/target/release/article-scripts",
     "rename:files": "./scripts/article-scripts/target/release/article-scripts --rename ",
     "generate:rss": "ts-node --project ./scripts/tsconfig.scripts.json ./scripts/generate-rss/GenerateRss.ts",
-    "generate:ogp": "ts-node --project ./scripts/tsconfig.scripts.json ./scripts/generate-ogp/GenerateOgp.ts",
-    "generate:ogp-js": "./scripts/generate-ogp/generate-ogp.mjs",
+    "generate:ogp": "./scripts/generate-ogp/generate-ogp.mjs",
     "type-check": "tsc"
   },
   "dependencies": {
