@@ -55,6 +55,7 @@ fn create_file(matches: ArgMatches) {
     title: \"\"\n\
     tag: [\"\"]\n\
     thumbnailImage: \"/images/\"\n\
+    odpImage: \"/images/\"\n\
     ---",
         file_name,
         Local::now().format("%Y/%m/%d").to_string()
