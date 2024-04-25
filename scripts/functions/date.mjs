@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 /**
  * 日付文字列をパースしてunixtimeに変換する
  * @param stringDate {string} 日付文字列
