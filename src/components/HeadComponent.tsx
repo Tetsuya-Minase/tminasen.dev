@@ -1,8 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
+// import Script from 'next/script';
 import { Maybe, Optional } from '../../types/utility';
 import { metaData } from '../constants/metaData';
 import { OgType } from '../../types/mets';
+import Script from 'next/script';
 
 type Props = {
   isEnableViewPort: boolean;
@@ -63,7 +65,19 @@ export const HeadComponent: React.FC<Props> = ({
               <meta name={item.name} content={item.content} />
             ))
           : null}
+        {/* Google tag (gtag.js) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-L82JQBNL8M');
+            `,
+          }}
+        />
       </Head>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-L82JQBNL8M" />
     </>
   );
 };
