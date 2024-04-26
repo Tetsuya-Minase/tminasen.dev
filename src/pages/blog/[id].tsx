@@ -61,12 +61,15 @@ const TagListItem = styled.li`
   font-size: ${fontSize.px16};
   line-height: 1.5;
   padding: 0 8px;
+
   & + & {
     margin-left: 4px;
   }
 `;
 const SnsLink = styled.div`
+  display: flex;
   margin-top: 8px;
+  align-content: center;
 `;
 
 const TagLink = ({ tag }: { tag: string }): JSX.Element => {
