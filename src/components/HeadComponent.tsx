@@ -1,5 +1,4 @@
 import React from 'react';
-import Script from 'next/script';
 import Head from 'next/head';
 import { Maybe, Optional } from '../../types/utility';
 import { metaData } from '../constants/metaData';
@@ -13,27 +12,6 @@ type Props = {
   description: Optional<string>;
   canonicalPath: Optional<string>;
   ogType: OgType;
-};
-
-const ampAnalytics = () => {
-  const json = JSON.stringify({
-    vars: {
-      gtag_id: 'UA-145135064-2',
-      config: {
-        'UA-145135064-2': { groups: 'default' },
-      },
-    },
-  });
-  return (
-    // @ts-ignore
-    <amp-analytics type="gtag" data-credentials="include">
-      <script
-        type="application/json"
-        dangerouslySetInnerHTML={{ __html: json }}
-      ></script>
-      {/* @ts-ignore */}
-    </amp-analytics>
-  );
 };
 
 export const HeadComponent: React.FC<Props> = ({
@@ -53,11 +31,6 @@ export const HeadComponent: React.FC<Props> = ({
   return (
     <>
       <Head>
-        <Script
-          async
-          custom-element="amp-analytics"
-          src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
-        ></Script>
         <title>{metaTitle}</title>
         {isEnableViewPort ? (
           <meta
@@ -91,7 +64,6 @@ export const HeadComponent: React.FC<Props> = ({
             ))
           : null}
       </Head>
-      {ampAnalytics()}
     </>
   );
 };
