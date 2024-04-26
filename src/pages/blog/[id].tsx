@@ -12,8 +12,6 @@ import { GithubArticleButton } from '../../components/atoms/GithubArticleButton'
 import { MdTemplate } from '../../templates/MdTemplate';
 import { LinkComponent } from '../../components/atoms/LinkComponent';
 
-export const config = { amp: true };
-
 interface Props {
   id: string;
   articleMetaData: ArticleMetaData[];
@@ -94,7 +92,6 @@ const articlePage = ({ id, articleMetaData }: Props) => {
       title={targetMetaData.title}
       ogpImage={targetMetaData.ogpImage}
       isEnableViewPort={false}
-      isHiddenMenu={true}
       canonicalPath={targetMetaData.path}
       ogType="article"
     >
