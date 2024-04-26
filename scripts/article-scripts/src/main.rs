@@ -1,6 +1,6 @@
 use chrono::Local;
 use clap::{App, Arg, ArgMatches};
-use rand::{thread_rng, Rng};
+use rand::{Rng, thread_rng};
 use std::fs;
 use std::fs::File;
 use std::io;
@@ -104,7 +104,7 @@ fn rename_images(matches: ArgMatches) -> io::Result<()> {
 
 fn main() {
     let matches = App::new("article creator")
-        .version("0.0.1")
+        .version("0.0.2")
         .author("tminasen")
         .about("article utility tools")
         .arg(
