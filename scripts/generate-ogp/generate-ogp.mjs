@@ -1,18 +1,20 @@
 #! /usr/bin/env node
 
 import puppeteer from 'puppeteer';
-import path from 'path';
-import fs from 'fs';
+import {$, path, argv, fs} from 'zx';
 import {getArticleMetaData} from '../functions/article.mjs';
 
+const getCurrentDirectory = await $`pwd`;
+const currentDirectory = getCurrentDirectory.stdout.trim();
+
 const OGP_BASE_HTML = `file:${path.resolve(
-  process.cwd(),
+  currentDirectory,
   './scripts/generate-ogp/ogp-base.html',
 )}`;
 const OGP_IMAGE_BASE_PATH = 'public/images/article/';
 
 (async () => {
-  const commandArguments = process.argv.filter(
+  const commandArguments = argv._.filter(
     a =>
       !a.includes('node_modules/.bin/ts-node') &&
       !a.includes('scripts/generate-ogp/GenerateOgp.ts'),
@@ -42,7 +44,7 @@ const OGP_IMAGE_BASE_PATH = 'public/images/article/';
       {title: data.title},
     );
     const ogpDirectory = path.join(
-      process.cwd(),
+      currentDirectory,
       OGP_IMAGE_BASE_PATH,
       data.path,
     );
