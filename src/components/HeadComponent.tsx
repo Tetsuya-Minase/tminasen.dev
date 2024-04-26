@@ -1,10 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
-// import Script from 'next/script';
+import Script from 'next/script';
 import { Maybe, Optional } from '../../types/utility';
 import { metaData } from '../constants/metaData';
 import { OgType } from '../../types/mets';
-import Script from 'next/script';
 
 type Props = {
   isEnableViewPort: boolean;
