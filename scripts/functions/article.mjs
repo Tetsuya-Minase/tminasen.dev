@@ -26,9 +26,7 @@ export async function getArticleMetaData() {
     const articleDirPath = path.join(mdPagePath, articleDir);
     const files = fs.readdirSync(articleDirPath);
     /** @type {string | undefined} */
-    const file = files.filter(file =>
-      file.endsWith('.md'),
-    )[0];
+    const file = files.filter(file => file.endsWith('.md'))[0];
     if (file === undefined) {
       throw new Error(`file is required. articleDirPath: ${articleDirPath}`);
     }
@@ -36,16 +34,14 @@ export async function getArticleMetaData() {
       path.join(mdPagePath, articleDir, file),
       'utf8',
     );
-    const matterResult = matter(fileDetail, {excerpt: true});
+    const matterResult = matter(fileDetail, { excerpt: true });
     const metaData = await convertArticleMetaData(
       matterResult.data,
       matterResult.content,
     );
     result.push(metaData);
   }
-  return result
-    .filter((item) => item !== undefined)
-    .sort(sortArticleDescDate);
+  return result.filter(item => item !== undefined).sort(sortArticleDescDate);
 }
 
 /**
@@ -64,10 +60,7 @@ function sortArticleDescDate(a, b) {
  * @param context {string} context
  * @return {Promise<undefined|OgpArticleMetaData>}
  */
-async function convertArticleMetaData(
-  data,
-  context,
-) {
+async function convertArticleMetaData(data, context) {
   if (!data?.title || !data?.date || !data?.path || !data?.ogpImage) {
     return undefined;
   }
