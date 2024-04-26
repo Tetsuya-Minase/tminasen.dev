@@ -2,9 +2,9 @@
 
 import fs from 'fs';
 import path from 'path';
-import {Feed} from 'feed';
-import {getArticleMetaData} from '../functions/article.mjs';
-import {dateFromDateString} from '../functions/date.mjs';
+import { Feed } from 'feed';
+import { getArticleMetaData } from '../functions/article.mjs';
+import { dateFromDateString } from '../functions/date.mjs';
 
 const BASE_URL = 'https://tminasen.dev';
 const RSS_DIRECTORY = path.join(process.cwd(), 'public/rss');
@@ -16,7 +16,7 @@ const feed = new Feed({
   language: 'ja',
   image: `${BASE_URL}/images/ogp.png`,
   favicon: `${BASE_URL}/images/icon32x.png`,
-  copyright: 'All rights reserved 2021, tminasen',
+  copyright: 'All rights reserved 2024, tminasen',
   updated: new Date(),
   author: {
     name: 'tminasen',
