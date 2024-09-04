@@ -1,9 +1,11 @@
+use anyhow::{Context, Result};
 use chrono::Local;
 use clap::ArgMatches;
 use std::fs;
 use std::fs::File;
 use std::io;
 use std::io::Write;
+use std::path::Path;
 use uuid::Uuid;
 
 ///
@@ -22,20 +24,19 @@ fn write(s: &str, path: &str) -> io::Result<()> {
 /// create template files.
 /// * `matches` - information about arguments.
 ///
-pub fn create_file(matches: ArgMatches) {
-    let file_name: String = match matches.value_of("file-name") {
-        Some(name) => name.to_string(),
-        None => Uuid::new_v4().to_string(),
-    };
+pub fn create_file(matches: &ArgMatches) -> Result<()> {
+    let file_name = matches
+        .value_of("file-name")
+        .map(ToString::to_string)
+        .unwrap_or_else(|| Uuid::new_v4().to_string());
 
     // 画像用のディレクトリ作成
-    fs::create_dir_all(format!("public/images/article/{}", file_name)).unwrap_or_else(|why| {
-        println!("create image dir error: {:?}", why.kind());
-    });
-    // 記事用のディレクトリ作成
-    fs::create_dir_all(format!("src/md-pages/{}", file_name)).unwrap_or_else(|why| {
-        println!("! {:?}", why.kind());
-    });
+    let image_dir = Path::new("public/images/article").join(&file_name);
+    let md_dir = Path::new("src/md-pages").join(&file_name);
+    fs::create_dir_all(&image_dir)
+        .with_context(|| format!("Failed to create image directory: {:?}", image_dir))?;
+    fs::create_dir_all(&md_dir)
+        .with_context(|| format!("Failed to create markdown directory: {:?}", md_dir))?;
 
     let template_data = format!(
         "---\n\
@@ -50,45 +51,41 @@ pub fn create_file(matches: ArgMatches) {
         Local::now().format("%Y/%m/%d").to_string()
     );
 
-    let markdown_path: String = format!("src/md-pages/{}/article{}.md", file_name, file_name);
-    write(&template_data, &markdown_path).unwrap_or_else(|why| {
-        println!("write markdown file error: {:?}", why.kind());
-    });
-    let image_path: String = format!("public/images/article/{}/.gitkeep", file_name);
-    write("", &image_path).unwrap_or_else(|why| {
-        println!("write image_path file error: {:?}", why.kind());
-    });
+    let markdown_path = md_dir.join(format!("article{}.md", file_name));
+    write(&template_data, markdown_path.to_str().unwrap())?;
+    let image_path = image_dir.join(".gitkeep");
+    write("", image_path.to_str().unwrap())?;
+    Ok(())
 }
 
 ///
 /// rename image_files
 /// * `matches` - rename file directory.
-pub fn rename_images(matches: ArgMatches) -> io::Result<()> {
-    let dir_name: String = match matches.value_of("rename") {
-        Some(name) => name.to_string(),
-        _ => "".to_string(),
-    };
+pub fn rename_images(matches: &ArgMatches) -> Result<()> {
+    let dir_name = matches
+        .value_of("rename")
+        .map(ToString::to_string)
+        .unwrap_or_default();
+    let dir_path = Path::new("public/images/article").join(&dir_name);
 
-    let mut index = 1;
-    fs::read_dir(format!("public/images/article/{}", dir_name))?
-        .filter_map(|entry| {
-            let entry = entry.ok()?;
-            if entry.file_type().ok()?.is_file() {
-                Some(entry.file_name().to_string_lossy().into_owned())
-            } else {
-                None
-            }
-        })
-        .for_each(move |file| {
-            let before_filename = format!("public/images/article/{}/{}", dir_name, file);
-            let after_filename = format!(
-                "public/images/article/{}/ss{}-{}.png",
-                dir_name, dir_name, index
-            );
-            if let Err(e) = fs::rename(before_filename, after_filename) {
-                eprintln!("Error renaming images: {}", e);
-            };
-            index += 1;
-        });
+    for (index, entry) in fs::read_dir(&dir_path)
+        .with_context(|| format!("Failed to read directory: {:?}", dir_path))?
+        .filter_map(Result::ok)
+        .filter(|e| e.file_type().map(|ft| ft.is_file()).unwrap_or(false))
+        .enumerate()
+    {
+        let old_path = entry.path();
+        let new_name = format!("ss{}-{}.png", dir_name, index + 1);
+        let new_path = dir_path.join(new_name);
+
+        fs::rename(&old_path, &new_path).with_context(|| {
+            format!(
+                "Failed to rename {:?} to {:?}",
+                old_path.file_name().unwrap(),
+                new_path.file_name().unwrap()
+            )
+        })?;
+    }
+
     Ok(())
 }

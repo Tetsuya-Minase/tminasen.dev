@@ -1,19 +1,20 @@
 mod features;
 
+use anyhow::Result;
 use features::cli_config::get_matches;
 use features::file_operations::create_file;
 use features::file_operations::rename_images;
 
-fn main() {
+fn main() -> Result<()> {
     let matches = get_matches();
 
     // フォーマット変更
-    if matches.is_present("rename") {
-        if let Err(e) = rename_images(matches) {
-            eprintln!("Error renaming images: {}", e);
-        };
-        return;
+    if matches.contains_id("rename") {
+        rename_images(&matches)?;
+        return Ok(());
     }
     // それ以外はファイル作成
-    create_file(matches);
+    create_file(&matches)?;
+
+    Ok(())
 }
