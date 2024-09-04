@@ -1,10 +1,10 @@
 use chrono::Local;
 use clap::{App, Arg, ArgMatches};
-use rand::{Rng, thread_rng};
 use std::fs;
 use std::fs::File;
 use std::io;
 use std::io::Write;
+use uuid::Uuid;
 
 const BASE_STRING: &[u8] = b"1234567890abcdef";
 
@@ -27,16 +27,7 @@ fn write(s: &str, path: &str) -> io::Result<()> {
 fn create_file(matches: ArgMatches) {
     let file_name: String = match matches.value_of("file-name") {
         Some(name) => name.to_string(),
-        None => {
-            let mut rng = thread_rng();
-            let rand_string: String = (0..30)
-                .map(|_| {
-                    let index = rng.gen_range(0..BASE_STRING.len());
-                    BASE_STRING[index] as char
-                })
-                .collect();
-            rand_string.to_lowercase()
-        }
+        None => Uuid::new_v4().to_string(),
     };
 
     // 画像用のディレクトリ作成
