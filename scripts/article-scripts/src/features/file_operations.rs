@@ -85,7 +85,9 @@ pub fn rename_images(matches: ArgMatches) -> io::Result<()> {
                 "public/images/article/{}/ss{}-{}.png",
                 dir_name, dir_name, index
             );
-            fs::rename(before_filename, after_filename);
+            if let Err(e) = fs::rename(before_filename, after_filename) {
+                eprintln!("Error renaming images: {}", e);
+            };
             index += 1;
         });
     Ok(())

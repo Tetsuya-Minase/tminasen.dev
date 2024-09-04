@@ -9,7 +9,9 @@ fn main() {
 
     // フォーマット変更
     if matches.is_present("rename") {
-        rename_images(matches);
+        if let Err(e) = rename_images(matches) {
+            eprintln!("Error renaming images: {}", e);
+        };
         return;
     }
     // それ以外はファイル作成
