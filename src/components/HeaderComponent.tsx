@@ -42,6 +42,7 @@ const MenuButton = styled.button`
     content: '';
     display: block;
     height: 8px;
+    box-sizing: content-box;
   }
 
   &::before {
