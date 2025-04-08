@@ -7,10 +7,6 @@ import Document, {
   NextScript,
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-// @ts-ignore
-import css from '!!raw-loader!../index.css';
-// @ts-ignore
-import prismCss from '!!raw-loader!../styles/highlight/prism.css';
 import { DocumentInitialProps } from 'next/dist/shared/lib/utils';
 
 export default class MyDocument extends Document {
@@ -31,12 +27,6 @@ export default class MyDocument extends Document {
         ...initialProps,
         styles: [
           ...React.Children.toArray(initialProps.styles),
-          <style
-            key="custom"
-            dangerouslySetInnerHTML={{
-              __html: `${css}\n${prismCss}`,
-            }}
-          />,
           ...sheet.getStyleElement(),
         ],
       };
