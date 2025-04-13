@@ -11,48 +11,6 @@ type Props = {
   closeModal: () => void;
 };
 
-const MenuButton = styled.button`
-  font-size: 0;
-  position: absolute;
-  width: 48px;
-  left: 28px;
-  border: none;
-  background-color: transparent;
-
-  &::before,
-  &::after {
-    content: '';
-    display: block;
-    height: 8px;
-    box-sizing: content-box;
-  }
-
-  &::before {
-    border-top: solid 4px ${color.borderWhite};
-  }
-
-  &::after {
-    border-top: solid 4px ${color.borderWhite};
-    border-bottom: solid 4px ${color.borderWhite};
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  ${media.lessThan('small')`
-    width: 28px;
-    left: 0;
-    &::before,
-    &::after {
-      content: '';
-      display: block;
-      height: 4px;
-      width: 24px;
-    }
-  `}
-`;
-
 const MenuDialog = styled.div<{ showModal: boolean }>`
   display: ${({ showModal }) => (showModal ? 'block' : 'none')};
   position: absolute;
@@ -68,37 +26,6 @@ const MenuDialog = styled.div<{ showModal: boolean }>`
     left: 4px;
   `}
 `;
-const CloseButton = styled.button`
-  font-size: 0;
-  border: none;
-  background-color: transparent;
-  position: relative;
-  top: 4px;
-  left: 4px;
-  width: 40px;
-  height: 40px;
-
-  &::before,
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 28px;
-    border-top: solid 2px ${color.textBlack};
-  }
-
-  &::before {
-    transform: rotateZ(45deg);
-  }
-
-  &::after {
-    transform: rotateZ(135deg);
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
 
 export const HeaderComponent: React.FC<Props> = ({
   siteTitle,
@@ -108,14 +35,14 @@ export const HeaderComponent: React.FC<Props> = ({
 }) => {
   return (
     <header className='flex relative bg-(--header-bg-blue) max-h-[64px] justify-center items-center'>
-      <MenuButton onClick={openModal}>メニュー</MenuButton>
+      <button className='menu-button absolute w-7 sm:w-12 left-2 sm:left-7 no-underline bg-transparent' onClick={openModal}>メニュー</button>
       <h1 className='text-2xl sm:text-4xl font-bold leading-[1.5]'>
         <LinkComponent url="/" color="white">
           {siteTitle}
         </LinkComponent>
       </h1>
       <MenuDialog showModal={showModal}>
-        <CloseButton onClick={closeModal}>閉じる</CloseButton>
+        <button className='close-button relative border-none bg-transparent w-10 h-10' onClick={closeModal}>閉じる</button>
         <ul>
           <li className='flex justify-center'>
             <LinkComponent url="/tags" color="black">
