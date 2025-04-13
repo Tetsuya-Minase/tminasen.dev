@@ -28,7 +28,7 @@ const TagLink = ({ tag }: { tag: string }): JSX.Element => {
 const articlePage = ({ id, articleMetaData }: Props) => {
   return (
     <PageTemplate>
-      <article className='max-w-xs sm:max-w-5xl flex flex-col mx-auto'>
+      <article className='max-w-93 sm:max-w-5xl flex flex-col mx-auto'>
         <div className='bg-white rounded-sm px-3 sm:px-4 py-1'>
           <h1 className='text-2xl sm:text-3xl font-bold leading-[1.5] text-(--color-text-base)'>{articleMetaData.title}</h1>
           <ul className='flex items-center mt-2 space-x-1'>
