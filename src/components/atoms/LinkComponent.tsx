@@ -1,10 +1,10 @@
-import React from 'react';
+import { FC, ReactNode } from 'react';
 import Link from 'next/link';
 
 interface Props {
   url: string;
   color: 'white' | 'black';
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 const getLinkColor = (linkColor: 'white' | 'black'): string => {
@@ -20,7 +20,7 @@ const getLinkColor = (linkColor: 'white' | 'black'): string => {
   }
 };
 
-export const LinkComponent: React.FC<Props> = ({ url, color, children }) => {
+export const LinkComponent: FC<Props> = ({ url, color, children }) => {
   return (
     <Link className={`no-underline ${getLinkColor(color)}`} href={url}>
       {children}

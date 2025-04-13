@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { Maybe } from '../../../types/utility';
 import { metaData } from '../../constants/metaData';
 
@@ -18,7 +18,7 @@ const useFormatShareData = (
   return [shareText, shareUrl];
 };
 
-export const XShareButton: React.FC<Props> = ({ title, path }) => {
+export const XShareButton: FC<Props> = ({ title, path }) => {
   const [shareText, shareUrl] = useFormatShareData(title, path);
   return (
     <div className='inline-block p-[6px] bg-black rounded-full'>

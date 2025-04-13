@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 
 interface Props {
   imageSrc: string;
@@ -14,7 +14,7 @@ interface Props {
   };
 }
 
-export const Image: React.FC<Props> = ({
+export const Image: FC<Props> = ({
   imageSrc,
   isRounded,
   alt

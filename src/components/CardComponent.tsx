@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { DeepReadonly } from '../../types/utility';
 import { Image } from './atoms/ImageComponent';
 import { ThumbnailImage } from '../../types/article';
@@ -10,7 +10,7 @@ type Props = {
   image: ThumbnailImage;
 };
 
-export const CardComponent: React.FC<DeepReadonly<Props>> = ({
+export const CardComponent: FC<DeepReadonly<Props>> = ({
   title,
   path,
   excerpt,

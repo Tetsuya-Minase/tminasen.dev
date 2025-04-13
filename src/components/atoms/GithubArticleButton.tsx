@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { Maybe, Optional } from '../../../types/utility';
 import { metaData } from '../../constants/metaData';
 
@@ -18,7 +18,7 @@ const useCreateGithubArticleLink = (path: Maybe<string>) => {
   ).toString();
 };
 
-export const GithubArticleButton: React.FC<Props> = ({ path }) => {
+export const GithubArticleButton: FC<Props> = ({ path }) => {
   const buttonLink = useCreateGithubArticleLink(path);
   if (!buttonLink) {
     return null;
