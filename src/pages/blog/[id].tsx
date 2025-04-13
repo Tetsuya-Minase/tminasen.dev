@@ -67,9 +67,10 @@ const TagListItem = styled.li`
 `;
 const SnsLink = styled.div`
   display: flex;
-  align-items: flex-start;
   margin-top: 8px;
   align-content: center;
+  align-items: flex-start;
+  column-gap: 0.5rem; 
 `;
 
 const TagLink = ({ tag }: { tag: string }): JSX.Element => {
