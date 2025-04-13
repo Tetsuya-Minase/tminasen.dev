@@ -27,9 +27,9 @@ const getArticles = (
       ));
 
       return (
-        <li className='basis-full mb-5' key={`${data.path}`}>
+        <li className='basis-full' key={`${data.path}`}>
           <section>
-            <div className='flex flex-col justify-around h-32 py-1 px-5 bg-slate-400'>
+            <div className='flex flex-col justify-around h-20 py-1 px-5 bg-slate-400'>
               <LinkComponent url={data.path} color="black">
                 <h1 className='text-xl sm:text-2xl'>{data.title}</h1>
               </LinkComponent>
@@ -60,7 +60,7 @@ const getArticles = (
   if (articleList.length === 0) {
     return null;
   }
-  return <ul className='flex flex-wrap'>{articleList}</ul>;
+  return <ul className='flex flex-wrap gap-y-2'>{articleList}</ul>;
 };
 
 const tagPage: React.FC<Props> = ({ tagName, articleMetaDataList }) => {
