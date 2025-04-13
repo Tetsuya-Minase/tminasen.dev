@@ -1,5 +1,6 @@
 .md-article {
   color: var(--color-text-base);
+  overflow-x: hidden;
 }
 .md-article p > strong {
     font-weight: bold;
@@ -44,6 +45,8 @@
 
 .md-article a {
     color: var(--color-blue-700);
+    word-wrap: break-word;
+    overflow-wrap: break-word;  
 }
 .md-article a:hover {
     color: var(--color-rose-500);
