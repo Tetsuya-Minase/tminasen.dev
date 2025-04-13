@@ -99,18 +99,6 @@ const CloseButton = styled.button`
     cursor: pointer;
   }
 `;
-const LinkItem = styled.li`
-  display: flex;
-  justify-content: center;
-`;
-const LinkText = styled.span`
-  font-size: ${fontSize.px32};
-  font-weight: 700;
-  text-decoration: underline;
-  ${media.lessThan('small')`
-    font-size: ${fontSize.px24};
-  `}
-`;
 
 export const HeaderComponent: React.FC<Props> = ({
   siteTitle,
@@ -129,11 +117,11 @@ export const HeaderComponent: React.FC<Props> = ({
       <MenuDialog showModal={showModal}>
         <CloseButton onClick={closeModal}>閉じる</CloseButton>
         <ul>
-          <LinkItem>
+          <li className='flex justify-center'>
             <LinkComponent url="/tags" color="black">
-              <LinkText>タグ一覧</LinkText>
+              <span className='text-2xl sm:text-4xl font-bold underline'>タグ一覧</span>
             </LinkComponent>
-          </LinkItem>
+          </li>
         </ul>
       </MenuDialog>
     </header>
