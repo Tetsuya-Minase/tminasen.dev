@@ -1,8 +1,5 @@
 import React from 'react';
 import { PageTemplate } from '../../templates/PageTemplate';
-import styled from 'styled-components';
-import { color, fontSize } from '../../styles/variable';
-import media from 'styled-media-query';
 import { GetStaticProps } from 'next';
 import { ArticleMetaData, Tag } from '../../../types/article';
 import {
