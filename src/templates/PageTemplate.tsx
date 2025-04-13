@@ -23,7 +23,7 @@ export const PageTemplate: React.FC<Props> = ({ children }) => {
         openModal={openModal}
         closeModal={closeModal}
       />
-      <div className='flex flex-initial justify-between mt-5 mb-0 mx-1 sm:mx-2'>
+      <div className='flex flex-[1_0_auto] justify-between mt-5 mb-0 mx-1 sm:mx-2'>
         <main className='w-full'>{children}</main>
       </div>
       <FooterComponent />
