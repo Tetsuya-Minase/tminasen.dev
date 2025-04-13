@@ -6,15 +6,6 @@ import { ArticleMetaData } from '../../types/article';
 import { CardComponent } from '../components/CardComponent';
 import { fontSize, size } from '../styles/variable';
 
-const ArticleCardList = styled.ul`
-  font-size: ${fontSize.px16};
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fill, ${size.cardImageWidth});
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-`;
-
 const ArticleCardItem: (param: {
   articleData: ArticleMetaData;
 }) => JSX.Element = ({ articleData }) => {
@@ -35,11 +26,11 @@ const IndexPage: React.FC<{ articleMetaDataList: ArticleMetaData[] }> = ({
 }) => {
   return (
     <PageTemplate>
-      <ArticleCardList>
+      <ul className='text-base grid justify-center [grid-template-columns:repeat(auto-fill,336px)] gap-[20px]'>
         {articleMetaDataList.map(article => (
           <ArticleCardItem articleData={article} key={article.path} />
         ))}
-      </ArticleCardList>
+      </ul>
     </PageTemplate>
   );
 };
