@@ -67,6 +67,7 @@ const TagListItem = styled.li`
 `;
 const SnsLink = styled.div`
   display: flex;
+  align-items: flex-start;
   margin-top: 8px;
   align-content: center;
 `;
