@@ -43,8 +43,8 @@ export const CardComponent: React.FC<DeepReadonly<Props>> = ({
   image,
 }) => {
   return (
-    <Article>
-      <Link href={path}>
+    <article className='flex flex-col w-(--card-image-width) max-h-(--card-max-height) rounded-lg bg-white shadow-md'>
+      <a className='text-(--base-color-text) no-underline' href={path}>
         <Image
           imageSrc={image.url}
           isRounded={true}
@@ -52,9 +52,9 @@ export const CardComponent: React.FC<DeepReadonly<Props>> = ({
           width={{ pc: image.size.pc.width, sp: image.size.sp.width }}
           height={{ pc: image.size.pc.height, sp: image.size.sp.height }}
         />
-        <Title>{title}</Title>
-        <Description>{excerpt}</Description>
-      </Link>
-    </Article>
+        <h1 className='text-2xl text-center my-2'>{title}</h1>
+        <p className='text-base px-2'>{excerpt}</p>
+      </a>
+    </article>
   );
 };
