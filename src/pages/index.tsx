@@ -1,10 +1,8 @@
 import { JSX } from 'react';
-import styled from 'styled-components';
 import { PageTemplate } from '../templates/PageTemplate';
 import { getArticleMetaData } from '../libraries/articles';
 import { ArticleMetaData } from '../../types/article';
 import { CardComponent } from '../components/CardComponent';
-import { fontSize, size } from '../styles/variable';
 
 const ArticleCardItem: (param: {
   articleData: ArticleMetaData;
