@@ -16,7 +16,6 @@ export const CardComponent: React.FC<DeepReadonly<Props>> = ({
   excerpt,
   image,
 }) => {
-  console.log('CardComponent: ', image);
   return (
     <article className='flex flex-col w-(--card-image-width) max-h-(--card-max-height) rounded-lg bg-white shadow-md'>
       <a className='text-(--base-color-text) no-underline' href={path}>
