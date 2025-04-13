@@ -4,6 +4,8 @@
   :root {
     --card-image-width: 336px;
     --card-image-max-height: 448px;
+    --image-pc-width: 336px;
+    --image-sp-width: 336px;
     --base-color-text: #333333;
   }
 }
