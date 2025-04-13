@@ -22,7 +22,7 @@ export const HeaderComponent: FC<Props> = ({
       >
         メニュー
       </button>
-      <h1 className="text-2xl sm:text-4xl font-bold leading-[1.5]">
+      <h1 className="text-2xl sm:text-3xl font-bold leading-[1.5]">
         <LinkComponent url="/" color="white">
           {siteTitle}
         </LinkComponent>
