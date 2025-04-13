@@ -17,12 +17,12 @@ export const HeaderComponent: FC<Props> = ({
   return (
     <header className="flex relative bg-(--color-header-bg-blue) max-h-[64px] justify-center items-center">
       <button
-        className="menu-button absolute w-7 sm:w-9 left-2 sm:left-7 no-underline bg-transparent"
+        className="menu-button absolute w-7 sm:w-9 left-1 sm:left-7 no-underline bg-transparent"
         onClick={openModal}
       >
         メニュー
       </button>
-      <h1 className="text-2xl sm:text-4xl font-bold leading-[1.5]">
+      <h1 className="text-2xl sm:text-4xl font-bold leading-[1.5] ml-2 sm:ml-0">
         <LinkComponent url="/" color="white">
           {siteTitle}
         </LinkComponent>
