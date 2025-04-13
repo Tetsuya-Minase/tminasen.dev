@@ -12,11 +12,11 @@ const getLinkColor = (linkColor: 'white' | 'black'): string => {
     case 'white':
       return 'text-white';
     case 'black':
-      return 'text-(--base-color-text)';
+      return 'text-(--color-text-base)';
     default:
       const _invalidColor: never = linkColor;
       console.error(`${_invalidColor} is invalid.`);
-      return 'text-(--base-color-text)';
+      return 'text-(--color-text-base)';
   }
 };
 

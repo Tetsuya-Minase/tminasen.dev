@@ -15,7 +15,7 @@ export const HeaderComponent: FC<Props> = ({
   closeModal,
 }) => {
   return (
-    <header className="flex relative bg-(--header-bg-blue) max-h-[64px] justify-center items-center">
+    <header className="flex relative bg-(--color-header-bg-blue) max-h-[64px] justify-center items-center">
       <button
         className="menu-button absolute w-7 sm:w-12 left-2 sm:left-7 no-underline bg-transparent"
         onClick={openModal}

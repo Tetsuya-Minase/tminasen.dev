@@ -37,7 +37,7 @@
     display: block;
     position: absolute;
     width: 28px;
-    border-top: solid 2px var(--base-color-text);
+    border-top: solid 2px var(--color-text-base);
     top: 50%;
     left: 50%;
     margin-left: -14px; /* 中央配置にするためwidthの半分だけずらす */

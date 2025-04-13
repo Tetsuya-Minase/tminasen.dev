@@ -18,7 +18,7 @@ export const CardComponent: FC<DeepReadonly<Props>> = ({
 }) => {
   return (
     <article className='flex flex-col w-(--card-image-width) max-h-(--card-max-height) rounded-lg bg-white shadow-md'>
-      <a className='text-(--base-color-text) no-underline' href={path}>
+      <a className='text-(--color-text-base) no-underline' href={path}>
         <Image
           imageSrc={image.url}
           isRounded={true}

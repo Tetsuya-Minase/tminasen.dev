@@ -8,7 +8,7 @@
     --card-image-max-height: 448px;
     --image-pc-width: 336px;
     --image-sp-width: 336px;
-    --base-color-text: #333333;
-    --header-bg-blue: #448aff
+    --color-text-base: #333333;
+    --color-header-bg-blue: #448aff
   }
 }
