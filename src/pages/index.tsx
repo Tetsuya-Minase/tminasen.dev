@@ -24,7 +24,7 @@ const IndexPage: React.FC<{ articleMetaDataList: ArticleMetaData[] }> = ({
 }) => {
   return (
     <PageTemplate>
-      <ul className='text-base grid justify-center [grid-template-columns:repeat(auto-fill,336px)] gap-[20px]'>
+      <ul className='text-base grid justify-center [grid-template-columns:repeat(auto-fill,var(--card-image-width))] gap-[20px]'>
         {articleMetaDataList.map(article => (
           <ArticleCardItem articleData={article} key={article.path} />
         ))}
