@@ -22,7 +22,7 @@ export const HeaderComponent: FC<Props> = ({
       >
         メニュー
       </button>
-      <h1 className="text-2xl sm:text-3xl font-bold leading-[1.5]">
+      <h1 className="text-2xl sm:text-4xl font-bold leading-[1.5]">
         <LinkComponent url="/" color="white">
           {siteTitle}
         </LinkComponent>
@@ -41,7 +41,7 @@ export const HeaderComponent: FC<Props> = ({
         <ul>
           <li className="flex justify-center">
             <LinkComponent url="/tags" color="black">
-              <span className="text-2xl sm:text-4xl font-bold underline">
+              <span className="text-2xl sm:text-3xl font-bold underline">
                 タグ一覧
               </span>
             </LinkComponent>
