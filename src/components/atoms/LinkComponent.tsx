@@ -10,7 +10,7 @@ interface Props {
 const getLinkColor = (linkColor: 'white' | 'black'): string => {
   switch (linkColor) {
     case 'white':
-      return 'text-neutral-100';
+      return 'text-white';
     case 'black':
       return 'text-(--base-color-text)';
     default:
