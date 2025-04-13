@@ -11,24 +11,6 @@ type Props = {
   closeModal: () => void;
 };
 
-const Header = styled.header`
-  display: flex;
-  position: relative;
-  background: ${color.headerBgBlue};
-  max-height: 64px;
-  align-items: center;
-  justify-content: center;
-`;
-const Heading = styled.h1`
-  font-size: ${fontSize.px32};
-  font-weight: bold;
-  line-height: 1.5;
-  ${media.lessThan('small')`
-    font-size: ${fontSize.px24};
-    margin-left: 12px;
-  `}
-`;
-
 const MenuButton = styled.button`
   font-size: 0;
   position: absolute;
@@ -137,13 +119,13 @@ export const HeaderComponent: React.FC<Props> = ({
   closeModal,
 }) => {
   return (
-    <Header>
+    <header className='flex relative bg-(--header-bg-blue) max-h-[64px] justify-center items-center'>
       <MenuButton onClick={openModal}>メニュー</MenuButton>
-      <Heading>
+      <h1 className='text-2xl sm:text-4xl font-bold leading-[1.5]'>
         <LinkComponent url="/" color="white">
           {siteTitle}
         </LinkComponent>
-      </Heading>
+      </h1>
       <MenuDialog showModal={showModal}>
         <CloseButton onClick={closeModal}>閉じる</CloseButton>
         <ul>
@@ -154,6 +136,6 @@ export const HeaderComponent: React.FC<Props> = ({
           </LinkItem>
         </ul>
       </MenuDialog>
-    </Header>
+    </header>
   );
 };
