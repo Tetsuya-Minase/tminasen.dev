@@ -12,7 +12,7 @@
     "create:md": "./target/release/article-scripts",
     "rename:files": "./target/release/article-scripts --rename ",
     "generate:rss": "tsx ./scripts/generate-rss/generate-rss.mts",
-    "generate:ogp": "./scripts/generate-ogp/generate-ogp.mjs",
+    "generate:ogp": "tsx ./scripts/generate-ogp/generate-ogp.mts",
     "type-check": "tsc"
   },
   "dependencies": {
