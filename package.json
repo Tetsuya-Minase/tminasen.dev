@@ -11,7 +11,7 @@
     "start": "next start",
     "create:md": "./target/release/article-scripts",
     "rename:files": "./target/release/article-scripts --rename ",
-    "generate:rss": "./scripts/generate-rss/generate-rss.mjs",
+    "generate:rss": "tsx ./scripts/generate-rss/generate-rss.mts",
     "generate:ogp": "./scripts/generate-ogp/generate-ogp.mjs",
     "type-check": "tsc"
   },
@@ -47,6 +47,7 @@
     "prettier": "2.6.2",
     "puppeteer": "^14.1.1",
     "raw-loader": "^4.0.2",
+    "tsx": "^4.19.3",
     "typescript": "^5.8.2",
     "zx": "^8.0.2"
   },
