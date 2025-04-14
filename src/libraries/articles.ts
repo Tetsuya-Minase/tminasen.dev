@@ -6,7 +6,7 @@ import {
   MarkdownMetaData,
   Tag,
   TagCount,
-} from '../../types/article';
+} from '../types/article';
 import { markdown2Html, removeTags } from './markdown';
 import { parseStringDate } from './date';
 import { getImageSize } from './image';
