@@ -2,8 +2,8 @@
 
 import { $, path, fs } from 'zx';
 import { Feed } from 'feed';
-import { getArticleMetaData } from '../functions/article.mjs';
-import { dateFromDateString } from '../functions/date.mjs';
+import { getArticleMetaData } from '../functions/article.mts';
+import { dateFromDateString } from '../functions/date.mts';
 
 const BASE_URL = 'https://tminasen.dev';
 const getCurrentDirectory = await $`pwd`;

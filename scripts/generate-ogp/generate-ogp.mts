@@ -2,7 +2,7 @@
 
 import puppeteer from 'puppeteer';
 import { $, path, argv, fs } from 'zx';
-import { getArticleMetaData } from '../functions/article.mjs';
+import { getArticleMetaData } from '../functions/article.mts';
 
 // zxを使用してカレントディレクトリを取得
 const getCurrentDirectory = await $`pwd`;
