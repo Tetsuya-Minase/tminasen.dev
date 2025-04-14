@@ -4,15 +4,6 @@ import puppeteer from 'puppeteer';
 import { $, path, argv, fs } from 'zx';
 import { getArticleMetaData } from '../functions/article.mjs';
 
-// article.mjsの型定義をTypeScriptで再定義
-interface OgpArticleMetaData {
-  title: string;
-  date: string;
-  path: string;
-  description: string;
-  ogpImage: string;
-}
-
 // zxを使用してカレントディレクトリを取得
 const getCurrentDirectory = await $`pwd`;
 const currentDirectory = getCurrentDirectory.stdout.trim();
