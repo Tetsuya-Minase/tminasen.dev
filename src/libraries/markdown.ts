@@ -54,65 +54,65 @@ function setImageSize() {
       if (!image) {
         return child;
       }
-      const imagePath = image.properties.src;
-      const imageAlt = image.properties.alt;
-      const imageSize = getImageSize(imagePath, 'article');
-      // 既存の画像をamp-imgに置き換え
-      const fallbackImage = {
-        ...image,
-        tagName: 'img',
-        properties: {
-          ...image.properties,
-          width: imageSize.pc.width,
-          height: imageSize.pc.height,
-          media: '(min-width: 451px)',
-          fallback: true,
-        },
-      };
-      const fallbackImageSp = {
-        ...image,
-        tagName: 'img',
-        properties: {
-          ...image.properties,
-          width: imageSize.sp.width,
-          height: imageSize.sp.height,
-          media: '(max-width: 450px)',
-          fallback: true,
-        },
-      };
-      // webp用のamp-img作成
-      const webpImage = {
-        type: 'element',
-        tagName: 'img',
-        children: [fallbackImage],
-        properties: {
-          src: image.properties.src.replace(/\.png$/, '.webp'),
-          alt: imageAlt,
-          width: imageSize.pc.width,
-          height: imageSize.pc.height,
-          media: '(min-width: 451px)',
-        },
-      };
-      const webpImageSp = {
-        type: 'element',
-        tagName: 'img',
-        children: [fallbackImageSp],
-        properties: {
-          src: image.properties.src.replace(/\.png$/, '.webp'),
-          alt: imageAlt,
-          width: imageSize.sp.width,
-          height: imageSize.sp.height,
-          media: '(max-width: 450px)',
-        },
-      };
-      // webp込のデータ使うので今あるimgは削除
-      child.children = [
-        ...child.children.filter(
-          (c: any) => c.type !== 'element' && c.tagName !== 'img',
-        ),
-        webpImage,
-        webpImageSp,
-      ];
+      // const imagePath = image.properties.src;
+      // const imageAlt = image.properties.alt;
+      // const imageSize = getImageSize(imagePath, 'article');
+      // // 既存の画像をamp-imgに置き換え
+      // const fallbackImage = {
+      //   ...image,
+      //   tagName: 'img',
+      //   properties: {
+      //     ...image.properties,
+      //     width: imageSize.pc.width,
+      //     height: imageSize.pc.height,
+      //     media: '(min-width: 451px)',
+      //     fallback: true,
+      //   },
+      // };
+      // const fallbackImageSp = {
+      //   ...image,
+      //   tagName: 'img',
+      //   properties: {
+      //     ...image.properties,
+      //     width: imageSize.sp.width,
+      //     height: imageSize.sp.height,
+      //     media: '(max-width: 450px)',
+      //     fallback: true,
+      //   },
+      // };
+      // // webp用のamp-img作成
+      // const webpImage = {
+      //   type: 'element',
+      //   tagName: 'img',
+      //   children: [fallbackImage],
+      //   properties: {
+      //     src: image.properties.src.replace(/\.png$/, '.webp'),
+      //     alt: imageAlt,
+      //     width: imageSize.pc.width,
+      //     height: imageSize.pc.height,
+      //     media: '(min-width: 451px)',
+      //   },
+      // };
+      // const webpImageSp = {
+      //   type: 'element',
+      //   tagName: 'img',
+      //   children: [fallbackImageSp],
+      //   properties: {
+      //     src: image.properties.src.replace(/\.png$/, '.webp'),
+      //     alt: imageAlt,
+      //     width: imageSize.sp.width,
+      //     height: imageSize.sp.height,
+      //     media: '(max-width: 450px)',
+      //   },
+      // };
+      // // webp込のデータ使うので今あるimgは削除
+      // child.children = [
+      //   ...child.children.filter(
+      //     (c: any) => c.type !== 'element' && c.tagName !== 'img',
+      //   ),
+      //   webpImage,
+      //   webpImageSp,
+      // ];
       return child;
     });
     done();
