@@ -60,7 +60,7 @@ function setImageSize() {
       // 既存の画像をamp-imgに置き換え
       const fallbackImage = {
         ...image,
-        tagName: 'amp-img',
+        tagName: 'img',
         properties: {
           ...image.properties,
           width: imageSize.pc.width,
@@ -71,7 +71,7 @@ function setImageSize() {
       };
       const fallbackImageSp = {
         ...image,
-        tagName: 'amp-img',
+        tagName: 'img',
         properties: {
           ...image.properties,
           width: imageSize.sp.width,
@@ -83,7 +83,7 @@ function setImageSize() {
       // webp用のamp-img作成
       const webpImage = {
         type: 'element',
-        tagName: 'amp-img',
+        tagName: 'img',
         children: [fallbackImage],
         properties: {
           src: image.properties.src.replace(/\.png$/, '.webp'),
@@ -95,7 +95,7 @@ function setImageSize() {
       };
       const webpImageSp = {
         type: 'element',
-        tagName: 'amp-img',
+        tagName: 'img',
         children: [fallbackImageSp],
         properties: {
           src: image.properties.src.replace(/\.png$/, '.webp'),
