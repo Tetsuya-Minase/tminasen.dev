@@ -33,7 +33,7 @@ export const CardComponent: FC<DeepReadonly<Props>> = ({
           height={{ pc: image.size.pc.height, sp: image.size.sp.height }}
         />
         <div className='px-2'>
-          <h1 className='text-2xl font-bold text-center h-(--card-title-height) leading-(--card-title-line-height) line-clamp-2 overflow-hidden'>
+          <h1 className='text-2xl font-bold text-center max-h-(--card-title-height) leading-(--card-title-line-height) line-clamp-2 overflow-hidden'>
             {title}
           </h1>
           <p className='text-sm text-gray-600'>{date}</p>

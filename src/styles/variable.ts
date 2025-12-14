@@ -25,6 +25,7 @@ export const fontSize = {
 export const size = {
   cardImageWidth: '336px',
   cardMaxHeight: '448px',
+  cardImageMaxHeight: '232px',
   cardTitleHeight: '58px',
   cardTitleLineHeight: '1.2',
 };

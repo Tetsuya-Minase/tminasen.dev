@@ -6,6 +6,7 @@
   :root {
     --card-image-width: 336px;
     --card-max-height: 448px;
+    --card-image-max-height: 232px;
     --card-title-height: 58px;
     --card-title-line-height: 1.2;
     --image-pc-width: 336px;
