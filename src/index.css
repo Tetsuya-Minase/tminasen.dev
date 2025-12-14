@@ -5,7 +5,9 @@
 @layer base {
   :root {
     --card-image-width: 336px;
-    --card-image-max-height: 448px;
+    --card-max-height: 448px;
+    --card-title-height: 58px;
+    --card-title-line-height: 1.2;
     --image-pc-width: 336px;
     --image-sp-width: 336px;
     --color-text-base: #333333;

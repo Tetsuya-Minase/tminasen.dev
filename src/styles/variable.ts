@@ -25,6 +25,8 @@ export const fontSize = {
 export const size = {
   cardImageWidth: '336px',
   cardMaxHeight: '448px',
+  cardTitleHeight: '58px',
+  cardTitleLineHeight: '1.2',
 };
 export const layer = {
   backgroundOverlay: 5,
