@@ -59,7 +59,7 @@ export const ArticleLayout: FC<Props> = ({ meta, children }) => {
               {meta.date}
             </time>
           </div>
-          <div className="prose prose-slate max-w-none bg-white mt-5 sm:mt-8 text-base rounded-sm py-2 px-3 sm:px-4 prose-body:text-[var(--color-text-base)] prose-h1:text-2xl prose-h1:font-bold prose-h1:leading-[1.5] prose-h1:text-[var(--color-text-base)] prose-h2:text-xl prose-h2:font-bold prose-h2:leading-[1.5] prose-h2:text-[var(--color-text-base)] prose-h3:text-base prose-h3:font-bold prose-h3:leading-[1.5] prose-h3:text-[var(--color-text-base)] prose-h4:text-base prose-h4:font-normal prose-h4:leading-[1.5] prose-h4:text-[var(--color-text-base)] prose-p:leading-[1.5] prose-a:text-blue-700 prose-a:no-underline hover:prose-a:text-rose-500">
+          <div className="prose prose-slate max-w-none bg-white mt-5 sm:mt-8 text-base rounded-sm py-2 px-3 sm:px-4 prose-headings:mt-3 prose-headings:mb-2 prose-p:my-2 prose-img:my-2 prose-figure:my-2 prose-h1:text-2xl prose-h2:text-xl prose-h3:text-base prose-ul:my-2 prose-ol:my-2 prose-li:my-0">
             {children}
           </div>
           <div className="flex mt-2 content-center items-center gap-x-2">
