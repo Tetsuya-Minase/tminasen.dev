@@ -55,7 +55,7 @@ export const ArticleLayout: FC<Props> = ({ meta, children }) => {
                 <TagLink key={t} tag={t} />
               ))}
             </ul>
-            <time className="block mt-1 text-base leading-[1.5]">
+            <time className="block mt-1 text-base leading-[1.5] text-(--color-text-muted)">
               {meta.date}
             </time>
           </div>
