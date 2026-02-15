@@ -39,22 +39,29 @@ export async function compareScreenshots(
   }
 
   const diff = new PNG({ width: production.width, height: production.height });
+  const productionData = Uint8ClampedArray.from(production.data);
+  const previewData = Uint8ClampedArray.from(preview.data);
+  const diffData = new Uint8ClampedArray(diff.data.length);
   const diffPixels = pixelmatch(
-    production.data,
-    preview.data,
-    diff.data,
+    productionData,
+    previewData,
+    diffData,
     production.width,
     production.height,
     {
       threshold: input.pixelmatchThreshold ?? 0.1,
     },
   );
+  for (let i = 0; i < diffData.length; i++) {
+    diff.data[i] = diffData[i];
+  }
   const totalPixels = production.width * production.height;
   const diffRatio = totalPixels === 0 ? 0 : diffPixels / totalPixels;
   const threshold = input.comparisonThreshold ?? 0.001;
 
   ensureDirectory(input.diffPath);
-  fs.writeFileSync(input.diffPath, PNG.sync.write(diff));
+  const diffBuffer = PNG.sync.write(diff);
+  fs.writeFileSync(input.diffPath, new Uint8Array(diffBuffer));
 
   if (input.reportPath) {
     ensureDirectory(input.reportPath);

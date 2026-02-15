@@ -23,7 +23,8 @@ function createPngFile(
       png.data[idx + 3] = 255;
     }
   }
-  fs.writeFileSync(filePath, PNG.sync.write(png));
+  const encoded = PNG.sync.write(png);
+  fs.writeFileSync(filePath, new Uint8Array(encoded));
 }
 
 test.describe('Screenshot compare', () => {
