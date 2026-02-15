@@ -5,7 +5,13 @@ export default defineConfig({
   fullyParallel: true,
   retries: process.env.CI ? 1 : 0,
   timeout: 60 * 1000,
-  reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',
+  reporter: process.env.CI
+    ? [
+        ['github'],
+        ['json', { outputFile: 'test-results/playwright-report.json' }],
+        ['html', { open: 'never' }],
+      ]
+    : 'list',
   use: {
     browserName: 'chromium',
     trace: 'on-first-retry',
