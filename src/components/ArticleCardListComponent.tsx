@@ -2,10 +2,16 @@ import { JSX } from 'react';
 import { ArticleMetaData } from '../types/article';
 import { CardComponent } from './CardComponent';
 
+// ファーストビューに入りうる先頭6枚（PC 1280px でカード幅336pxの3列×2行）までを eager 読み込みとし、
+// それ以降は lazy にすることで、初回の画像リクエスト数を可視範囲に固定する。
+// 追加読み込みで連結された記事も通し番号で判定されるため、2ページ目以降は常に lazy になる。
+const EAGER_CARD_COUNT = 6;
+
 const ArticleCardItem: (param: {
   articleData: ArticleMetaData;
   fetchPriority?: 'high' | 'low' | 'auto';
-}) => JSX.Element = ({ articleData, fetchPriority }) => {
+  loading?: 'eager' | 'lazy';
+}) => JSX.Element = ({ articleData, fetchPriority, loading }) => {
   return (
     <li>
       <CardComponent
@@ -16,6 +22,7 @@ const ArticleCardItem: (param: {
         date={articleData.date}
         tags={articleData.tag}
         fetchPriority={fetchPriority}
+        loading={loading}
       />
     </li>
   );
@@ -31,6 +38,7 @@ export const ArticleCardListComponent: React.FC<{
           articleData={article}
           key={article.path}
           fetchPriority={index === 0 ? 'high' : undefined}
+          loading={index < EAGER_CARD_COUNT ? 'eager' : 'lazy'}
         />
       ))}
     </ul>

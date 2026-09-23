@@ -1,36 +1,12 @@
 import { JSX } from 'react';
 import { getArticleMetaData } from '../libraries/articles';
 import { ArticleMetaData } from '../types/article';
-import { CardComponent } from '../components/CardComponent';
 import { ArticleCardListComponent } from '../components/ArticleCardListComponent';
 import { ArticleCardSkeletonListComponent } from '../components/ArticleCardSkeletonListComponent';
 import { PageTemplate } from '../templates/PageTemplate';
 import { paginate, getTotalPages, ARTICLES_PER_PAGE } from '../libraries/pagination';
 import { useInfiniteArticles } from '../hooks/useInfiniteArticles';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
-
-const EAGER_CARD_COUNT = 6;
-
-const ArticleCardItem: (param: {
-  articleData: ArticleMetaData;
-  fetchPriority?: 'high' | 'low' | 'auto';
-  loading?: 'eager' | 'lazy';
-}) => JSX.Element = ({ articleData, fetchPriority, loading }) => {
-  return (
-    <li>
-      <CardComponent
-        title={articleData.title}
-        path={articleData.path}
-        image={articleData.thumbnailImage}
-        excerpt={articleData.description}
-        date={articleData.date}
-        tags={articleData.tag}
-        fetchPriority={fetchPriority}
-        loading={loading}
-      />
-    </li>
-  );
-};
 
 const IndexPage: React.FC<{
   articleMetaDataList: ArticleMetaData[];
